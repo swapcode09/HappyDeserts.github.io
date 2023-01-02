@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css" integrity="sha384-WJUUqfoMmnfkBLne5uxXj+na/c7sesSJ32gI7GfCk4zO4GthUKhSEGyvQ839BC51" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+</head>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<body>
+  
+  <div class="container">
+    <div style="margin-top:10px">
+      <button id="buttonzero">0</button>
+      <button id="buttonone">1</button>
+      <button id="buttonfour">4</button>
+      <button id="buttonwicket">W</button>
+    </div>
+
+    <div id="content">
+      <p>MLC 
+      <span id="score">0</span> - <span id="wickets">0</span> (<span id="overdone">0</span>/<span id="totalovers">5</span>)    
+      </p>
+
+      <p>
+        Current Over <span id="currentovertext"></span>
+      </p>
+
+      <p>
+        SCORE <br>
+        
+
+           
+           <span id="batter1namepara">Cypher</span> <span id="batter1scorepara">0</span> (<span id="batter1bowlcount">0</span>)
+            <span id="strikerstar">*</span> <span>ㅤㅤ</span>  
+
+          
+            <span id="batter2namepara">Killjoy</span> <span id="batter2scorepara">0</span> (<span id="batter2bowlcount">0</span>) <span id="nonstrikerstar"></span> 
+      </p>
+
+
+          <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+  </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+          
+          var val_of_button;
+          var score = 0;
+          var overdone = 0;
+          var wickets = 0;
+          var ball_count = 0;
+
+          var strikerscore=0;
+          var nonstrikerscore=0;
+
+          var strikerballs=0;
+          var nonstrikerballs=0;
+
+          var striker = document.getElementById('batter1namepara').innerText;
+          var nonstriker = document.getElementById('batter2namepara').innerText;
+          var temp;
+
+          var modal = document.getElementById("myModal");
+          var span = document.getElementsByClassName("close")[0];
+
+          let btn0 = document.querySelector('#buttonzero');
+          let btn1 = document.querySelector('#buttonone');
+          let btn4 = document.querySelector('#buttonfour');
+          let btw = document.querySelector('#buttonwicket');
+
+          let content = document.querySelector('#content');
+          let overdonepara = document.getElementById('overdone');
+          let scorepara = document.getElementById('score');
+          let currentovertext = document.getElementById('currentovertext');
+          let wicketspara = document.getElementById('wickets');
+
+          let batter1namepara = document.getElementById('batter1namepara');
+          let batter2namepara = document.getElementById('batter2namepara');
+
+          let batter1scorepara = document.getElementById('batter1scorepara');
+          let batter1bowlcount = document.getElementById('batter1bowlcount');
+          let batter2scorepara = document.getElementById('batter2scorepara');
+          let batter2bowlcount = document.getElementById('batter2bowlcount');
+
+          let strikerstar = document.getElementById('strikerstar');
+          let nonstrikerstar = document.getElementById('nonstrikerstar');
+
+          btn0.addEventListener('click', () => 
+          {
+              
+             //console.log("striker is "+striker);
+             //console.log("Non striker is "+nonstriker);
+
+              val_of_button = 0;
+              score = score + 0;
+ 
+              if (strikerstar.innerText=="*")
+              {
+                  strikerballs = strikerballs + 1;
+                  batter1bowlcount.innerHTML = strikerballs;
+              }
+              
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerballs = nonstrikerballs+1;
+                  batter2bowlcount.innerHTML = nonstrikerballs; 
+              }
+            
+              currentovertext.insertAdjacentHTML("beforebegin"," " + val_of_button);
+
+              ball_count = ball_count + 1;
+              
+              if (ball_count%6==0)
+              {
+                 overdone = overdone+1;
+                 
+                 temp = striker;    //temp = Cypher
+                 striker = nonstriker;  // striker = kj
+                 nonstriker = temp;   // nonstriker = cypher
+                
+                 overdonepara.innerHTML = overdone;
+                 
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                  }
+
+              }
+
+          });
+
+          btn1.addEventListener('click', () => 
+          {
+              val_of_button = 1;
+              score = score + 1;
+              scorepara.innerHTML = score;
+
+               temp = striker;    //temp = Cypher
+               striker = nonstriker;  // striker = kj
+               nonstriker = temp;   // nonstriker = cypher
+                
+
+              if (strikerstar.innerText=="*")
+              {
+                  strikerscore = strikerscore + 1;
+                  strikerstar.innerHTML="";
+                  nonstrikerstar.innerHTML="*";
+                  strikerballs = strikerballs + 1;
+                  batter1bowlcount.innerHTML = strikerballs;
+                  batter1scorepara.innerHTML = strikerscore;
+              }
+              
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerscore = nonstrikerscore + 1;
+                  nonstrikerstar.innerHTML="";
+                  strikerstar.innerHTML="*";
+                  nonstrikerballs = nonstrikerballs+1;
+                  batter2bowlcount.innerHTML = nonstrikerballs; 
+                  batter2scorepara.innerHTML = nonstrikerscore;
+              }
+
+              currentovertext.insertAdjacentHTML("beforebegin"," " + val_of_button);
+
+              ball_count = ball_count + 1;
+              
+              if (ball_count%6==0)
+              {
+                 
+                temp = striker;    //temp = Cypher
+                 striker = nonstriker;  // striker = kj
+                 nonstriker = temp;   // nonstriker = cypher
+                
+                 overdone = overdone+1;
+              
+                 overdonepara.innerHTML = overdone;
+
+
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                  }
+
+                 currentovertext.insertAdjacentHTML("beforebegin"," " + "");
+
+              }
+
+
+          });
+
+          btn4.addEventListener('click', () => 
+          {
+              
+              val_of_button = 4;
+              score = score + 4;
+
+
+             if (strikerstar.innerText=="*")
+              {
+                  strikerscore = strikerscore + 4;
+                  strikerballs = strikerballs + 1;
+                  batter1bowlcount.innerHTML = strikerballs;
+                  batter1scorepara.innerHTML = strikerscore;
+              }
+              
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerscore = nonstrikerscore + 4;
+                  nonstrikerballs = nonstrikerballs+1;
+                  batter2bowlcount.innerHTML = nonstrikerballs; 
+                  batter2scorepara.innerHTML = nonstrikerscore;
+              }
+
+              scorepara.innerHTML = score;
+              currentovertext.insertAdjacentHTML("beforebegin"," " + val_of_button);
+
+              ball_count = ball_count + 1;
+              
+              if (ball_count%6==0)
+              {
+                 overdone = overdone+1;
+                 
+                 overdonepara.innerHTML = overdone;
+
+
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                  }
+
+                 currentovertext.insertAdjacentHTML("beforebegin"," " + "");
+              
+              }
+          
+        
+          });
+
+
+          btw.addEventListener('click', () =>
+          {
+              modal.style.display = "block";
+
+          });
+
+          span.onclick = function() 
+          {
+          modal.style.display = "none";
+          }
+
+    
+
+  </script>
+
+</body>
+</html>
