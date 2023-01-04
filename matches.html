@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Soccer &mdash; Website by Colorlib</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+            <a href="index.html">
+              <img src="images/logo.png" alt="Logo">
+            </a>
+          </div>
+          <div class="ml-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="active"><a href="matches.html" class="nav-link">Matches</a></li>
+                <li><a href="teams.html" class="nav-link">Teams</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+              </ul>
+            </nav>
+
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+                class="icon-menu h3 text-white"></span></a>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+    <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 mx-auto text-center">
+            <h1 class="text-white">Matches</h1>
+            <p>Create matches here
+
+                <div class="btn-group" role="group" aria-label="Third group">
+    
+    <button id="addmatch" class="btn btn-info">+</button>
+  </div>
+
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <div class="container">
+      
+
+      <div class="row">
+        <div class="col-lg-12">
+          
+          <div class="d-flex team-vs">
+            
+            <div class="team-1 w-50">
+              <div class="team-details w-100 text-center">
+                
+                <div id="box1">
+                     
+                    <form id="form1" style="visibility: hidden;">
+                      <h3>Select Team A</h3>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                          </select>
+                    </form>
+
+                    <br><br>
+
+                  
+                          <div class="form-check" id="lineupteamA" style="visibility: hidden;">
+                            <h3>Select Team A Lineup</h3>
+
+                            <table class="table"> 
+                                            <thead>
+                                                <th>Name</th>
+                                             
+                                            </thead>
+                                            <tbody id="tbody1"></tbody>
+                           </table>
+                          </div>
+
+
+
+                  </div>
+
+            
+              
+              </div>
+            </div>
+            <div class="team-2 w-50">
+              <div class="team-details w-100 text-center">
+
+                  <div id="box2">
+                     
+                    <form id="form2" style="visibility: hidden;">
+                      <h3>Select Team B</h3>
+                        <select class="form-select" aria-label="Default select example" required>
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                
+                    </form>
+
+                    <form id="lineupteamB" style="visibility: hidden;">
+                      <h3>Select Team B Lineup</h3>
+                          <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Default radio
+                                    </label>
+                                  </div>
+                    </form>
+
+                  </div>
+              
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+      </div>
+    </div>
+  
+
+    
+    <div class="site-section bg-dark">
+      <div class="container">
+        
+        <div class="row mb-5">
+          <div class="col-lg-12">
+            <div class="widget-next-match">
+              <div class="widget-title">
+                <h3>Next Match</h3>
+              </div>
+              <div class="widget-body mb-3">
+                <div class="widget-vs">
+                  <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                    <div class="team-1 text-center">
+                      <img src="images/logo_1.png" alt="Image">
+                      <h3>Football League</h3>
+                    </div>
+                    <div>
+                      <span class="vs"><span>VS</span></span>
+                    </div>
+                    <div class="team-2 text-center">
+                      <img src="images/logo_2.png" alt="Image">
+                      <h3>Soccer</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center widget-vs-contents mb-4">
+                <h4>World Cup League</h4>
+                <p class="mb-5">
+                  <span class="d-block">December 20th, 2020</span>
+                  <span class="d-block">9:30 AM GMT+0</span>
+                  <strong class="text-primary">New Euro Arena</strong>
+                </p>
+
+                <div id="date-countdown2" class="pb-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 title-section">
+            <h2 class="heading">Upcoming Match</h2>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="bg-light p-4 rounded">
+              <div class="widget-body">
+                  <div class="widget-vs">
+                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                      <div class="team-1 text-center">
+                        <img src="images/logo_1.png" alt="Image">
+                        <h3>Football League</h3>
+                      </div>
+                      <div>
+                        <span class="vs"><span>VS</span></span>
+                      </div>
+                      <div class="team-2 text-center">
+                        <img src="images/logo_2.png" alt="Image">
+                        <h3>Soccer</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center widget-vs-contents mb-4">
+                  <h4>World Cup League</h4>
+                  <p class="mb-5">
+                    <span class="d-block">December 20th, 2020</span>
+                    <span class="d-block">9:30 AM GMT+0</span>
+                    <strong class="text-primary">New Euro Arena</strong>
+                  </p>
+
+                </div>
+              
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="bg-light p-4 rounded">
+              <div class="widget-body">
+                  <div class="widget-vs">
+                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                      <div class="team-1 text-center">
+                        <img src="images/logo_3.png" alt="Image">
+                        <h3>Football League</h3>
+                      </div>
+                      <div>
+                        <span class="vs"><span>VS</span></span>
+                      </div>
+                      <div class="team-2 text-center">
+                        <img src="images/logo_4.png" alt="Image">
+                        <h3>Soccer</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center widget-vs-contents mb-4">
+                  <h4>World Cup League</h4>
+                  <p class="mb-5">
+                    <span class="d-block">December 20th, 2020</span>
+                    <span class="d-block">9:30 AM GMT+0</span>
+                    <strong class="text-primary">New Euro Arena</strong>
+                  </p>
+
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="bg-light p-4 rounded">
+              <div class="widget-body">
+                  <div class="widget-vs">
+                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                      <div class="team-1 text-center">
+                        <img src="images/logo_1.png" alt="Image">
+                        <h3>Football League</h3>
+                      </div>
+                      <div>
+                        <span class="vs"><span>VS</span></span>
+                      </div>
+                      <div class="team-2 text-center">
+                        <img src="images/logo_2.png" alt="Image">
+                        <h3>Soccer</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center widget-vs-contents mb-4">
+                  <h4>World Cup League</h4>
+                  <p class="mb-5">
+                    <span class="d-block">December 20th, 2020</span>
+                    <span class="d-block">9:30 AM GMT+0</span>
+                    <strong class="text-primary">New Euro Arena</strong>
+                  </p>
+
+                </div>
+              
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="bg-light p-4 rounded">
+              <div class="widget-body">
+                  <div class="widget-vs">
+                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                      <div class="team-1 text-center">
+                        <img src="images/logo_3.png" alt="Image">
+                        <h3>Football League</h3>
+                      </div>
+                      <div>
+                        <span class="vs"><span>VS</span></span>
+                      </div>
+                      <div class="team-2 text-center">
+                        <img src="images/logo_4.png" alt="Image">
+                        <h3>Soccer</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center widget-vs-contents mb-4">
+                  <h4>World Cup League</h4>
+                  <p class="mb-5">
+                    <span class="d-block">December 20th, 2020</span>
+                    <span class="d-block">9:30 AM GMT+0</span>
+                    <strong class="text-primary">New Euro Arena</strong>
+                  </p>
+
+                </div>
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div> <!-- .site-section -->
+
+ 
+
+
+
+  </div>
+ 
+
+<script>
+
+const btn = document.getElementById('addmatch');
+const form1 = document.getElementById('form1');
+const form2 = document.getElementById('form2');
+
+const lineupteamA = document.getElementById('lineupteamA');
+const lineupteamB = document.getElementById('lineupteamB');
+
+
+btn.addEventListener('click', () => 
+{
+
+  if (form1.style.visibility === 'hidden') 
+  {
+    form1.style.visibility = 'visible';
+    form2.style.visibility = 'visible';
+    lineupteamA.style.visibility = 'visible';
+  } 
+  else 
+  {
+    form1.style.visibility = 'hidden';
+    form2.style.visibility = 'hidden';
+    lineupteamB.style.visibility = 'hidden';
+  }
+});  
+
+</script>
+
+<script type="module">
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+          import { getDatabase , set , ref , push , child , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          
+          var firebaseConfig = 
+          {
+            apiKey: "AIzaSyAest1kY2wkdzwWCPf7-bkwyhWLekXZDhE",
+            authDomain: "cricket-master-d3c58.firebaseapp.com",
+            databaseURL: "https://cricket-master-d3c58-default-rtdb.firebaseio.com",
+            projectId: "cricket-master-d3c58",
+            storageBucket: "cricket-master-d3c58.appspot.com",
+            messagingSenderId: "554998698559",
+            appId: "1:554998698559:web:6617512d672bc484305e8a"
+          };
+
+          
+          const app = initializeApp(firebaseConfig);
+          const database = getDatabase(app); 
+
+  var tbody = document.getElementById('tbody1');
+
+    function addplayertotable(name)
+    {
+          let trow = document.createElement("tr");
+          let td1 = document.createElement('td');
+
+
+          td1.innerHTML= name;
+  
+
+          trow.appendChild(td1);
+          tbody.appendChild(trow);
+    } 
+
+     function addallplayerstotable(ThePlayer)
+     {
+         
+         tbody.innerHTML="";
+         
+         ThePlayer.forEach(element=>{
+           addplayertotable(element.Name);
+         });
+      }
+
+    
+      function Getalldata()
+      {
+        const dbref = ref(database);
+
+        get(child(dbref,"users"))
+        .then((snapshot)=>{
+          var players = [];
+          
+          snapshot.forEach(childSnapshot=> {
+              players.push(childSnapshot.val());
+          });
+          addallplayerstotable(players);
+        })
+
+      }
+
+      function getrealtimedata()
+      {
+         const dbref = ref(database,"users");
+
+         onValue(dbref,(snapshot)=>{
+          var players = [];
+          
+          snapshot.forEach(childSnapshot=> {
+              players.push(childSnapshot.val());
+          });
+          addallplayerstotable(players);
+        })
+      }
+
+     
+
+</script>
+
+</body>
+
+</html>
