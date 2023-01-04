@@ -105,37 +105,43 @@
               <div class="team-details w-100 text-center">
                 
                 <div id="box1">
+
+                  
+                    
+                
+                
                      
-                    <form id="form1" style="visibility: hidden;">
-                      <h3>Select Team A</h3>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                          </select>
-                    </form>
+               <form id="form1" style="visibility: hidden;">
+                     <h3>Select Team A</h3>
+                        <select class="form-select" id="teamaplayerdisplay" aria-label="Default select example">
+                            
+                        </select> 
+                </form> 
 
                     <br><br>
 
-                  
+                     <button id="buttonsaveteams" class="btn btn-light" type="submit" style="visibility:hidden;">Save Teams</button>
+
+                  <br><br>
+
                           <div class="form-check" id="lineupteamA" style="visibility: hidden;">
                             <h3>Select Team A Lineup</h3>
 
-                            <table class="table"> 
-                                            <thead>
-                                                <th>Name</th>
-                                             
-                                            </thead>
-                                            <tbody id="tbody1"></tbody>
-                           </table>
+                         
                           </div>
 
-
+                          <button id="savelineupA" class="btn btn-light" type="submit" style="visibility:hidden;">Save Lineup A</button>
 
                   </div>
 
             
               
               </div>
+                       
             </div>
+
+
+
             <div class="team-2 w-50">
               <div class="team-details w-100 text-center">
 
@@ -143,30 +149,33 @@
                      
                     <form id="form2" style="visibility: hidden;">
                       <h3>Select Team B</h3>
-                        <select class="form-select" aria-label="Default select example" required>
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="form-select" id="teambplayerdisplay" aria-label="Default select example" required>
+                            
                           </select>
                 
                     </form>
 
-                    <form id="lineupteamB" style="visibility: hidden;">
-                      <h3>Select Team B Lineup</h3>
-                          <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Default radio
-                                    </label>
-                                  </div>
-                    </form>
+                    <br><br>
+
+                    <button id="ghostbutton" class="btn btn-light" type="submit" style="visibility:hidden;"></button>
+
+                    <br><br>
+
+                     <div class="form-check" id="lineupteamB" style="visibility: hidden;">
+                            <h3>Select Team B Lineup</h3>
+
+                         
+                     </div>
+
+                     <button id="savelineupB" class="btn btn-light" type="submit" style="visibility:hidden;">Save Lineup B</button>
 
                   </div>
               
               
               </div>
             </div>
+
+           
           </div>
         </div>
       
@@ -355,11 +364,14 @@
       </div>
     </div> <!-- .site-section -->
 
- 
+  
+
 
 
 
   </div>
+
+    <p class="result"></p>
  
 
 <script>
@@ -371,6 +383,10 @@ const form2 = document.getElementById('form2');
 const lineupteamA = document.getElementById('lineupteamA');
 const lineupteamB = document.getElementById('lineupteamB');
 
+const buttonsaveteam = document.getElementById('buttonsaveteams');
+
+const buttonsavelineupA = document.getElementById('savelineupA'); 
+const buttonsavelineupB = document.getElementById('savelineupB'); 
 
 btn.addEventListener('click', () => 
 {
@@ -380,12 +396,20 @@ btn.addEventListener('click', () =>
     form1.style.visibility = 'visible';
     form2.style.visibility = 'visible';
     lineupteamA.style.visibility = 'visible';
+    lineupteamB.style.visibility = 'visible';
+    buttonsaveteam.style.visibility = 'visible';
+    buttonsavelineupA.style.visibility = 'visible';
+    buttonsavelineupB.style.visibility = 'visible';
   } 
   else 
   {
     form1.style.visibility = 'hidden';
     form2.style.visibility = 'hidden';
+    lineupteamA.style.visibility = 'hidden';
     lineupteamB.style.visibility = 'hidden';
+    buttonsaveteam.style.visibility = 'hidden';
+     buttonsavelineupA.style.visibility = 'hidden';
+    buttonsavelineupB.style.visibility = 'hidden';
   }
 });  
 
@@ -395,7 +419,7 @@ btn.addEventListener('click', () =>
   
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-          import { getDatabase , set , ref , push , child , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          import { getDatabase , set , ref , push , child , query, orderByChild , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
           
           var firebaseConfig = 
           {
@@ -468,7 +492,130 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
         })
       }
 
-     
+const playeref = ref(database,"Teams/");
+
+function readteams() 
+{
+  
+
+  onValue(playeref,(snapshot)=>
+  {
+    snapshot.forEach(snap => {
+      const issue = snap.val();
+
+      document.getElementById("teamaplayerdisplay").innerHTML += `
+      <option value="${issue.Team}">${issue.Team}</option>
+      `
+  
+      document.getElementById("teambplayerdisplay").innerHTML += `
+      <option value="${issue.Team}">${issue.Team}</option>
+      
+      `
+
+      /* var teamaselected = document.getElementById("teamaplayerdisplay").value;
+
+      var teambselected = document.getElementById("teambplayerdisplay").value;
+
+      console.log(teamaselected);
+      console.log(teambselected); */
+
+    })
+  }
+
+)}
+
+
+buttonsaveteam.addEventListener('click', () => 
+{
+
+  var teamaselected = document.getElementById("teamaplayerdisplay").value;
+
+  var teambselected = document.getElementById("teambplayerdisplay").value;
+
+  const getteamaplayers = ref(database,'Teams/'+teamaselected);
+
+  const gettebmaplayers = ref(database,'Teams/'+teambselected);
+
+  console.log(teamaselected);
+  console.log(teambselected);
+
+  onValue(getteamaplayers,(snapshot)=>
+  {
+    snapshot.forEach(snap => 
+    {
+      const issue = snap.val();
+
+      document.getElementById("lineupteamA").innerHTML += 
+      `
+      <form id="playeraform">
+        <input type="checkbox" class="checkbox" value="${issue}" name="teamplayerA">
+        <label for="flexCheckChecked">${issue}</label>
+          <br>
+       </form> `
+    })
+  })
+
+  onValue(gettebmaplayers,(snapshot)=>
+  {
+    snapshot.forEach(snap => 
+    {
+      const issue = snap.val();
+
+      document.getElementById("lineupteamB").innerHTML += 
+      `
+      <form id="playeraform">
+        <input type="checkbox" class="checkbox" value="${issue}" name="teamplayerB">
+        <label for="flexCheckChecked">${issue}</label>
+          <br>
+       </form>
+      `
+      
+
+    })
+  })
+});
+
+
+buttonsavelineupA.addEventListener('click', () => 
+{
+
+  var checkboxes = document.getElementsByName('teamplayerA');
+
+  var teama = [];
+
+  for (var i=0;i<checkboxes.length;i++)
+  {
+    if (checkboxes[i].checked==true)
+    {
+        teama.push(checkboxes[i].value);
+    }
+  }
+
+  console.log(teama);
+});
+
+
+buttonsavelineupB.addEventListener('click', () => 
+{
+
+  var checkboxes = document.getElementsByName('teamplayerB');
+
+  var teamb = [];
+
+  for (var i=0;i<checkboxes.length;i++)
+  {
+    if (checkboxes[i].checked==true)
+    {
+        teamb.push(checkboxes[i].value);
+    }
+  }
+
+  console.log(teamb);
+});
+  
+
+
+window.onload=readteams;
 
 </script>
 
