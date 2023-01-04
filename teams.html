@@ -167,23 +167,19 @@
   
 
     
-    <div class="site-section bg-dark">
+    <div class="site-section bg-dark" >
       <div class="container">
 
 
-        <div class="row">
+        <div class="row" id="teamlistdisplay">
+          
+
+
           <div class="col-12 title-section">
-            <h2 class="heading">Teams</h2>
+            <h2 class="heading">Upcoming Match</h2>
           </div>
-
-          <div class="col-lg-6 mb-4" id="teamlistdisplay">
-            <div class="bg-light p-4 rounded">
-             
-
-              
-            </div>
-          </div>
-
+          
+        
           
         </div>
       </div>
@@ -325,44 +321,43 @@ function readteams()
 
       document.getElementById("teamlistdisplay").innerHTML += `
 
-
- <div class="widget-body">
+<div class="col-lg-6 mb-4" id="teamlistdisplay">
+      <div class="bg-light p-4 rounded">
+              <div class="widget-body">
                   <div class="widget-vs">
                     <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                      
                       <div class="team-1 text-center">
                         <img src="images/logo_1.png" alt="Image">
-                        
+                        <h3>${issue.Team}</h3>
                       </div>
-                    
-                     <div class="card mb-3" id="${issue.Team}" style="width: 25rem">
-          <div class="card-body">
-            <p><span class="label label-info">Team: ${issue.Team}</span></p>
-            <p><span class="label label-info"> ${issue.Player1}</span></p>
-            <p><span class="glyphicon glyphicon-time"> ${issue.Player2}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player3}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player4}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player5}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player6}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player7}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player8}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player9}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player10}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player11}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player12}</span></p>
-            <p><span class="glyphicon glyphicon-user"> ${issue.Player13}</span></p>
-            
-          
-          </div>
-        </div>
 
-
-                    
                     </div>
                   </div>
                 </div>
 
-       
+                <div class="text-center widget-vs-contents mb-4">
+                  
+                  <p class="mb-5">
+                    <span class="d-block">${issue.Player1}</span>
+                    <span class="d-block">${issue.Player2}</span>
+                    <span class="d-block">${issue.Player3}</span>
+                    <span class="d-block">${issue.Player4}</span>
+                    <span class="d-block">${issue.Player5}</span>
+                    <span class="d-block">${issue.Player6}</span>
+                    <span class="d-block">${issue.Player7}</span>
+                    <span class="d-block">${issue.Player8}</span>
+                    <span class="d-block">${issue.Player9}</span>
+                    <span class="d-block">${issue.Player10}</span>
+                    <span class="d-block">${issue.Player11}</span>
+                    <span class="d-block">${issue.Player12}</span>
+                    <span class="d-block">${issue.Player13}</span>
+                  </p>
+
+                </div>
+              
+            </div>
+</div>
+  
       `
     })
   }
