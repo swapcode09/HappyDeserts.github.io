@@ -359,7 +359,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 
   var tbody = document.getElementById('tbody1');
 
-  schedulematch.addEventListener('click', () => 
+
+schedulematch.addEventListener('click', () => 
 {
 
   var groundname = document.getElementById("groundname").value;
@@ -400,6 +401,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
   console.log("Opted to"+optedto); */
 
                set (ref(database,'Matches/'+matchname) , {
+                                    MatchID : matchname,
                                     Team1 : teamaselected,
                                     Team2 : teambselected,
                                     PlayersTeam1 : teama,
@@ -535,7 +537,7 @@ function readteamsandmatches()
               <div class="text-right widget-vs-contents mb-4">
                 
                 <p class="mb-5">
-                  <button id="creatematch" class="btn btn-light" type="submit" style="margin-right:20px">Start Match</button>
+                  <button id="creatematch" class="btn btn-light" name="${issue2.MatchID}" value="${issue2.MatchID}" type="submit" style="margin-right:20px">Start Match</button>
 
                 </p>
 
