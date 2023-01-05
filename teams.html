@@ -176,7 +176,7 @@
 
 
           <div class="col-12 title-section">
-            <h2 class="heading">Upcoming Match</h2>
+            <h2 class="heading">Teams</h2>
           </div>
           
         
@@ -289,6 +289,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
             /* const teamnameroot = push(child(ref(database),'teams')); */
 
              set (ref(database,'Teams/'+tname) , {
+                                    Team : tname,
                                     Player1 : p1n,
                                     Player2 : p2n,
                                     Player3 : p3n,
@@ -336,7 +337,7 @@ function readteams()
                 </div>
 
                 <div class="text-center widget-vs-contents mb-4">
-                  
+ 
                   <p class="mb-5">
                     <span class="d-block">${issue.Player1}</span>
                     <span class="d-block">${issue.Player2}</span>
