@@ -271,9 +271,10 @@
 
 
 
-
+                  
       
       </div>
+
     </div> 
 
   </div>
@@ -335,6 +336,7 @@ btn.addEventListener('click', () =>
 });  
 
 </script>
+
 
 <script type="module">
   
@@ -474,6 +476,9 @@ const matchref = ref(database,"Matches/");
 function readteamsandmatches() 
 {
   
+
+
+
   onValue(playeref,(snapshot)=>
   {
     snapshot.forEach(snap => 
@@ -537,7 +542,10 @@ function readteamsandmatches()
               <div class="text-right widget-vs-contents mb-4">
                 
                 <p class="mb-5">
-                  <button id="creatematch" class="btn btn-light" name="${issue2.MatchID}" value="${issue2.MatchID}" type="submit" style="margin-right:20px">Start Match</button>
+        
+        <form action="score.html">
+          <button onclick="cr7(this)" class="mybees" name="mybees" value="${issue2.MatchID}" type="submit" style="margin-right:20px">${issue2.MatchID}</button>
+          </form>
 
                 </p>
 
@@ -549,7 +557,6 @@ function readteamsandmatches()
       `
     })
   })
-
 
 }
 
@@ -567,6 +574,8 @@ buttonsaveteam.addEventListener('click', () =>
   const getteamaplayers = ref(database,'Teams/'+teamaselected);
 
   const gettebmaplayers = ref(database,'Teams/'+teambselected);
+
+
 
   const opt1 = "Bat";
   const opt2 = "Bowl";
@@ -669,8 +678,17 @@ buttonsavelineupB.addEventListener('click', () =>
 
 window.onload=readteamsandmatches;
 
+</script>
 
 
+<script>
+  
+   function cr7(ele) 
+   {
+      var btnValue = ele.innerText;
+      localStorage.setItem("MatchSelected",btnValue);
+      return false;
+  }
 </script>
 
 </body>
