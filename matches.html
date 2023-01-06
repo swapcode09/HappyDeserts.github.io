@@ -414,6 +414,19 @@ schedulematch.addEventListener('click', () =>
                                     OptedTo : optedto
                                   });
 
+
+                              set (ref(database,matchname+"/"+"Data/") , {
+                                    MatchID : matchname,
+                                    Team1 : teamaselected,
+                                    Team2 : teambselected,
+                                    PlayersTeam1 : teama,
+                                    PlayersTeam2 : teamb,
+                                    Overs : noofovers,
+                                    Ground : groundname,
+                                    Toss : toss,
+                                    OptedTo : optedto
+                                  });
+
 });
 
     /* function addplayertotable(name)
@@ -476,9 +489,6 @@ const matchref = ref(database,"Matches/");
 function readteamsandmatches() 
 {
   
-
-
-
   onValue(playeref,(snapshot)=>
   {
     snapshot.forEach(snap => 

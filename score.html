@@ -897,27 +897,27 @@ button {
             
             <div class="rca-row">
               <span class="rca-col rca-history-title">Match:</span>
-              <span class="rca-col"> Team X vs Team Y </span>
+              <span class="rca-col" id="showteams"></span>
             </div>
             
             <div class="rca-row">
               <span class="rca-col rca-history-title">Match ID:</span>
-              <span class="rca-col"> Developer season 2014</span>
+              <span class="rca-col" id="showmatchid"></span>
             </div>
       
             <div class="rca-row">
               <span class="rca-col rca-history-title">Ground:</span>
-              <span class="rca-col"> India</span>
+              <span class="rca-col" id="showground"></span>
             </div>
             
             <div class="rca-row">
               <span class="rca-col rca-history-title">Match Type:</span>
-              <span class="rca-col">Twenty20 Cricket Match</span>
+              <span class="rca-col"  id="showovers"></span>
             </div>
             
             <div class="rca-row">
               <span class="rca-col rca-history-title">Toss:</span>
-              <span class="rca-col"> Team X won the toss and chose to bat first</span>
+              <span class="rca-col" id="showtoss"></span>
             </div>
           </div>
 
@@ -925,33 +925,20 @@ button {
             
             <div class="rca-row">
             
-              <span class="rca-col"><button type="button" class="btn btn-dark">0</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark">1</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark">2</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark">3</button></span>
+              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttonzero">0</button></span>
+              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttonone">1</button></span>
+              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttontwo">2</button></span>
+              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttonthree">3</button></span>
             </div>
             
             <div class="rca-row">
               <span class="rca-col"><button type="button" class="btn btn-dark">4</button></span>
               <span class="rca-col"><button type="button" class="btn btn-dark">5</button></span>
               <span class="rca-col"><button type="button" class="btn btn-dark">6</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark">7</button></span>
+              <span class="rca-col"><button type="button" class="btn btn-danger" id="buttonwicket">W</button></span>
             </div>
       
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Ground:</span>
-              <span class="rca-col"> India</span>
-            </div>
-            
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Match Type:</span>
-              <span class="rca-col">Twenty20 Cricket Match</span>
-            </div>
-            
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Toss:</span>
-              <span class="rca-col"> Team X won the toss and chose to bat first</span>
-            </div>
+ 
 
           </div>
 
@@ -969,7 +956,7 @@ button {
             
             <div id="tab-41" class="rca-tab-content rca-padding active">
               <div class="rca-batting-score rca-padding">
-                <h3>Team X Batting: <strong> 92/2 in 8.5</strong></h3>
+                <h3>Team <span id="currbatteam"></span> Batting: <strong> 92/2 in 8.5</strong></h3>
                 <div class="rca-row">
                   <div class="rca-header rca-table">
                     <div class="rca-col rca-player">
@@ -992,7 +979,7 @@ button {
                 <div class="rca-row">
                   <div class="rca-table">
                     <div class="rca-col rca-player">
-                      Player x1*
+                      Player 1 name here
                     </div>
                     <div class="rca-col">
                       8 (7)
@@ -1011,7 +998,7 @@ button {
                 <div class="rca-row">
                   <div class="rca-table">
                     <div class="rca-col rca-player">
-                      Player x2
+                      Player 2 name here
                     </div>
                     <div class="rca-col">
                       8 (7)
@@ -1029,7 +1016,7 @@ button {
                 </div>
                 <div class="rca-clear"></div>
                 <div class="rca-padding">
-                  <span>Fours: <strong>2</strong></span>, <span>Sixes: <strong>1</strong></span>, <span>Extras: <strong>9</strong></span>
+                  <span>Fours: <strong>0</strong></span>, <span>Sixes: <strong>0</strong></span>, <span>Extras: <strong>0</strong></span>
                 </div>
               </div>
               <div class="rca-bowling-score rca-padding">
@@ -1096,8 +1083,8 @@ button {
 
             <div id="tab-42" class="rca-tab-content rca-padding">
               <ul class="rca-tab-list small">
-                <li class="rca-tab-link active" data-tab="tab-411" onclick="showTab(this);">Team X</li>
-                <li class="rca-tab-link" data-tab="tab-412" onclick="showTab(this);">Team Y</li>
+                <li class="rca-tab-link active" id="team1pla" data-tab="tab-411" onclick="showTab(this);"></li>
+                <li class="rca-tab-link" id="team2pla" data-tab="tab-412" onclick="showTab(this);"></li>
               </ul>
               <div id="tab-411" class="rca-tab-content rca-padding active">
                 <!-- <div class="rca-padding">                
@@ -1105,25 +1092,13 @@ button {
                     <span class="active">Team X</span><span>Team Y</span>
                   </div>
                 </div> -->
-                <div class="rca-batting-score">
-                  <h3>Team X (11)</h3>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">MS Dhoni</span>
-                    <span class="rca-highlight-text">(C) &amp; (WK)</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                  </div>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">Shikhar Dhawan</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                  </div>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">Ajinkya Rahane</span>
-                    <span class="rca-right rca-basic-text">Bowler</span>
-                  </div>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">Suresh Raina</span>
-                    <span class="rca-right rca-basic-text">All rounder</span>
-                  </div>
+
+                <h5>Playing 11</h5>
+
+                <div class="rca-batting-score" id="team1pla11">
+                  
+                  
+                
                 </div>
               
               </div>
@@ -1134,25 +1109,10 @@ button {
                     <span class="active">Team X</span><span>Team Y</span>
                   </div>
                 </div> -->
-                <div class="rca-batting-score">
-                  <h3>Team Y (11)</h3>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">MS Dhoni</span>
-                    <span class="rca-highlight-text">(C) &amp; (WK)</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                  </div>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">Shikhar Dhawan</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                  </div>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">Ajinkya Rahane</span>
-                    <span class="rca-right rca-basic-text">Bowler</span>
-                  </div>
-                  <div class="rca-player-detail">
-                    <span class="rca-player">Suresh Raina</span>
-                    <span class="rca-right rca-basic-text">All rounder</span>
-                  </div>
+                <h5>Playing 11</h5>
+                
+                <div class="rca-batting-score" id="team2pla11">
+                
                 </div>
               
               </div>
@@ -1162,7 +1122,9 @@ button {
       </div>
     </div>
   <script>
-    function showTab(event) {
+
+    function showTab(event) 
+    {
       var sourceParent = event.parentElement.parentElement;
       var sourceChilds = sourceParent.getElementsByClassName("rca-tab-content");
       var sourceLinkParent = sourceParent.getElementsByClassName("rca-tab-link");
@@ -1179,22 +1141,180 @@ button {
     }
   </script>
     
-  </body>
-</html>
 
+<script type="module">
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-<!--            <div class="rca-bowling-score rca-padding">
-                <h3>Ball By Ball</h3>
-                <div class="rca-row">
-                  <div class="rca-header rca-table">
-                    
-                    <div class="rca-col rca-player">
-                      Bowler
-                    </div>
+          import { getDatabase , set , ref , push , child , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
           
-                  </div>
+          var firebaseConfig = 
+          {
+            apiKey: "AIzaSyAest1kY2wkdzwWCPf7-bkwyhWLekXZDhE",
+            authDomain: "cricket-master-d3c58.firebaseapp.com",
+            databaseURL: "https://cricket-master-d3c58-default-rtdb.firebaseio.com",
+            projectId: "cricket-master-d3c58",
+            storageBucket: "cricket-master-d3c58.appspot.com",
+            messagingSenderId: "554998698559",
+            appId: "1:554998698559:web:6617512d672bc484305e8a"
+          };
+
+          
+          const app = initializeApp(firebaseConfig);
+          const database = getDatabase(app);
+
+          var selectedmatch = localStorage.getItem("MatchSelected");
+
+          console.log("match selected is"+selectedmatch);
+
+const matchref = ref(database,selectedmatch+"/");
+
+function getdetails() 
+{
+  
+  onValue(matchref,(snapshot)=>
+  {
+    snapshot.forEach(snap => {
+      
+      const issue = snap.val(); 
+
+      console.log(issue);
+
+      document.getElementById("showteams").innerHTML += `${issue.Team1} vs ${issue.Team2}`
+      document.getElementById("showmatchid").innerHTML += `${issue.MatchID}` 
+      document.getElementById("showground").innerHTML += `${issue.Ground}` 
+      document.getElementById("showovers").innerHTML += `${issue.Overs} overs` 
+      document.getElementById("showtoss").innerHTML += `${issue.Team1} won the toss and opted to ${issue.OptedTo}` 
+      
+      document.getElementById("team1pla").innerHTML += `${issue.Team1}` 
+      document.getElementById("team2pla").innerHTML += `${issue.Team2}` 
+
+      document.getElementById("team1pla11").innerHTML += `
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[0]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
- 
-                <div class="rca-clear"></div>
-              </div> -->
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[1]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[2]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[3]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[4]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[5]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[6]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[7]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[8]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[9]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam1[10]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+                                                        `
+
+
+            document.getElementById("team2pla11").innerHTML += `
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[0]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[1]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[2]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[3]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[4]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[5]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[6]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[7]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[8]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[9]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+
+                <div class="rca-player-detail">
+                    <span class="rca-player">${issue.PlayersTeam2[10]}</span>
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                </div>
+                                                        `
+
+    })
+  }
+)}
+
+
+window.onload=getdetails;
+
+
+</script>
+
+
+
+  </body>
+</html>
