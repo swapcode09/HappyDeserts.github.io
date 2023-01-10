@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -887,11 +887,11 @@ button {
 
   </head>
   <body>
-    <!--Whole Container -->
+   
 
 
         <div class="rca-column-4">
-          <!--Match Series-->
+       
           <div class="rca-mini-widget rca-top-border rca-tab-simple">
             
             <div id="ltab-1" class="rca-padding rca-tab-content rca-multi-season active">    
@@ -944,11 +944,11 @@ button {
 
     <div class="rca-container rca-margin">
       
-      <!--Live ScoreBoard -->
+      
       <div class="rca-row">
-        <!--Widget Inner -->
+        
         <div class="rca-column-6">
-          <!--Match Series-->
+       
  
         
 
@@ -1010,7 +1010,7 @@ button {
         </div>
 
         <div class="rca-column-6">
-          <!--Match Series-->
+       
           <div class="rca-medium-widget rca-top-border ">
             <ul class="rca-tab-list">
               <li class="rca-tab-link active" data-tab="tab-41" onclick="showTab(this);">SCORECARD</li>
@@ -1151,11 +1151,11 @@ button {
                 <li class="rca-tab-link" id="team2pla" data-tab="tab-412" onclick="showTab(this);"></li>
               </ul>
               <div id="tab-411" class="rca-tab-content rca-padding active">
-                <!-- <div class="rca-padding">                
+                            
                   <div class="rca-switch filled">
                     <span class="active">Team X</span><span>Team Y</span>
                   </div>
-                </div> -->
+                </div> 
 
                 <h5>Playing 11</h5>
 
@@ -1168,11 +1168,11 @@ button {
               </div>
               
               <div id="tab-412" class="rca-tab-content rca-padding active">
-                <!-- <div class="rca-padding">                
+                               
                   <div class="rca-switch filled">
                     <span class="active">Team X</span><span>Team Y</span>
                   </div>
-                </div> -->
+                </div> 
                 <h5>Playing 11</h5>
                 
                 <div class="rca-batting-score" id="team2pla11">
@@ -1184,7 +1184,8 @@ button {
 
         </div>
       </div>
-    </div>
+    </div> 
+  
   <script>
 
     function showTab(event) 
@@ -1255,57 +1256,57 @@ function getdetails()
 
       document.getElementById("team1pla11").innerHTML += `
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[0]}</span>
+                    <span class="rca-player">${issue.teamaselected[0]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[1]}</span>
+                    <span class="rca-player">${issue.teamaselected[1]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[2]}</span>
+                    <span class="rca-player">${issue.teamaselected[2]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[3]}</span>
+                    <span class="rca-player">${issue.teamaselected[3]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[4]}</span>
+                    <span class="rca-player">${issue.teamaselected[4]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[5]}</span>
+                    <span class="rca-player">${issue.teamaselected[5]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[6]}</span>
+                    <span class="rca-player">${issue.teamaselected[6]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[7]}</span>
+                    <span class="rca-player">${issue.teamaselected[7]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[8]}</span>
+                    <span class="rca-player">${issue.teamaselected[8]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[9]}</span>
+                    <span class="rca-player">${issue.teamaselected[9]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam1[10]}</span>
+                    <span class="rca-player">${issue.teamaselected[10]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
                                                         `
@@ -1313,57 +1314,57 @@ function getdetails()
 
             document.getElementById("team2pla11").innerHTML += `
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[0]}</span>
+                    <span class="rca-player">${issue.teambselected[0]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[1]}</span>
+                    <span class="rca-player">${issue.teambselected[1]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[2]}</span>
+                    <span class="rca-player">${issue.teambselected[2]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[3]}</span>
+                    <span class="rca-player">${issue.teambselected[3]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[4]}</span>
+                    <span class="rca-player">${issue.teambselected[4]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[5]}</span>
+                    <span class="rca-player">${issue.teambselected[5]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[6]}</span>
+                    <span class="rca-player">${issue.teambselected[6]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[7]}</span>
+                    <span class="rca-player">${issue.teambselected[7]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[8]}</span>
+                    <span class="rca-player">${issue.teambselected[8]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[9]}</span>
+                    <span class="rca-player">${issue.teambselected[9]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
 
                 <div class="rca-player-detail">
-                    <span class="rca-player">${issue.PlayersTeam2[10]}</span>
+                    <span class="rca-player">${issue.teambselected[10]}</span>
                     <span class="rca-right rca-basic-text">Batsman</span>
                 </div>
                                                         `
@@ -1380,5 +1381,939 @@ window.onload=getdetails;
 
 
 
-  </body>
+  </body>  
+</html>  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Favicon icon -->
+        <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
+
+        <!-- All CSS -->
+        <link rel="stylesheet" href="css/all.min.css"/>
+        <link rel="stylesheet" href="css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <title>Cricnotch - Sports Clean & Minimal Html Template.</title>
+
+
+        <style type="text/css">
+            
+            .popup{
+    background-color: #ffffff;
+    width: 450px;
+    padding: 30px 40px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none;
+    text-align: center;
+}
+.popup button{
+    display: block;
+    margin:  0 0 20px auto;
+    background-color: transparent;
+    font-size: 30px;
+    color: #c5c5c5;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.popup p{
+    font-size: 14px;
+    text-align: justify;
+    margin: 20px 0;
+    line-height: 25px;
+}
+.popup a{
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #0f72e5;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+        </style>
+
+  
+    </head>
+    <body>
+
+       
+
+        <!-- Header strat -->
+        <header class="header">
+ 
+
+
+    
+        </header>
+        <!-- Header strat -->
+
+        <div id="main" class="main-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <section class="live-matches p-0">
+                            <div class="card card-shadow p-0">
+                                <div class="score-card score-card-lg d-md-flex p-0">
+                                    <div class="score-card-inner flex-grow-1 px-20 py-20">
+                                        <div class="score-card-header mb-15">
+                                            <strong class="text-red">live</strong>
+                                            <span id="matchdetails"></span>
+                                        </div>
+                                        <div class="score-card-body">
+                                            <div class="country-info">
+                                                <div class="flag-avatar">
+                                                    <figure>
+                                                        <img src="images/teama.png" alt="" />
+                                                    </figure>
+                                                    <span class="country-name" id="teamAname"></span>
+                                                </div>
+                                                <div class="score-update ml-10">
+                        <strong id="teamascore">0</strong>/<strong id="teamawickets">0</strong>
+                                         <p class="text-muted" id="teamaovers">0 ov</p>
+                                                </div>
+                                            </div>
+                                         
+                                         <div class="score-update text-center">
+                                                <p id="tossdetails"></p>
+                                            </div> 
+
+                                            <div class="country-info flex-row-reverse">
+                                                <div class="flag-avatar ml-10">
+                                                    <figure>
+                                                        <img src="images/teamb.png" alt="" />
+                                                    </figure>
+                                                    <span class="country-name" id="teamBname"></span>
+                                                </div>
+                                                <div class="score-update">
+                          <strong id="teambscore">0</strong>/<strong id="teambwickets">0</strong>
+                                                    <p class="text-muted" id="teambovers">0 ov</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-aside text-left px-20 py-20">
+                                        <p>Current RR<span id="teamcrr">0</span></p>
+                                        <p>Req. RR<span>0</span></p>
+                                    </div>
+                                    
+
+                                      <div class="card-aside text-left px-20 py-20">
+                                       Current Over : <span id="currentovertext">  </span>   
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+
+
+                                        
+
+                            <div class="card card-shadow p-0">
+                                <div class="table-responsive">
+                                    <table class="widget-table table table-striped table-medium no-border">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Batsmen</th>
+                                                <th scope="col">r</th>
+                                                <th scope="col">b</th>
+                                                <th scope="col">4s</th>
+                                                <th scope="col">6s</th>
+                                                <th scope="col">sr</th>
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                <a><strong id="batter1namepara"></strong> <span id="strikerstar">*</span></a> 
+                                                </td>
+                                                <td id="batter1scorepara">0</td>
+                                                <td id="batter1bowlcount">0</td>
+                                                <td id="batter1fourcount">0</td>
+                                                <td id="batter1sixcount">0</td>
+                                                <td id="batter1strikeratecount">0.00</td>
+                                          
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                            <a><strong id="batter2namepara"></strong> <span id="nonstrikerstar"></span></a>
+                                                </td>
+                                                <td id="batter2scorepara">0</td>
+                                                <td id="batter2bowlcount">0</td>
+                                                <td id="batter2fourcount">0</td>
+                                                <td id="batter2sixcount">0</td>
+                                                <td id="batter2strikeratecount">0.00</td>
+                                             
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card card-shadow p-0">
+                                <div class="table-responsive">
+                                    <table class="widget-table table table-striped table-medium no-border">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Bowlers</th>
+                                                <th scope="col">o</th>
+                                               
+                                                <th scope="col">r</th>
+                                                <th scope="col">w</th>
+                                                <th scope="col">econ</th>
+                                             
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a><strong id="currentbowlernamepara"></strong></a>
+                                                </td>
+                                                <td id="currentbowlerovers"><strong>0</strong></td>
+                                              
+                                                <td id="currentbowlerrunsgiven">0</td>
+                                                <td id='currentbowlerwickets'>0</td>
+                                                <td id="currentbowlerecon">0.00</td>
+                                          
+                                            </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+ <div id="popup">
+        
+       
+</div>
+
+                            <div class="card card-shadow">
+                                <div class="spell-sum-box">
+                                
+                                    <div class="recent-spell">
+                                        
+                                        <ul>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonzero">0</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonone">1</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttontwo">2</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonthree">3</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonfour">4</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonfive">5</button></span>
+                                            </li>
+                                        </ul>                                  
+                                    </div>
+                                
+                                    <br>
+                                    <div class="recent-spell">
+                                        
+                                        <ul>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonsix">6</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-danger"><button type="button" class="btn btn-light" id="buttonwicket">W</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark">Lb</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark">Nb</button></span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark">Wd</button></span>
+                                            </li>
+                                           
+                                        </ul>                                  
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <!-- Full Commentary start -->
+                        <section class="pt-0">
+                            <div class="widget widget-rankings">
+                                <h3 class="widget-title">Full Commentary</h3>
+                                <div class="card card-shadow">
+                                   
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                            <p>Over 90.5 Wicket 5 Runs 0 WICKETS Bowler: Shannon Gabriel</p>
+                                        </div>
+                                        <div class="commentary-body">
+                                            <ul class="commentary-list">
+                                                <li>
+                                                    <div>
+                                                        <h5>89.6</h5>
+                                                        <span class="bg-success">6</span>
+                                                    </div>
+                                                    <p>
+                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
+                                                        augment his batting arsenal.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <h5>89.5</h5>
+                                                        <span>2</span>
+                                                    </div>
+                                                    <p>
+                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
+                                                        augment his batting arsenal.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <h5>89.4</h5>
+                                                        <span>3</span>
+                                                    </div>
+                                                    <p>
+                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
+                                                        augment his batting arsenal.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <h5>83.3</h5>
+                                                        <span class="bg-danger">W</span>
+                                                    </div>
+                                                    <p>
+                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
+                                                        augment his batting arsenal.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <h5>89.2</h5>
+                                                        <span>0</span>
+                                                    </div>
+                                                    <p>
+                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
+                                                        augment his batting arsenal.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <h5>89.1</h5>
+                                                        <span class="bg-primary">4</span>
+                                                    </div>
+                                                    <p>
+                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
+                                                        augment his batting arsenal.
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Full Commentary end -->
+                    </div>
+
+
+                <div class="col-lg-3">
+                        <!-- Right Sidebar start -->
+                        <aside class="sidebar right-sidebar">
+                            <div class="widget widget-upcoming-match">
+                                <h3 class="widget-title">Teams</h3>
+
+                                <div class="card card-shadow">
+                                    <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#series" class="active" id="team1pla"></a></li>
+                            <li><a data-toggle="tab" href="#league" id="team2pla"></a></li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div id="series" class="tab-pane fade in show active">
+                                            <div class="score-card">
+                                                <div class="score-card-body">
+                                                    
+                                                    <div class="score-update m-0 text-center" id="team1pla11">
+                                                        
+                                                        
+                                                    </div>
+                                                 
+                                                </div>
+                                            </div>
+                                        
+                                     
+                                        </div>
+
+
+
+
+                                        <div id="league" class="tab-pane fade">
+                                         
+                                            <div class="score-card">
+                                                <div class="score-card-body">
+                                                   
+                                                    <div class="score-update m-0 text-center" id="team2pla11">
+                                                        
+                                                
+                                                    </div>
+                                                 
+                                                </div>
+                                            </div>
+                                      
+                                        </div>
+                                    </div>
+                                    <!-- <div class="card-header"></div> -->
+                                </div>
+                            </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- JS -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/scripts.js"></script>
+
+
+
+
+
+<script>
+    function showTab(event) 
+    {
+      var sourceParent = event.parentElement.parentElement;
+      var sourceChilds = sourceParent.getElementsByClassName("rca-tab-content");
+      var sourceLinkParent = sourceParent.getElementsByClassName("rca-tab-link");
+      for (var i=0; i < sourceChilds.length; i++) {
+        sourceChilds.item(i).classList.remove("active");
+      }
+      for (var i=0; i < sourceLinkParent.length; i++) {
+        sourceLinkParent.item(i).classList.remove("active");
+      }
+      var dataTab= event.getAttribute("data-tab");
+
+      event.classList.add("active");
+      document.getElementById(dataTab).className += ' active';
+    }
+  </script>
+
+
+<script type="text/javascript">
+
+    //Declare all buttons
+    let btn0 = document.querySelector('#buttonzero');
+    let btn1 = document.querySelector('#buttonone');
+    let btn2 = document.querySelector('#buttontwo');
+    let btn3 = document.querySelector('#buttonthree');
+    let btn4 = document.querySelector('#buttonfour');
+    let btn5 = document.querySelector('#buttonfive');
+    let btn6 = document.querySelector('#buttonsix');
+
+    let btnwicket = document.querySelector('#buttonwicket');
+    
+    //declare striker and non striker details
+    
+    var striker = document.getElementById('batter1namepara').innerText;
+    var nonstriker = document.getElementById('batter2namepara').innerText;
+
+    var currentbowler;
+
+    let batter1namepara = document.getElementById('batter1namepara');
+    let batter2namepara = document.getElementById('batter2namepara'); 
+
+    let strikerstar = document.getElementById('strikerstar');
+    let nonstrikerstar = document.getElementById('nonstrikerstar'); 
+
+
+    // batter details
+    let batter1scorepara = document.getElementById('batter1scorepara');
+    let batter1bowlcount = document.getElementById('batter1bowlcount');
+    let batter2scorepara = document.getElementById('batter2scorepara');
+    let batter2bowlcount = document.getElementById('batter2bowlcount');
+
+    //bowler details
+
+    let currentbowlernamepara = document.getElementById('currentbowlernamepara');
+    let currentbowlerovers = document.getElementById('currentbowlerovers');
+    let currentbowlerrunsgiven = document.getElementById('currentbowlerrunsgiven');
+    let currentbowlerwickets = document.getElementById('currentbowlerwickets');
+    let currentbowlerecon = document.getElementById('currentbowlerecon');
+
+
+
+    //team details
+
+    let teamaovers = document.getElementById('teamaovers');
+    let teamascore = document.getElementById('teamascore');
+    let teamawickets = document.getElementById('teamawickets');
+
+    let teambovers = document.getElementById('teambovers');
+    let teambscore = document.getElementById('teambscore');
+    let teambwickets = document.getElementById('teambwickets');
+
+    let currentovertext = document.getElementById('currentovertext');
+   
+    let teamcrr = document.getElementById('teamcrr');
+          
+    var temp="";
+
+    //score variables
+    var val_of_button;
+    var score = 0;
+    var current_rr=0;
+    var overdone = 0;
+    var wickets = 0;
+    
+
+    
+
+</script>
+
+
+<script type="module">
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+          import { getDatabase , set , ref , push , child , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          
+          var firebaseConfig = 
+          {
+            apiKey: "AIzaSyAest1kY2wkdzwWCPf7-bkwyhWLekXZDhE",
+            authDomain: "cricket-master-d3c58.firebaseapp.com",
+            databaseURL: "https://cricket-master-d3c58-default-rtdb.firebaseio.com",
+            projectId: "cricket-master-d3c58",
+            storageBucket: "cricket-master-d3c58.appspot.com",
+            messagingSenderId: "554998698559",
+            appId: "1:554998698559:web:6617512d672bc484305e8a"
+          };
+
+          
+          const app = initializeApp(firebaseConfig);
+          const database = getDatabase(app);
+
+          var selectedmatch = localStorage.getItem("selectedmatch");
+
+          var getinitialuistatus = localStorage.getItem("initial_ui_opened");
+
+            var teamtoss = localStorage.getItem("Toss");
+            var choice = localStorage.getItem("optedto");
+
+
+
+            var teamaselected = localStorage.getItem("teamaselected");
+            var teambselected = localStorage.getItem("teambselected");
+            
+            console.log("selectedmatch"+selectedmatch)
+            
+            console.log("toss won by"+teamtoss);
+             console.log("choose to"+choice);
+              console.log("Team A"+teamaselected);
+               console.log("Team B"+teambselected);
+
+
+        /* console.log("team batting first"+battingfirst);
+        console.log("team bowling first"+bowlingfirst); */
+          
+
+const matchref = ref(database,selectedmatch+"/");
+
+/* const strikeref = ref(database,"CurrentPlayers"+"/"+"CurrentData/"+"Striker/");
+
+const nonstrikeref = ref(database,"CurrentPlayers"+"/"+"CurrentData/"+"NonStriker/"); */
+
+var ball_count = 0;
+var strikerscore=0;
+var nonstrikerscore=0;
+
+var strikerballs=0;
+var nonstrikerballs=0;
+
+
+    
+
+function getdetails() 
+{
+    if (getinitialuistatus==0)
+    {
+            openiniup();
+    }
+
+    
+          onValue(matchref,(snapshot)=>
+          {
+            snapshot.forEach(snap => 
+            {
+              
+              const issue = snap.val(); 
+
+              console.log(issue);
+
+              document.getElementById("teamAname").innerHTML = `${issue.Team1}`
+              document.getElementById("teamBname").innerHTML = `${issue.Team2}`
+              
+              document.getElementById("matchdetails").innerHTML = `<b>${issue.MatchID}</b> at ${issue.Ground}, ${issue.Overs} overs match` 
+              
+              document.getElementById("tossdetails").innerHTML = `${issue.Team1} won the toss and opted to ${issue.OptedTo}` 
+              
+              document.getElementById("team1pla").innerHTML = `${issue.Team1}` 
+              document.getElementById("team2pla").innerHTML = `${issue.Team2}` 
+
+              document.getElementById("team1pla11").innerHTML = `
+                        <h5>${issue.teamaselected[0]}</h5>
+                        <h5>${issue.teamaselected[1]}</h5>
+                        <h5>${issue.teamaselected[2]}</h5>
+                        <h5>${issue.teamaselected[3]}</h5>
+                        <h5>${issue.teamaselected[4]}</h5>
+                        <h5>${issue.teamaselected[5]}</h5>
+                        <h5>${issue.teamaselected[6]}</h5>
+                        <h5>${issue.teamaselected[7]}</h5>
+                        <h5>${issue.teamaselected[8]}</h5>
+                        <h5>${issue.teamaselected[9]}</h5>
+                        <h5>${issue.teamaselected[10]}</h5>`
+
+
+                    document.getElementById("team2pla11").innerHTML = `
+                        <h5>${issue.teambselected[0]}</h5>
+                        <h5>${issue.teambselected[1]}</h5>
+                        <h5>${issue.teambselected[2]}</h5>
+                        <h5>${issue.teambselected[4]}</h5>
+                        <h5>${issue.teambselected[5]}</h5>
+                        <h5>${issue.teambselected[6]}</h5>
+                        <h5>${issue.teambselected[7]}</h5>
+                        <h5>${issue.teambselected[8]}</h5>
+                        <h5>${issue.teambselected[9]}</h5>
+                        <h5>${issue.teambselected[10]}</h5>`
+
+
+
+            })
+          })
+      }
+
+
+const getstrikers = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+
+const getbowlers = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+
+function openiniup()
+{
+        
+    var teambattingfirstarray = [];
+    var teambowlingfirstarray = [];
+
+    document.getElementById('popup').innerHTML=`<div class="auth-form">
+                    <div class="auth-form-header">
+                        <h3>Choose players</h3>
+                    </div>
+
+                     <h3>Select Striker</h3>
+                        <select class="form-select" id="strikerlistdisplay" aria-label="Default select example">
+                        </select> 
+                        
+                     <h3>Select Non striker</h3>
+                        <select class="form-select" id="nonstrikerlistdisplay" aria-label="Default select example">    
+                        </select> 
+
+                     <h3>Select Bowler</h3>
+                        <select class="form-select" id="bowlerlistdisplay" aria-label="Default select example">    
+                        </select> 
+
+                        <button type="submit" id="saveinitplayers" class="cricnotch-btn btn-filled radius-5">Save</button>
+                 
+                </div>`
+
+          onValue(getstrikers,(snapshot)=>
+          {
+            snapshot.forEach(snap => 
+            {
+              
+              const issue = snap.val();
+
+        document.getElementById("strikerlistdisplay").innerHTML += `
+      <option value="${issue}">${issue}</option>`
+
+      document.getElementById("nonstrikerlistdisplay").innerHTML += `
+      <option value="${issue}">${issue}</option>`
+
+
+            })
+        })
+    
+
+        onValue(getbowlers,(snapshot)=>
+          {
+            snapshot.forEach(snap => 
+            {
+              
+              const issue = snap.val();
+        document.getElementById("bowlerlistdisplay").innerHTML += `
+      <option value="${issue}">${issue}</option>`
+
+
+            })
+        })
+
+
+        saveinitplayers.addEventListener('click', () => 
+          {
+                striker = document.getElementById('strikerlistdisplay').value;
+                nonstriker = document.getElementById('nonstrikerlistdisplay').value;
+                currentbowler =document.getElementById('bowlerlistdisplay').value;  
+
+                batter1namepara.innerHTML = striker;
+                batter2namepara.innerHTML = nonstriker;
+                currentbowlernamepara.innerHTML = currentbowler;
+
+                localStorage.setItem("initial_ui_opened",1);
+
+
+                
+                document.getElementById("popup").style.display = "none";
+
+
+          });
+
+    }
+
+console.log(teamaovers.innerText);
+
+btn0.addEventListener('click', () => 
+          {
+            
+
+            val_of_button = 0;
+            ball_count = ball_count + 1;
+           
+            score = score + 0;
+            currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
+
+             
+             if (strikerstar.innerText=="*")
+              {
+                  
+                  strikerballs = strikerballs + 1;
+                  
+                  batter1bowlcount.innerHTML = strikerballs;
+                  
+             }
+
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerballs = nonstrikerballs+1;
+      
+                  batter2bowlcount.innerHTML = nonstrikerballs;
+          
+              }
+            
+              
+              if (ball_count%6==0)
+              {
+                 overdone = overdone+1;
+                 ball_count = 0;
+
+                 /* temp = striker;    //temp = Cypher
+                 striker = nonstriker;  // striker = kj
+                 nonstriker = temp;   // nonstriker = cypher */
+                
+                 teamaovers.innerHTML = overdone+".0";
+
+
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                  }
+
+                  currentovertext.innerHTML = "";
+
+              }
+
+          }); 
+
+         btn1.addEventListener('click', () => 
+          {
+              
+              val_of_button = 1;
+              score = score + 1;
+              teamascore.innerHTML = score;
+
+              currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
+
+              ball_count = ball_count + 1;
+    
+              teamcrr.innerHTML = current_rr;
+              
+              if (strikerstar.innerText=="*")
+              {
+                  strikerscore = strikerscore+1;
+                  strikerstar.innerHTML="";
+                  nonstrikerstar.innerHTML="*";
+                  strikerballs = strikerballs + 1;
+
+                  batter1scorepara.innerHTML = strikerscore;
+                  batter1bowlcount.innerHTML = strikerballs;
+              }
+              
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerscore = nonstrikerscore+1;
+                  nonstrikerstar.innerHTML="";
+                  strikerstar.innerHTML="*";
+                  nonstrikerballs = nonstrikerballs+1;
+
+                  batter2bowlcount.innerHTML = nonstrikerballs; 
+                  batter2scorepara.innerHTML = nonstrikerscore;
+              }
+            
+              
+              
+              if (ball_count%6==0)
+              {
+                 overdone = overdone+1;
+                 ball_count = 0;
+
+                 teamaovers.innerHTML = overdone+".0";
+
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                   
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                     
+                  }
+
+                  currentovertext.innerHTML = "";
+              } 
+
+          });
+
+
+btn2.addEventListener('click', () => 
+          {
+            
+
+            val_of_button = 2;
+            ball_count = ball_count + 1;
+
+            
+            score = score + 2;
+
+            teamascore.innerHTML = score;
+            currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
+
+             
+             if (strikerstar.innerText=="*")
+              {
+                  strikerscore = strikerscore+2;
+                  strikerballs = strikerballs + 1;
+
+                  batter1scorepara.innerHTML = strikerscore;
+                  batter1bowlcount.innerHTML = strikerballs;
+                  
+             }
+
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerscore = nonstrikerscore+2;
+                  nonstrikerballs = nonstrikerballs+1;
+                  batter2scorepara.innerHTML = nonstrikerscore;
+                  batter2bowlcount.innerHTML = nonstrikerballs;
+          
+              }
+            
+              
+              if (ball_count%6==0)
+              {
+                 overdone = overdone+1;
+                 ball_count = 0;
+
+                 /* temp = striker;    //temp = Cypher
+                 striker = nonstriker;  // striker = kj
+                 nonstriker = temp;   // nonstriker = cypher */
+                
+                 teamaovers.innerHTML = overdone+".0";
+
+
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                  }
+
+                  currentovertext.innerHTML = "";
+
+              }
+
+          }); 
+
+
+
+
+
+window.onload = getdetails;
+
+
+</script>
+
+<script>
+
+
+</script>
+
+    </body>
 </html>

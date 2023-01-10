@@ -24,7 +24,7 @@
 
   <link rel="stylesheet" href="css/aos.css">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/old.css">
 
 
 
@@ -361,6 +361,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 
   var tbody = document.getElementById('tbody1');
 
+var toss;
+
+var optedto;
 
 schedulematch.addEventListener('click', () => 
 {
@@ -374,20 +377,20 @@ schedulematch.addEventListener('click', () =>
 
   var con = document.getElementsByName("playchoice");
 
-  var toss="";
-
-  var optedto="";
-
   for(var i = 0; i < ele.length; i++) 
   {
                 if(ele[i].checked)
                 toss = ele[i].value;
+                localStorage.setItem("Toss",toss);
+                
   }
 
    for(var j = 0; j < con.length; j++) 
   {
                 if(con[j].checked)
                 optedto = con[j].value;
+                localStorage.setItem("optedto",optedto);
+                
   }
 
   /* console.log("Team A is"+teamaselected);
@@ -406,8 +409,8 @@ schedulematch.addEventListener('click', () =>
                                     MatchID : matchname,
                                     Team1 : teamaselected,
                                     Team2 : teambselected,
-                                    PlayersTeam1 : teama,
-                                    PlayersTeam2 : teamb,
+                                    teamaselected : teama,
+                                    teambselected : teamb,
                                     Overs : noofovers,
                                     Ground : groundname,
                                     Toss : toss,
@@ -419,8 +422,8 @@ schedulematch.addEventListener('click', () =>
                                     MatchID : matchname,
                                     Team1 : teamaselected,
                                     Team2 : teambselected,
-                                    PlayersTeam1 : teama,
-                                    PlayersTeam2 : teamb,
+                                    teamaselected : teama,
+                                    teambselected : teamb,
                                     Overs : noofovers,
                                     Ground : groundname,
                                     Toss : toss,
@@ -554,7 +557,7 @@ function readteamsandmatches()
                 <p class="mb-5">
         
         <form action="score.html">
-          <button onclick="cr7(this)" class="mybees" name="mybees" value="${issue2.MatchID}" type="submit" style="margin-right:20px">${issue2.MatchID}</button>
+          <button onclick="cr7(this)" class="mybees" name="mybees" value="${issue2.MatchID}" type="submit" style="margin-right:20px">Start Match</button>
           </form>
 
                 </p>
@@ -575,11 +578,17 @@ function readteamsandmatches()
   var teambselected;
 
 
+
 buttonsaveteam.addEventListener('click', () => 
 {
 
   teamaselected = document.getElementById("teamaplayerdisplay").value;
+
+  localStorage.setItem("teamaselected",teamaselected);
+
   teambselected = document.getElementById("teambplayerdisplay").value;
+
+  localStorage.setItem("teambselected",teambselected);
 
   const getteamaplayers = ref(database,'Teams/'+teamaselected);
 
@@ -692,15 +701,41 @@ window.onload=readteamsandmatches;
 
 
 <script>
-  
    function cr7(ele) 
    {
-      var btnValue = ele.innerText;
-      localStorage.setItem("MatchSelected",btnValue);
+      var btnValue = ele.value;
+      var initial_ui_opened = 0;
+      localStorage.setItem("selectedmatch",btnValue);
+      localStorage.setItem("initial_ui_opened",initial_ui_opened);
+      
+      /* if (toss == teamaselected && optedto == "Bat")
+      {
+         localStorage.setItem("battingfirst",teamaselected);
+         localStorage.setItem("bowlingfirst",teambselected);
+      }
+
+      if (toss == teamaselected && optedto == "Bowl")
+      {
+         localStorage.setItem("battingfirst",teambselected);
+         localStorage.setItem("bowlingfirst",teamaselected);
+      }
+
+      if (toss == teambselected && optedto == "Bat")
+      {
+         localStorage.setItem("battingfirst",teambselected);
+         localStorage.setItem("bowlingfirst",teamaselected);
+      }
+
+      if (toss == teambselected && optedto == "Bowl")
+      {
+         localStorage.setItem("battingfirst",teamaselected);
+         localStorage.setItem("bowlingfirst",teambselected);
+      } */
+      
       return false;
   }
 </script>
+   
 
-</body>
-
+  </body>
 </html>
