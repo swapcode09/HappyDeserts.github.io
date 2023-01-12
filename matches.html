@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -377,6 +377,9 @@ schedulematch.addEventListener('click', () =>
 
   var con = document.getElementsByName("playchoice");
 
+  var battingfirstteam;
+  var bowlingfirstteam;
+
   for(var i = 0; i < ele.length; i++) 
   {
                 if(ele[i].checked)
@@ -393,6 +396,34 @@ schedulematch.addEventListener('click', () =>
                 
   }
 
+              if (toss == teamaselected && optedto == "Bat")
+               {
+                    battingfirstteam = teamaselected;
+                    bowlingfirstteam = teambselected;
+               }
+
+               if (toss == teamaselected && optedto == "Bowl")
+               {
+                    battingfirstteam = teambselected;
+                    bowlingfirstteam = teamaselected;
+               }
+
+               if (toss == teambselected && optedto == "Bat")
+               {
+                    battingfirstteam = teambselected;
+                    bowlingfirstteam = teamaselected;
+               }
+
+               if (toss == teambselected && optedto == "Bowl")
+               {
+                    battingfirstteam = teamaselected;
+                    bowlingfirstteam = teambselected;
+               }
+
+
+         localStorage.setItem("battingfirst",teamaselected);
+         localStorage.setItem("bowlingfirst",teambselected);
+
   /* console.log("Team A is"+teamaselected);
   console.log("Team B is"+teambselected);
 
@@ -405,6 +436,8 @@ schedulematch.addEventListener('click', () =>
   console.log("Toss"+toss);
   console.log("Opted to"+optedto); */
 
+
+
                set (ref(database,'Matches/'+matchname) , {
                                     MatchID : matchname,
                                     Team1 : teamaselected,
@@ -414,7 +447,9 @@ schedulematch.addEventListener('click', () =>
                                     Overs : noofovers,
                                     Ground : groundname,
                                     Toss : toss,
-                                    OptedTo : optedto
+                                    OptedTo : optedto,
+                                    teambattingfirst : battingfirstteam,
+                                    teambowlingfirst : bowlingfirstteam
                                   });
 
 
@@ -427,64 +462,13 @@ schedulematch.addEventListener('click', () =>
                                     Overs : noofovers,
                                     Ground : groundname,
                                     Toss : toss,
-                                    OptedTo : optedto
+                                    OptedTo : optedto,
+                                     teambattingfirst : battingfirstteam,
+                                    teambowlingfirst : bowlingfirstteam
                                   });
 
 });
 
-    /* function addplayertotable(name)
-    {
-          let trow = document.createElement("tr");
-          let td1 = document.createElement('td');
-
-
-          td1.innerHTML= name;
-  
-
-          trow.appendChild(td1);
-          tbody.appendChild(trow);
-    } 
-
-     function addallplayerstotable(ThePlayer)
-     {
-         
-         tbody.innerHTML="";
-         
-         ThePlayer.forEach(element=>{
-           addplayertotable(element.Name);
-         });
-      }
-
-    
-      function Getalldata()
-      {
-        const dbref = ref(database);
-
-        get(child(dbref,"users"))
-        .then((snapshot)=>{
-          var players = [];
-          
-          snapshot.forEach(childSnapshot=> {
-              players.push(childSnapshot.val());
-          });
-          addallplayerstotable(players);
-        })
-
-      }
-
-      function getrealtimedata()
-      {
-         const dbref = ref(database,"users");
-
-         onValue(dbref,(snapshot)=>{
-          var players = [];
-          
-          snapshot.forEach(childSnapshot=> {
-              players.push(childSnapshot.val());
-          });
-          addallplayerstotable(players);
-        })
-      } */
 
 const playeref = ref(database,"Teams/");
 const matchref = ref(database,"Matches/");
@@ -549,8 +533,7 @@ function readteamsandmatches()
                   <strong class="text-primary">@ ${issue2.Ground}</strong>
                 </p>
 
-                <div id="date-countdown2" class="pb-1"></div>
-              </div>
+       
 
               <div class="text-right widget-vs-contents mb-4">
                 
@@ -736,6 +719,793 @@ window.onload=readteamsandmatches;
   }
 </script>
    
+
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
+
+    <!-- All CSS -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Cricnotch - Sports Clean & Minimal Html Template.</title>
+
+
+    <style>
+
+      .fab-wrapper {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+}
+.fab-checkbox {
+  display: none;
+}
+.fab {
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  width: 4rem;
+  height: 4rem;
+  background: blue;
+  border-radius: 50%;
+  background: #126ee2;
+  box-shadow: 0px 5px 20px #81a4f1;
+  transition: all 0.3s ease;
+  z-index: 1;
+  border-bottom-right-radius: 6px;
+  border: 1px solid #0c50a7;
+}
+
+.fab:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.fab-checkbox:checked ~ .fab:before {
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.fab:hover {
+  background: #2c87e8;
+  box-shadow: 0px 5px 20px 5px #81a4f1;
+}
+
+.fab-dots {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background-color: white;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateX(0%) translateY(-50%) rotate(0deg);
+  opacity: 1;
+  animation: blink 3s ease infinite;
+  transition: all 0.3s ease;
+}
+
+.fab-dots-1 {
+  left: 15px;
+  animation-delay: 0s;
+}
+.fab-dots-2 {
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  animation-delay: 0.4s;
+}
+.fab-dots-3 {
+  right: 15px;
+  animation-delay: 0.8s;
+}
+
+.fab-checkbox:checked ~ .fab .fab-dots {
+  height: 6px;
+}
+
+.fab .fab-dots-2 {
+  transform: translateX(-50%) translateY(-50%) rotate(0deg);
+}
+
+.fab-checkbox:checked ~ .fab .fab-dots-1 {
+  width: 32px;
+  border-radius: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.fab-checkbox:checked ~ .fab .fab-dots-3 {
+  width: 32px;
+  border-radius: 10px;
+  right: 50%;
+  transform: translateX(50%) translateY(-50%) rotate(-45deg);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.fab-checkbox:checked ~ .fab .fab-dots {
+  animation: none;
+}
+
+.fab-wheel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 1px solid #;
+  width: 10rem;
+  height: 10rem;
+  transition: all 0.3s ease;
+  transform-origin: bottom right;
+  transform: scale(0);
+}
+
+.fab-checkbox:checked ~ .fab-wheel {
+  transform: scale(1);
+}
+.fab-action {
+  position: absolute;
+  background: #0f1941;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: White;
+  box-shadow: 0 0.1rem 1rem rgba(24, 66, 154, 0.82);
+  transition: all 1s ease;
+
+  opacity: 0;
+}
+
+.fab-checkbox:checked ~ .fab-wheel .fab-action {
+  opacity: 1;
+}
+
+.fab-action:hover {
+  background-color: #f16100;
+}
+
+.fab-wheel .fab-action-1 {
+  right: -1rem;
+  top: 0;
+}
+
+.fab-wheel .fab-action-2 {
+  right: 3.4rem;
+  top: 0.5rem;
+}
+.fab-wheel .fab-action-3 {
+  left: 0.5rem;
+  bottom: 3.4rem;
+}
+.fab-wheel .fab-action-4 {
+  left: 0;
+  bottom: -1rem;
+}
+    </style>
+
+
+  </head>
+  <body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div id="status"><img src="assets/images/logo-h.png" alt="logo" /></div>
+    </div>
+
+    <!-- Header strat -->
+    <header class="header">
+    
+     
+
+      <!-- Main header start -->
+      <section class="main-header">
+        <div class="container">
+          <nav class="navbar">
+            <div class="nav-menu">
+              <button class="mobile-nav-toggler">☰</button>
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li class="has-menu-child">
+                  <a href="teams.html">Teams</a>
+                </li>
+         
+              </ul>
+            </div>
+     
+          </nav>
+        </div>
+      </section>
+      <!-- Main header end -->
+    </header>
+    <!-- Header strat -->
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Choose Details</h4>
+      </div>
+      
+      <div class="modal-body">
+
+
+                  
+                  
+               <form id="form1">
+                     <h3>Select Team A</h3>
+                        <select class="form-select" id="teamaplayerdisplay" aria-label="Default select example">
+                            
+                    </select> 
+               </form> 
+
+
+               <form id="form2">
+                      <h3>Select Team B</h3>
+                        <select class="form-select" id="teambplayerdisplay" aria-label="Default select example" required>
+                            
+                        </select>
+                
+                </form>
+  
+                     <button id="buttonsaveteams" class="btn btn-light" type="submit">Save Teams</button>
+
+                  <br><br>
+
+                          <div class="form-check" id="lineupteamA">
+                            <h3>Select Team A Lineup</h3>
+
+                         
+                          </div>
+
+                          <button id="savelineupA" class="btn btn-light" type="submit">Save Lineup A</button>
+
+                          <div class="form-check" id="lineupteamB">
+                            <h3>Select Team B Lineup</h3>
+                          </div>
+
+                          <button id="savelineupB" class="btn btn-light" type="submit">Save Lineup B</button>
+
+
+                        
+
+                    <div>
+                     
+                        
+                          <div class="form-group" id="otherdetsform">
+
+                            <label for="exampleInputEmail1"><h3>Match Name</h3></label>
+                            <input type="text" class="form-control" id="matchname" aria-describedby="emailHelp" placeholder="Enter match name">
+
+                            <label for="exampleInputEmail1"><h3>Ground Name</h3></label>
+                            <input type="text" class="form-control" id="groundname" aria-describedby="emailHelp" placeholder="Enter ground name">
+                            
+                            <br>
+
+                            <label for="exampleInputEmail1"><h3>Overs</h3></label>
+                            <input type="number" class="form-control" id="noofovers" aria-describedby="emailHelp" placeholder="Enter number of overs">
+
+                              <br>
+
+                             <h3>Toss won by</h3>
+                             <div class="form-check" id="displaytwoteams">
+                              
+                            
+
+                            </div> 
+
+                            <h3>Opted to</h3>
+                            <div class="form-check" id="displaychoice">
+                              
+                            
+
+                </div>
+                </div>
+                </div>
+                      
+                      <div>
+                       <button id="schedulematch" type="submit" class="btn btn-light">Create Match</button>
+                      </div>
+
+            
+              
+      </div>
+
+
+
+            
+              
+      </div>
+
+ 
+                  
+</div>
+</div>
+
+
+<div class="fab-wrapper">
+  <button id="addmatch"><input id="fabCheckbox" type="checkbox" class="fab-checkbox" /></button>
+  <label class="fab" for="fabCheckbox">
+    <span class="fab-dots fab-dots-1"></span>
+    <span class="fab-dots fab-dots-2"></span>
+    <span class="fab-dots fab-dots-3"></span>
+  </label>
+
+</div>
+    <div id="main" class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            
+            <section class="live-matches pt-0">
+              <div class="card card-shadow">
+                <ul class="nav nav-tabs mb-0">
+                  <li class="active"><a data-toggle="tab" href="#live_match" class="active">Matches</a></li>
+                </ul>
+              </div>
+              
+              <div id="tab-content">
+              
+        
+
+              </div>
+            
+
+            </section>
+          
+
+          </div>
+          <div class="col-lg-3">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+
+<script>
+
+const btn = document.getElementById('addmatch');
+const form1 = document.getElementById('form1');
+const form2 = document.getElementById('form2');
+
+const lineupteamA = document.getElementById('lineupteamA');
+const lineupteamB = document.getElementById('lineupteamB');
+
+const otherdetsform = document.getElementById('otherdetsform');
+
+const buttonsaveteam = document.getElementById('buttonsaveteams');
+
+const buttonsavelineupA = document.getElementById('savelineupA'); 
+const buttonsavelineupB = document.getElementById('savelineupB'); 
+
+const creatematch = document.getElementById('creatematch'); 
+const schedulematch = document.getElementById('schedulematch'); 
+
+
+
+
+</script>
+
+
+<script type="module">
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+          import { getDatabase , set , ref , push , child , query, orderByChild , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          
+          var firebaseConfig = 
+          {
+            apiKey: "AIzaSyAest1kY2wkdzwWCPf7-bkwyhWLekXZDhE",
+            authDomain: "cricket-master-d3c58.firebaseapp.com",
+            databaseURL: "https://cricket-master-d3c58-default-rtdb.firebaseio.com",
+            projectId: "cricket-master-d3c58",
+            storageBucket: "cricket-master-d3c58.appspot.com",
+            messagingSenderId: "554998698559",
+            appId: "1:554998698559:web:6617512d672bc484305e8a"
+          };
+
+          
+          const app = initializeApp(firebaseConfig);
+          const database = getDatabase(app); 
+
+  var tbody = document.getElementById('tbody1');
+
+var toss;
+
+var optedto;
+
+btn.addEventListener('click', () => 
+{
+  $('#myModal').modal({show:true});
+});  
+
+
+schedulematch.addEventListener('click', () => 
+{
+
+  var groundname = document.getElementById("groundname").value;
+  var noofovers = document.getElementById("noofovers").value;
+  var matchname = document.getElementById("matchname").value;
+
+
+  var ele = document.getElementsByName("teamtoss");
+
+  var con = document.getElementsByName("playchoice");
+
+  var battingfirstteam;
+  var bowlingfirstteam;
+
+  for(var i = 0; i < ele.length; i++) 
+  {
+                if(ele[i].checked)
+                toss = ele[i].value;
+                localStorage.setItem("Toss",toss);
+                
+  }
+
+   for(var j = 0; j < con.length; j++) 
+  {
+                if(con[j].checked)
+                optedto = con[j].value;
+                localStorage.setItem("optedto",optedto);
+                
+  }
+
+              if (toss == teamaselected && optedto == "Bat")
+               {
+                    battingfirstteam = teamaselected;
+                    bowlingfirstteam = teambselected;
+               }
+
+               if (toss == teamaselected && optedto == "Bowl")
+               {
+                    battingfirstteam = teambselected;
+                    bowlingfirstteam = teamaselected;
+               }
+
+               if (toss == teambselected && optedto == "Bat")
+               {
+                    battingfirstteam = teambselected;
+                    bowlingfirstteam = teamaselected;
+               }
+
+               if (toss == teambselected && optedto == "Bowl")
+               {
+                    battingfirstteam = teamaselected;
+                    bowlingfirstteam = teambselected;
+               }
+
+
+         localStorage.setItem("battingfirst",teamaselected);
+         localStorage.setItem("bowlingfirst",teambselected);
+
+  /* console.log("Team A is"+teamaselected);
+  console.log("Team B is"+teambselected);
+
+  console.log("Team A playesr"+teama);
+  console.log("Team B playesr"+teamb);
+
+  console.log("Match Name"+matchname);
+  console.log("Ground name"+groundname);
+  console.log("Overs"+noofovers);
+  console.log("Toss"+toss);
+  console.log("Opted to"+optedto); */
+
+
+
+               set (ref(database,'Matches/'+matchname) , {
+                                    MatchID : matchname,
+                                    Team1 : teamaselected,
+                                    Team2 : teambselected,
+                                    teamaselected : teama,
+                                    teambselected : teamb,
+                                    Overs : noofovers,
+                                    Ground : groundname,
+                                    Toss : toss,
+                                    OptedTo : optedto,
+                                    teambattingfirst : battingfirstteam,
+                                    teambowlingfirst : bowlingfirstteam
+                                  });
+
+
+                              set (ref(database,matchname+"/"+"Data/") , {
+                                    MatchID : matchname,
+                                    Team1 : teamaselected,
+                                    Team2 : teambselected,
+                                    teamaselected : teama,
+                                    teambselected : teamb,
+                                    Overs : noofovers,
+                                    Ground : groundname,
+                                    Toss : toss,
+                                    OptedTo : optedto,
+                                    teambattingfirst : battingfirstteam,
+                                    teambowlingfirst : bowlingfirstteam
+                                  });
+
+    $('#myModal').modal('hide');
+
+});
+
+
+const playeref = ref(database,"Teams/");
+const matchref = ref(database,"Matches/");
+
+function readteamsandmatches() 
+{
+  
+  onValue(playeref,(snapshot)=>
+  {
+    snapshot.forEach(snap => 
+    {
+      const issue = snap.val();
+
+      document.getElementById("teamaplayerdisplay").innerHTML += `
+      <option value="${issue.Team}">${issue.Team}</option>
+      `
+  
+      document.getElementById("teambplayerdisplay").innerHTML += `
+      <option value="${issue.Team}">${issue.Team}</option>`
+
+
+    })
+  })
+
+  onValue(matchref,(snapshot)=>
+  {
+    snapshot.forEach(snap => 
+    {
+      const issue2 = snap.val();
+
+      document.getElementById("tab-content").innerHTML += `
+
+
+      <div id="live_match" class="tab-pane fade in show active">
+                  <div class="card card-shadow p-0">
+                    <div class="score-card score-card-lg d-md-flex p-0">
+                      <div class="score-card-inner flex-grow-1 px-20 py-20">
+                        <div class="score-card-header mb-15">
+                          <strong class="text-red">Match</strong>
+                          <span>${issue2.MatchID}, ${issue2.Ground}, ${issue2.Overs} overs match</span>
+                        </div>
+                        <div class="score-card-body">
+                          <div class="country-info">
+                            <div class="flag-avatar">
+                              <figure>
+                                <img src="assets/images/flags/australia.png" alt="" />
+                              </figure>
+                              <span class="country-name">${issue2.Team1}</span>
+                            </div>
+                        
+                          </div>
+                          <div class="score-update m-0 text-center">
+                            <p class="vs-circle">VS</p>
+                          </div>
+                          <div class="country-info flex-row-reverse">
+                            <div class="flag-avatar ml-10">
+                              <figure>
+                                <img src="assets/images/flags/sri-lanka.png" alt="" />
+                              </figure>
+                              <span class="country-name">${issue2.Team2}</span>
+                            </div>
+                           
+                          </div>
+                        </div>
+                        <br>
+                        <div class="floating-text text-14"><span class="d-block"><b>${issue2.Toss}</b> won the toss and opted to <b>${issue2.OptedTo}</b></span></div>
+                      </div>
+                      
+
+
+                      <div class="card-aside text-right px-20 py-20">
+
+                      <form action="score.html">
+                          <button onclick="cr7(this)" class="btn btn-warning" name="mybees" value="${issue2.MatchID}" type="submit" style="margin-right:20px">Start Match</button>
+                          </form>
+                        
+                      </div>
+                    
+
+                    </div>
+                  </div>
+
+                  </div>
+                </div>  
+      `
+    })
+  })
+
+}
+
+  var teamaselected;
+
+  var teambselected;
+
+buttonsaveteam.addEventListener('click', () => 
+{
+
+  teamaselected = document.getElementById("teamaplayerdisplay").value;
+
+  localStorage.setItem("teamaselected",teamaselected);
+
+  teambselected = document.getElementById("teambplayerdisplay").value;
+
+  localStorage.setItem("teambselected",teambselected);
+
+  const getteamaplayers = ref(database,'Teams/'+teamaselected);
+
+  const gettebmaplayers = ref(database,'Teams/'+teambselected);
+
+
+
+  const opt1 = "Bat";
+  const opt2 = "Bowl";
+
+       document.getElementById("displaytwoteams").innerHTML += 
+      `<input class="form-check-input" type="radio" name="teamtoss" id="${teamaselected}" value="${teamaselected}">
+                              <label class="form-check-label" for="flexRadioDefault2">${teamaselected}</label>
+
+                              <br>
+      <input class="form-check-input" type="radio" name="teamtoss" id="${teambselected}" value="${teambselected}">
+                              <label class="form-check-label" for="flexRadioDefault2">${teambselected}</label>
+
+                          <br><br>`
+
+
+
+        document.getElementById("displaychoice").innerHTML += 
+      `<input class="form-check-input" type="radio" name="playchoice" id="${opt1}" value="${opt1}">
+                              <label class="form-check-label" for="flexRadioDefault2">${opt1}</label>
+
+                              <br>
+      <input class="form-check-input" type="radio" name="playchoice" id="${opt2}" value="${opt2}">
+                              <label class="form-check-label" for="flexRadioDefault2">${opt2}</label>
+
+                          <br><br>`
+  
+
+  onValue(getteamaplayers,(snapshot)=>
+  {
+    snapshot.forEach(snap => 
+    {
+      const issue = snap.val();
+
+      document.getElementById("lineupteamA").innerHTML += 
+      `
+      <form id="playeraform">
+        <input type="checkbox" class="checkbox" value="${issue}" name="teamplayerA">
+        <label for="flexCheckChecked">${issue}</label>
+          <br>
+       </form> `
+    })
+  })
+
+  onValue(gettebmaplayers,(snapshot)=>
+  {
+    snapshot.forEach(snap => 
+    {
+      const issue = snap.val();
+
+      document.getElementById("lineupteamB").innerHTML += 
+      `
+      <form id="playeraform">
+        <input type="checkbox" class="checkbox" value="${issue}" name="teamplayerB">
+        <label for="flexCheckChecked">${issue}</label>
+          <br>
+       </form>
+      `
+      
+
+    })
+  })
+});
+
+
+var teama = [];
+var teamb = [];
+
+buttonsavelineupA.addEventListener('click', () => 
+{
+
+  var checkboxes = document.getElementsByName('teamplayerA');
+
+  for (var i=0;i<checkboxes.length;i++)
+  {
+    if (checkboxes[i].checked==true)
+    {
+        teama.push(checkboxes[i].value);
+    }
+  }
+
+
+});
+
+
+buttonsavelineupB.addEventListener('click', () => 
+{
+
+  var checkboxes = document.getElementsByName('teamplayerB');
+
+  for (var i=0;i<checkboxes.length;i++)
+  {
+    if (checkboxes[i].checked==true)
+    {
+        teamb.push(checkboxes[i].value);
+    }
+  }
+
+});
+
+window.onload=readteamsandmatches; 
+
+</script>
+
+<script>
+   function cr7(ele) 
+   {
+      var btnValue = ele.value;
+      var initial_ui_opened = 0;
+      localStorage.setItem("selectedmatch",btnValue);
+      localStorage.setItem("initial_ui_opened",initial_ui_opened);
+      
+      /* if (toss == teamaselected && optedto == "Bat")
+      {
+         localStorage.setItem("battingfirst",teamaselected);
+         localStorage.setItem("bowlingfirst",teambselected);
+      }
+
+      if (toss == teamaselected && optedto == "Bowl")
+      {
+         localStorage.setItem("battingfirst",teambselected);
+         localStorage.setItem("bowlingfirst",teamaselected);
+      }
+
+      if (toss == teambselected && optedto == "Bat")
+      {
+         localStorage.setItem("battingfirst",teambselected);
+         localStorage.setItem("bowlingfirst",teamaselected);
+      }
+
+      if (toss == teambselected && optedto == "Bowl")
+      {
+         localStorage.setItem("battingfirst",teamaselected);
+         localStorage.setItem("bowlingfirst",teambselected);
+      } */
+      
+      return false;
+  }
+</script>
 
   </body>
 </html>

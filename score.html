@@ -1400,6 +1400,8 @@ window.onload=getdetails;
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/style.css" />
 
+
+
         <title>Cricnotch - Sports Clean & Minimal Html Template.</title>
 
 
@@ -1585,7 +1587,7 @@ window.onload=getdetails;
                                                 <td>
                                                     <a><strong id="currentbowlernamepara"></strong></a>
                                                 </td>
-                                                <td id="currentbowlerovers"><strong>0</strong></td>
+                                                <td><strong id="currentbowlerovers">0</strong></td>
                                               
                                                 <td id="currentbowlerrunsgiven">0</td>
                                                 <td id='currentbowlerwickets'>0</td>
@@ -1742,6 +1744,29 @@ window.onload=getdetails;
                         <!-- Full Commentary end -->
                     </div>
 
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Choose bowler</h4>
+      </div>
+      
+      <div class="modal-body">
+        <div class="dropdown">
+          <select id="selectbowler">
+              <option>Choose new bowler</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" id="savebowler" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
                 <div class="col-lg-3">
                         <!-- Right Sidebar start -->
@@ -1843,6 +1868,8 @@ window.onload=getdetails;
     let btn5 = document.querySelector('#buttonfive');
     let btn6 = document.querySelector('#buttonsix');
 
+    var select = document.getElementById("selectbowler");
+
     let btnwicket = document.querySelector('#buttonwicket');
     
     //declare striker and non striker details
@@ -1873,7 +1900,10 @@ window.onload=getdetails;
     let currentbowlerwickets = document.getElementById('currentbowlerwickets');
     let currentbowlerecon = document.getElementById('currentbowlerecon');
 
-
+    let ballerballcount=0;
+    let ballerwicketcount=0;
+    let ballerruncount=0;
+    let ballerecon=0;
 
     //team details
 
@@ -1908,7 +1938,7 @@ window.onload=getdetails;
   
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-          import { getDatabase , set , ref , push , child , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          import { getDatabase , set , ref , push , child , onValue , get} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
           
           var firebaseConfig = 
           {
@@ -1925,6 +1955,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
           const app = initializeApp(firebaseConfig);
           const database = getDatabase(app);
 
+          var modal = document.getElementById("myModal");
+          var span = document.getElementsByClassName("close")[0];
+
           var selectedmatch = localStorage.getItem("selectedmatch");
 
           var getinitialuistatus = localStorage.getItem("initial_ui_opened");
@@ -1932,8 +1965,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
             var teamtoss = localStorage.getItem("Toss");
             var choice = localStorage.getItem("optedto");
 
-
-
+    
             var teamaselected = localStorage.getItem("teamaselected");
             var teambselected = localStorage.getItem("teambselected");
             
@@ -1944,9 +1976,32 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
               console.log("Team A"+teamaselected);
                console.log("Team B"+teambselected);
 
+               let getstrikerslist;
+               let getbowlerslist;
 
-        /* console.log("team batting first"+battingfirst);
-        console.log("team bowling first"+bowlingfirst); */
+              if (teamtoss == teamaselected && choice == "Bat")
+               {
+                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+               }
+
+               if (teamtoss == teamaselected && choice == "Bowl")
+               {
+                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+               }
+
+               if (teamtoss == teambselected && choice == "Bat")
+               {
+                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+               }
+
+               if (teamtoss == teambselected && choice == "Bowl")
+               {
+                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+               }
           
 
 const matchref = ref(database,selectedmatch+"/");
@@ -1982,6 +2037,7 @@ function getdetails()
 
               console.log(issue);
 
+            
               document.getElementById("teamAname").innerHTML = `${issue.Team1}`
               document.getElementById("teamBname").innerHTML = `${issue.Team2}`
               
@@ -2025,15 +2081,20 @@ function getdetails()
       }
 
 
-const getstrikers = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+/*  function removeoutbatters()
+{
 
-const getbowlers = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+} */
+
+var battersarray = [];
+var bowlersarray = [];
+var bowlerusedarray = []
+var unique = [];
 
 function openiniup()
 {
         
-    var teambattingfirstarray = [];
-    var teambowlingfirstarray = [];
+    
 
     document.getElementById('popup').innerHTML=`<div class="auth-form">
                     <div class="auth-form-header">
@@ -2056,12 +2117,16 @@ function openiniup()
                  
                 </div>`
 
-          onValue(getstrikers,(snapshot)=>
+          onValue(getstrikerslist,(snapshot)=>
           {
             snapshot.forEach(snap => 
             {
               
               const issue = snap.val();
+
+              
+
+                battersarray.push(issue);
 
         document.getElementById("strikerlistdisplay").innerHTML += `
       <option value="${issue}">${issue}</option>`
@@ -2069,22 +2134,23 @@ function openiniup()
       document.getElementById("nonstrikerlistdisplay").innerHTML += `
       <option value="${issue}">${issue}</option>`
 
-
+    
             })
         })
-    
 
-        onValue(getbowlers,(snapshot)=>
+        onValue(getbowlerslist,(snapshot)=>
           {
             snapshot.forEach(snap => 
             {
               
               const issue = snap.val();
         document.getElementById("bowlerlistdisplay").innerHTML += `
-      <option value="${issue}">${issue}</option>`
+        <option value="${issue}">${issue}</option>`
 
+         bowlersarray.push(issue);
 
             })
+            createelements(bowlersarray);
         })
 
 
@@ -2092,7 +2158,13 @@ function openiniup()
           {
                 striker = document.getElementById('strikerlistdisplay').value;
                 nonstriker = document.getElementById('nonstrikerlistdisplay').value;
-                currentbowler =document.getElementById('bowlerlistdisplay').value;  
+                currentbowler =document.getElementById('bowlerlistdisplay').value;
+
+                bowlerusedarray.push(currentbowler);  
+
+                console.log(bowlerusedarray);
+
+                console.log("initial baller is"+bowlerusedarray);
 
                 batter1namepara.innerHTML = striker;
                 batter2namepara.innerHTML = nonstriker;
@@ -2109,7 +2181,9 @@ function openiniup()
 
     }
 
-console.log(teamaovers.innerText);
+
+
+
 
 btn0.addEventListener('click', () => 
           {
@@ -2121,29 +2195,33 @@ btn0.addEventListener('click', () =>
             score = score + 0;
             currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
 
-             
+            var doneballs = currentbowlerovers.innerText;
+           
+
+            ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10; 
+            
+            currentbowlerovers.innerHTML = ballerballcount;
+       
              if (strikerstar.innerText=="*")
               {
                   
                   strikerballs = strikerballs + 1;
-                  
-                  batter1bowlcount.innerHTML = strikerballs;
-                  
+                  batter1bowlcount.innerHTML = strikerballs;   
              }
 
               else if (nonstrikerstar.innerText=="*")
               {
                   nonstrikerballs = nonstrikerballs+1;
-      
                   batter2bowlcount.innerHTML = nonstrikerballs;
-          
               }
             
               
               if (ball_count%6==0)
               {
                  overdone = overdone+1;
-                 ball_count = 0;
+                 
+                 ballerballcount = ballerballcount+0.4; 
+                 
 
                  /* temp = striker;    //temp = Cypher
                  striker = nonstriker;  // striker = kj
@@ -2151,6 +2229,23 @@ btn0.addEventListener('click', () =>
                 
                  teamaovers.innerHTML = overdone+".0";
 
+                 currentbowlerovers.innerHTML = ballerballcount; 
+
+                 /* currentbowlerrunsgiven=0;
+                 currentbowlerwickets=0;
+                 currentbowlerecon=0; */
+
+                 set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+currentbowlernamepara.innerText) , {
+                                    BowlerName : currentbowlernamepara.innerText,
+                                    Overs : currentbowlerovers.innerText,
+                                    RunsGiven : currentbowlerrunsgiven.innerText,
+                                    WicketsTaken : currentbowlerwickets.innerText,
+                                    Economy : currentbowlerecon.innerText
+                                  });
+
+                 ballerballcount = 0;
+
+                 over_change_ui(bowlersarray);
 
                  if (strikerstar.innerText=="*")
                  {
@@ -2167,6 +2262,8 @@ btn0.addEventListener('click', () =>
 
                   currentovertext.innerHTML = "";
 
+                  
+
               }
 
           }); 
@@ -2181,8 +2278,20 @@ btn0.addEventListener('click', () =>
               currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
 
               ball_count = ball_count + 1;
-    
-              teamcrr.innerHTML = current_rr;
+
+
+               var doneballs = currentbowlerovers.innerText;
+
+               var donescore = currentbowlerrunsgiven.innerText;
+
+               ballerruncount = parseInt(donescore)+1;
+            
+            currentbowlerovers.innerHTML = ballerballcount;
+            currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+              ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10;
+              
+             currentbowlerovers.innerHTML = ballerballcount;
               
               if (strikerstar.innerText=="*")
               {
@@ -2213,7 +2322,23 @@ btn0.addEventListener('click', () =>
                  overdone = overdone+1;
                  ball_count = 0;
 
+                 ballerballcount = ballerballcount+0.4;
+
+                 currentbowlerovers.innerHTML = ballerballcount; 
+
                  teamaovers.innerHTML = overdone+".0";
+
+                 set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+currentbowlernamepara.innerText) , {
+                                    BowlerName : currentbowlernamepara.innerText,
+                                    Overs : currentbowlerovers.innerText,
+                                    RunsGiven : currentbowlerrunsgiven.innerText,
+                                    WicketsTaken : currentbowlerwickets.innerText,
+                                    Economy : currentbowlerecon.innerText
+                                  });
+
+                 ballerballcount = 0;
+
+                 over_change_ui(bowlersarray);
 
                  if (strikerstar.innerText=="*")
                  {
@@ -2231,6 +2356,7 @@ btn0.addEventListener('click', () =>
                   }
 
                   currentovertext.innerHTML = "";
+
               } 
 
           });
@@ -2245,6 +2371,73 @@ btn2.addEventListener('click', () =>
 
             
             score = score + 2;
+
+            teamascore.innerHTML = score;
+            currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
+
+             
+             if (strikerstar.innerText=="*")
+              {
+                  strikerscore = strikerscore+2;
+                  strikerballs = strikerballs + 1;
+
+                  batter1scorepara.innerHTML = strikerscore;
+                  batter1bowlcount.innerHTML = strikerballs;
+                  
+             }
+
+              else if (nonstrikerstar.innerText=="*")
+              {
+                  nonstrikerscore = nonstrikerscore+2;
+                  nonstrikerballs = nonstrikerballs+1;
+                  batter2scorepara.innerHTML = nonstrikerscore;
+                  batter2bowlcount.innerHTML = nonstrikerballs;
+          
+              }
+            
+              
+              if (ball_count%6==0)
+              {
+                 overdone = overdone+1;
+                 ball_count = 0;
+
+                 /* temp = striker;    //temp = Cypher
+                 striker = nonstriker;  // striker = kj
+                 nonstriker = temp;   // nonstriker = cypher */
+                
+                 teamaovers.innerHTML = overdone+".0";
+
+                 over_change_ui(bowlersarray);
+
+                 if (strikerstar.innerText=="*")
+                 {
+                    strikerstar.innerHTML="";
+                    nonstrikerstar.innerHTML="*";
+                 }
+                 
+
+                 else if (nonstrikerstar.innerText=="*")
+                  {
+                      nonstrikerstar.innerHTML="";
+                      strikerstar.innerHTML="*";
+                  }
+
+                  currentovertext.innerHTML = "";
+
+              }
+
+          }); 
+
+
+btnwicket.addEventListener('click', () => 
+          {
+            
+
+            val_of_button = "W";
+            ball_count = ball_count + 1;
+
+            
+            score = score + 0;
 
             teamascore.innerHTML = score;
             currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
@@ -2301,9 +2494,126 @@ btn2.addEventListener('click', () =>
 
           }); 
 
+function createelements(bowlersarray)
+{
+    for (var i = 0; i < bowlersarray.length; i++) 
+                    {
+                        var opt = bowlersarray[i];
+                        var el = document.createElement("option");
+                        el.textContent = opt;
+                        el.value = opt;
+                      
+                        select.appendChild(el);
+                    }
+}
 
 
 
+var uniquebowlers = [];
+
+var obj = {};
+
+let keys=[];
+let values=[]
+
+var newbowler;
+
+function over_change_ui(bowlersarray)
+{
+    newbowler="";
+    currentbowlernamepara.innerHTML = "";
+    currentbowlerovers.innerHTML = "";
+    currentbowlerrunsgiven.innerHTML = "";
+    currentbowlerwickets.innerHTML = "";
+    currentbowlerecon.innerHTML= "";
+
+
+    for (const key in obj) 
+    {
+      delete obj[key];
+    }
+
+    $('#myModal').modal({show:true});
+
+    savebowler.addEventListener('click', () =>
+                {
+                      var newbowler = select.value;
+
+                      if (bowlerusedarray.includes(newbowler))
+                         {
+                            setdataexis(newbowler);
+                         }
+                         
+                         else
+                         {
+                            setdata(newbowler);
+                         } 
+
+                           $('#myModal').modal('hide');
+                });
+
+
+}
+               
+               function setdataexis(newbowler)
+
+               {                             
+                        console.log("not new bowler");
+
+                        console.log("fetching current bowler data");
+
+                        const getbowlerdata = ref(database,selectedmatch+"/"+"Data"+"/"+"BowlerData/"+newbowler+"/");
+                      
+                          onValue(getbowlerdata,(snapshot)=>
+                              {
+                                snapshot.forEach(snap => 
+                                {
+                                  let keys = [snap.key];
+                                  let values = [snap.val()];
+                                  
+                                  for(var i = 0; i < keys.length; i++)
+                                  {
+                                     obj[keys[i]] = values[i];
+                                  }
+
+                                })
+                              })
+
+                             console.log("fecthed data");
+
+                             console.log(obj);
+
+                             if (Object.keys(obj).length === 0)
+                             {
+                                     currentbowlernamepara.innerHTML = newbowler;
+                                     currentbowlerovers.innerHTML = "0";
+                                     currentbowlerwickets.innerHTML = "0";
+                                     currentbowlerrunsgiven.innerHTML = "0";
+                                     currentbowlerecon.innerHTML = "0";
+                             }  
+                           
+                             else
+                             {
+                                     currentbowlernamepara.innerHTML = newbowler;
+                                     currentbowlerovers.innerHTML = obj["Overs"];
+                                     currentbowlerwickets.innerHTML = obj["WicketsTaken"];
+                                     currentbowlerrunsgiven.innerHTML = obj["RunsGiven"];
+                                     currentbowlerecon.innerHTML = obj["Economy"];                  
+                            }
+                }
+
+                function setdata(newbowler)
+                {
+                 
+                             console.log("yes new bowler");
+                             currentbowlernamepara.innerHTML = newbowler;
+                             currentbowlerovers.innerHTML = "0";
+                             currentbowlerwickets.innerHTML = "0";
+                             currentbowlerrunsgiven.innerHTML = "0";
+                             currentbowlerecon.innerHTML = "0";
+                             bowlerusedarray.push(newbowler);
+                } 
+ 
 
 window.onload = getdetails;
 
