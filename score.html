@@ -1,1390 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>ScoreBoard</title>
-
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="css/index.css"/>
-
-    <link rel="stylesheet" href="css/blueTheme.css"/> 
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
-<style type="text/css">
-  body {
-  background-color: #E6E6E6;
-  font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  color: #4d4d4d; }
-
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.rca-container {
-  width: 100%;
-  max-width: 1170px;
-  padding: 0px;
-  margin: 0 auto; }
-
-.rca-margin {
-  margin-top: 50px;
-  margin-bottom: 50px; }
-
-.rca-table {
-  display: table;
-  width: 100%; }
-
-.rca-cell {
-  display: table-cell; }
-
-p {
-  margin: 0px; }
-
-a {
-  color: #4d4d4d;
-  text-decoration: none; }
-  a:hover, a:focus {
-    color: #1eb848;
-    text-decoration: none; }
-
-ul {
-  padding: 0px;
-  list-style: none;
-  margin: 0px; }
-
-button {
-  background: none;
-  box-shadow: none;
-  border: none;
-  outline: none; }
-
-.theme-btn {
-  color: #1eb848;
-  border: 1px solid #1eb848;
-  font-size: 14px;
-  font-weight: 400;
-  padding: 7px 15px;
-  background: transparent;
-  transition: all 0.3s ease;
-  border-radius: 3px;
-  display: inline-block; }
-  .theme-btn:hover {
-    background: #1eb848;
-    color: #fff; }
-
-.nav-back-btn {
-  color: #d91e18;
-  font-size: 17px;
-  font-weight: 400;
-  padding: 7px 30px;
-  background: transparent;
-  transition: all 0.3s ease;
-  display: inline-block;
-  position: relative; }
-  .nav-back-btn:before {
-    top: 50%;
-    left: 10px;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: transparent;
-    border-right-color: #d91e18;
-    border-width: 8px;
-    margin-top: -8px; }
-  .nav-back-btn:hover {
-    color: #d91e18;
-    text-decoration: underline; }
-
-.rca-row {
-  margin: 0px;
-  padding: 0px; }
-
-.rca-col {
-  display: table-cell; }
-
-.rca-column-1, .rca-column-2, .rca-column-3, .rca-column-4, .rca-column-5, .rca-column-6, .rca-column-7, .rca-column-8, .rca-column-9, .rca-column-10, .rca-column-11, .rca-column-12 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px; }
-
-.rca-column-12 {
-  width: 100%; }
-
-.rca-column-11 {
-  width: 91.66666667%; }
-
-.rca-column-10 {
-  width: 83.33333333%; }
-
-.rca-column-9 {
-  width: 75%; }
-
-.rca-column-8 {
-  width: 66.66666667%; }
-
-.rca-column-7 {
-  width: 58.33333333%; }
-
-.rca-column-6 {
-  width: 50%; }
-
-.rca-column-5 {
-  width: 41.66666667%; }
-
-.rca-column-4 {
-  width: 33.33333333%; }
-
-.rca-column-3 {
-  width: 25%; }
-
-.rca-column-2 {
-  width: 16.66666667%; }
-
-.rca-column-1 {
-  width: 8.33333333%; }
-
-.rca-menu-widget {
-  min-width: 300px;
-  max-width: 100%;
-  background-color: #fff;
-  margin: 10px 0px; }
-
-.rca-menu-scroll {
-  min-width: 300px;
-  max-width: 100%;
-  background-color: #fff;
-  margin: 10px 0px;
-  overflow-y: auto; }
-
-.rca-micro-widget {
-  min-width: 240px;
-  max-width: 100%;
-  min-height: 110px;
-  background-color: #fff;
-  margin-bottom: 10px; }
-
-.rca-mini-widget {
-  min-width: 300px;
-  max-width: 100%;
-  min-height: 360px;
-  background-color: #fff;
-  margin-bottom: 10px; }
-
-.rca-medium-widget {
-  min-width: 350px;
-  max-width: 100%;
-  min-height: 425px;
-  background-color: #fff;
-  margin-bottom: 10px; }
-
-.rca-relative {
-  position: relative; }
-
-.rca-right {
-  float: right; }
-
-.rca-clear {
-  clear: both; }
-
-.rca-live-text {
-  color: #d91e18; }
-
-.rca-theme-text {
-  color: #1eb848; }
-
-.rca-basic-text {
-  color: #b3b3b3; }
-
-.rca-highlight-text {
-  color: #f9690e; }
-
-.rca-center {
-  text-align: center; }
-
-.rca-vs {
-  vertical-align: middle; }
-  .rca-vs:before {
-    border-radius: 50%;
-    background-color: #1eb848;
-    color: #fff;
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    font-size: 16px;
-    vertical-align: middle;
-    content: "vs";
-    line-height: 28px; }
-
-.rca-powered {
-  background-color: rgba(241, 241, 241, 0.7);
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  border-radius: 3px;
-  z-index: 99; }
-  .rca-powered h2 {
-    font-size: 13px;
-    padding: 0 10px 0 0px !important; }
-    .rca-powered h2 a:hover, .rca-powered h2 a:focus {
-      color: #4d4d4d; }
-
-.rca-no-border {
-  border: none; }
-
-.rca-micro-widget .rca-bowler-info {
-  font-size: 16px; }
-
-.rca-micro-widget .rca-tab-list li {
-  font-size: 14px; }
-
-.rca-left-border {
-  border-left: 5px solid #1eb848; }
-
-.rca-top-border {
-  border-top: 5px solid #1eb848; }
-
-.rca-no-padding {
-  padding: 0; }
-
-.rca-padding {
-  padding: 15px 10px;
-  display: block; }
-  .rca-padding.rca-medium-widget {
-    padding: 15px 20px; }
-
-.rca-top-padding {
-  padding: 10px 0px; }
-
-.rca-content-padding {
-  padding: 20px; }
-
-.rca-season-list li {
-  display: inline-block; }
-  .rca-season-list li a {
-    padding: 15px 15px;
-    text-align: center;
-    display: block;
-    line-height: 20px; }
-
-.rca-match-title {
-  font-weight: 300;
-  line-height: 20px;
-  padding-right: 5px;
-  margin: 0px; }
-  .rca-match-title .rca-match-info {
-    margin: 0; }
-
-.rca-match-score {
-  padding-right: 5px;
-  color: #4d4d4d; }
-
-.rca-match-schedule {
-  margin: 0px;
-  color: #7d7d7d; }
-
-.rca-match-info {
-  color: #b3b3b3;
-  font-weight: normal; }
-
-.rca-live-season.rca-left-border, .rca-live-season.rca-top-border {
-  border-color: #d91e18; }
-
-.rca-live-label {
-  font-size: 14px;
-  padding-left: 15px;
-  text-transform: uppercase;
-  position: relative;
-  font-weight: bold; }
-  .rca-live-label::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #d91e18;
-    position: absolute;
-    top: 4px;
-    left: 0px; }
-
-.rca-match-series h2 {
-  padding: 0px; }
-  .rca-match-series h2 a {
-    display: block;
-    padding: 15px 20px;
-    font-size: 16px;
-    line-height: 28px;
-    border-bottom: 2px solid #E6E6E6; }
-
-.rca-match-series .rca-match-detail {
-  margin-bottom: 20px; }
-  .rca-match-series .rca-match-detail:last-child {
-    margin: 0px; }
-
-.rca-match-detail h3 {
-  margin: 0px 0px 5px 0px;
-  font-size: 16px; }
-
-.rca-duration {
-  color: #f9690e;
-  margin: 0px 0px 5px 0px; }
-
-.rca-tab-list {
-  border-bottom: 2px solid #E6E6E6;
-  padding: 10px 10px 0 10px; }
-  .rca-tab-list.small {
-    padding-top: 0;
-    border-bottom-width: 0; }
-    .rca-tab-list.small li {
-      border-bottom-width: 2px; }
-  .rca-tab-list li {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    color: #1eb848;
-    line-height: 28px;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin: 0px 7px 0px 7px;
-    border-bottom: 4px solid transparent; }
-    .rca-tab-list li a {
-      display: block;
-      padding: 5px 5px; }
-    .rca-tab-list li:hover, .rca-tab-list li:focus, .rca-tab-list li.active {
-      color: #4d4d4d;
-      border-bottom-color: #1eb848; }
-
-.rca-tab-content {
-  display: none; }
-  .rca-tab-content.active {
-    display: block; }
-
-.rca-tab-simple .rca-match-detail:first-child {
-  padding-top: 0px; }
-
-.rca-inside-tab {
-  margin-bottom: 5px; }
-  .rca-inside-tab h2 {
-    margin: 0px;
-    padding: 15px 10px;
-    background-color: #1eb848;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer; }
-    .rca-inside-tab h2 i {
-      float: right;
-      font-size: 20px;
-      line-height: 20px; }
-  .rca-inside-tab .rca-inside-content {
-    display: none; }
-  .rca-inside-tab.active .rca-inside-content {
-    display: block; }
-
-.rca-match-info {
-  margin: 5px 0px; }
-  .rca-match-info span {
-    padding-right: 10px; }
-    .rca-match-info span:last-child {
-      padding: 0px; }
-
-.rca-batsman {
-  line-height: 30px;
-  padding-left: 42px;
-  position: relative;
-  color: #7d7d7d;
-  padding-bottom: 10px; }
-  .rca-batsman.striker {
-    color: #f9690e; }
-    .rca-batsman.striker::before {
-      background: url(../images/player_1.png) no-repeat; }
-  .rca-batsman::before {
-    content: "";
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: url(../images/player_2.png) no-repeat;
-    background-size: contain;
-    left: 0px; }
-  .rca-batsman .player {
-    min-width: 100px;
-    display: inline-block; }
-
-.rca-ball-by {
-  margin-top: 5px; }
-  .rca-ball-by li {
-    display: inline-block;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 21px;
-    margin-right: 1px;
-    padding-top: 1px;
-    font-size: 12px;
-    background-color: #b3b3b3;
-    color: #fff; }
-    .rca-ball-by li.w {
-      background-color: #d91e18; }
-    .rca-ball-by li.b4, .rca-ball-by li.b6 {
-      background-color: #1eb848; }
-
-.rca-bowler-info {
-  color: #b3b3b3;
-  font-size: 18px;
-  font-weight: 300;
-  margin: 10px 0px; }
-  .rca-bowler-info .rca-bolwing {
-    color: #f9690e; }
-
-.rca-score-status {
-  border-top: 1px solid #b3b3b3;
-  padding-bottom: 0px;
-  position: relative; }
-  .rca-score-status .rca-status-scroll {
-    border-left: 3px solid #1eb848;
-    line-height: 20px;
-    padding: 0px 10px; }
-  .rca-score-status .rca-bullet-list {
-    position: absolute;
-    top: 11px;
-    right: 0px; }
-    .rca-score-status .rca-bullet-list li {
-      width: 7px;
-      height: 7px;
-      margin-bottom: 3px;
-      border-radius: 50%;
-      background-color: #b3b3b3;
-      cursor: pointer; }
-      .rca-score-status .rca-bullet-list li.active {
-        background-color: #1eb848; }
-
-.rca-schedule-widget > h2 {
-  text-align: center;
-  font-weight: 100; }
-
-.rca-schedule-widget .rca-schedule-top {
-  font-weight: 700; }
-  .rca-schedule-widget .rca-schedule-top span {
-    padding: 0px 10px; }
-  .rca-schedule-widget .rca-schedule-top a {
-    display: inline-block; }
-    .rca-schedule-widget .rca-schedule-top a.active {
-      color: #1eb848; }
-
-.rca-schedule-date h4 {
-  color: #7d7d7d;
-  padding: 0px 20px;
-  margin: 10px 0px; }
-
-.rca-schedule-detail {
-  padding: 10px 20px;
-  margin: 10px 0px; }
-  .rca-schedule-detail.rca-test {
-    background-color: #ffebee; }
-  .rca-schedule-detail.rca-odi {
-    background-color: #fff9c4; }
-  .rca-schedule-detail.rca-t20 {
-    background-color: #E3F2FD; }
-  .rca-schedule-detail h2 {
-    font-size: 18px;
-    margin: 0px 0px 5px 0px; }
-    .rca-schedule-detail h2 a {
-      display: block; }
-      .rca-schedule-detail h2 a .rca-team {
-        min-width: 150px;
-        color: #4d4d4d;
-        display: inline-block; }
-      .rca-schedule-detail h2 a .rca-match-time {
-        color: #7d7d7d; }
-      .rca-schedule-detail h2 a:hover .rca-team, .rca-schedule-detail h2 a:hover .rca-match-time, .rca-schedule-detail h2 a:focus .rca-team, .rca-schedule-detail h2 a:focus .rca-match-time {
-        color: #1eb848; }
-  .rca-schedule-detail p {
-    margin: 0px;
-    color: #7d7d7d; }
-
-.rca-day-calendar .rca-row {
-  border-bottom: 1px solid #E6E6E6;
-  display: table;
-  width: 100%; }
-
-.rca-week-day-header {
-  width: 14%;
-  text-align: center;
-  color: #4d4d4d;
-  display: table-cell;
-  font-weight: 700;
-  padding: 10px 0px; }
-
-.rca-week-day {
-  width: 14%;
-  min-height: 120px;
-  color: #4d4d4d;
-  font-size: 13px;
-  font-weight: 700;
-  display: table-cell;
-  padding: 5px;
-  border-right: 1px solid #E6E6E6; }
-  .rca-week-day:last-child {
-    border-right: none; }
-  .rca-week-day .rca-schedule-detail {
-    padding: 5px;
-    margin: 5px 0px; }
-    .rca-week-day .rca-schedule-detail h2 {
-      font-size: 13px;
-      margin: 0px; }
-      .rca-week-day .rca-schedule-detail h2 .rca-team {
-        min-width: 0px;
-        margin-left: 3px; }
-      .rca-week-day .rca-schedule-detail h2 .rca-match-time {
-        text-transform: lowercase; }
-
-.rca-medium-widget {
-  font-size: 16px; }
-  .rca-medium-widget .rca-match-title, .rca-medium-widget .rca-match-info, .rca-medium-widget .rca-live-label {
-    text-align: center;
-    margin-bottom: 10px; }
-  .rca-medium-widget .rca-match-title {
-    font-size: 18px;
-    margin-bottom: 10px; }
-  .rca-medium-widget .rca-batsman {
-    font-size: 18px; }
-    .rca-medium-widget .rca-batsman .player {
-      min-width: 150px; }
-  .rca-medium-widget .rca-match-schedule {
-    font-weight: 500; }
-  .rca-medium-widget .rca-ball-by {
-    margin-top: 10px; }
-    .rca-medium-widget .rca-ball-by li {
-      width: 30px;
-      height: 30px;
-      line-height: 28px;
-      font-size: 14px;
-      font-weight: 700; }
-
-.rca-batting-score, .rca-bowling-score {
-  border-bottom: 1px solid #E6E6E6; }
-  .rca-batting-score.rca-no-border, .rca-bowling-score.rca-no-border {
-    border-bottom: none; }
-  .rca-batting-score h3, .rca-bowling-score h3 {
-    font-size: 20px;
-    font-weight: 300;
-    margin: 5px 0px 20px 0px; }
-  .rca-batting-score .rca-table, .rca-bowling-score .rca-table {
-    width: 100%;
-    padding: 10px; }
-  .rca-batting-score .rca-header, .rca-bowling-score .rca-header {
-    width: 100%;
-    padding: 10px;
-    background: #f2f2f2; }
-  .rca-batting-score .rca-score-bottom, .rca-bowling-score .rca-score-bottom {
-    margin: 20px 0px 10px 0px; }
-  .rca-batting-score .rca-col, .rca-bowling-score .rca-col {
-    display: table-cell;
-    width: 15%; }
-    .rca-batting-score .rca-col.small, .rca-bowling-score .rca-col.small {
-      width: 10%; }
-    .rca-batting-score .rca-col.rca-player, .rca-bowling-score .rca-col.rca-player {
-      width: 40%; }
-
-.rca-border-bottom {
-  border-bottom: 1px solid #E6E6E6; }
-
-.rca-switch {
-  color: #1eb848;
-  font-weight: 700; }
-  .rca-switch span {
-    display: inline-block;
-    padding-right: 20px;
-    cursor: pointer; }
-    .rca-switch span.active {
-      color: #4d4d4d; }
-  .rca-switch.filled {
-    border: 1px solid #1eb848;
-    display: inline-block; }
-    .rca-switch.filled span {
-      border-right: 1px solid #1eb848;
-      padding: 10px 20px; }
-      .rca-switch.filled span:last-child {
-        border-right: none; }
-      .rca-switch.filled span.active {
-        background-color: #1eb848;
-        color: #fff; }
-
-.rca-history-info {
-  min-height: 0px;
-  font-size: 16px;
-  border: 1px solid #f1f1f1; }
-  .rca-history-info .rca-row {
-    display: table; }
-    .rca-history-info .rca-row:first-child .rca-history-title {
-      padding-top: 30px; }
-    .rca-history-info .rca-row:last-child .rca-history-title {
-      padding-bottom: 30px; }
-  .rca-history-info .rca-col {
-    padding: 15px 20px;
-    display: table-cell; }
-  .rca-history-info .rca-history-title {
-    width: 150px;
-    padding: 15px 20px;
-    background-color: #f1f1f1; }
-
-.rca-team-score {
-  font-size: 18px;
-  padding-bottom: 20px; }
-  .rca-team-score .team {
-    min-width: 100px;
-    display: inline-block; }
-
-.rca-man-match, .rca-match-start {
-  min-height: 100px;
-  border: 1px solid #f1f1f1; }
-  .rca-man-match h3, .rca-match-start h3 {
-    background-color: #f1f1f1;
-    margin: 0px;
-    padding: 10px 20px;
-    font-size: inherit;
-    line-height: 20px;
-    font-weight: 300; }
-    .rca-man-match h3 span, .rca-match-start h3 span {
-      color: #f9690e;
-      margin-left: 7px; }
-  .rca-man-match .rca-padding, .rca-match-start .rca-padding {
-    padding: 10px 20px; }
-
-.rca-match-start {
-  text-align: center; }
-  .rca-match-start h2 {
-    color: #f9690e;
-    font-size: 30px;
-    font-weight: 300; }
-
-.rca-man-match-record {
-  margin: 10px 0px; }
-  .rca-man-match-record .title {
-    min-width: 150px;
-    display: inline-block; }
-
-.rca-teams {
-  font-size: 22px;
-  font-weight: 300;
-  text-align: center;
-  padding: 20px;
-  margin: 0 auto; }
-  .rca-teams .team {
-    padding: 0px 20px;
-    width: 150px;
-    vertical-align: middle; }
-
-.rca-player-detail {
-  background-color: #f2f2f2;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-  line-height: 20px; }
-  .rca-player-detail .rca-player {
-    min-width: 150px; }
-
-.rca-wicket-falls {
-  padding-left: 20px; }
-  .rca-wicket-falls li {
-    margin-bottom: 10px; }
-
-.rca-multi-season > .rca-tab-list {
-  padding: 0;
-  border-bottom: none; }
-  .rca-multi-season > .rca-tab-list li {
-    font-size: 12px;
-    padding: 0 5px;
-    margin: 0;
-    color: #b3b3b3; }
-    .rca-multi-season > .rca-tab-list li .rca-live-label::before {
-      display: none; }
-    .rca-multi-season > .rca-tab-list li:hover, .rca-multi-season > .rca-tab-list li:focus {
-      color: #4d4d4d;
-      border-bottom: none; }
-    .rca-multi-season > .rca-tab-list li.active {
-      color: #4d4d4d;
-      border-bottom: none; }
-      .rca-multi-season > .rca-tab-list li.active .rca-live-label::before {
-        display: inline-block; }
-
-.rca-squad-season > .rca-tab-list {
-  padding: 0;
-  border-bottom: none; }
-  .rca-squad-season > .rca-tab-list li:hover, .rca-squad-season > .rca-tab-list li:focus {
-    border-bottom-color: transparent; }
-  .rca-squad-season > .rca-tab-list li.active {
-    border-bottom-color: transparent; }
-
-.rca-stats-title {
-  text-align: center;
-  font-weight: 100; }
-
-.rca-stats.rca-micro-widget .rca-match-start {
-  border: none; }
-
-.rca-stats.rca-micro-widget h2 {
-  font-size: 78px;
-  font-weight: bold; }
-
-.rca-stats .rca-batting-score .rca-col, .rca-stats .rca-bowling-score .rca-col {
-  width: 12%; }
-  .rca-stats .rca-batting-score .rca-col.rca-player, .rca-stats .rca-bowling-score .rca-col.rca-player {
-    width: 20%; }
-
-.rca-stats .rca-match-start h3 {
-  font-size: 15px;
-  font-weight: bold; }
-  .rca-stats .rca-match-start h3.top-bowl {
-    background-color: #602D91;
-    color: #fff; }
-  .rca-stats .rca-match-start h3.top-score {
-    background-color: #f9690e;
-    color: #fff; }
-
-.rca-stats h2 {
-  font-size: 20px;
-  font-weight: 300;
-  margin: 0;
-  text-align: center; }
-
-.rca-stats .rca-match-start h2 {
-  margin: 10px 0; }
-
-.rca-stats .rca-name-tag {
-  margin: 10px 0; }
-  .rca-stats .rca-name-tag .rca-name-info {
-    width: 150px; }
-  .rca-stats .rca-name-tag .rca-tag-info {
-    color: #7d7d7d; }
-  .rca-stats .rca-name-tag .rca-name-score {
-    color: #f9690e;
-    text-align: right; }
-  .rca-stats .rca-name-tag .rca-table {
-    padding: 5px;
-    border-bottom: 1px solid #f1f1f1; }
-    .rca-stats .rca-name-tag .rca-table:last-child {
-      border-bottom: none; }
-
-.rca-ad-block {
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-  width: 100%;
-  height: 90px;
-  display: block; }
-  .rca-ad-block.vertical-sm {
-    height: 150px; }
-  .rca-ad-block.vertical-lg {
-    height: 250px; }
-
-.rca-logo h2 {
-  margin: 0px;
-  padding: 20px 0px;
-  font-weight: normal; }
-  .rca-logo h2 span {
-    vertical-align: middle;
-    display: inline-block; }
-  .rca-logo h2 img {
-    max-width: 100%;
-    max-height: 50px;
-    vertical-align: middle;
-    padding: 5px; }
-
-.rca-news-widget {
-  min-width: 200px;
-  max-width: 100%;
-  min-height: 425px;
-  background-color: #fff;
-  margin: 10px 0px; }
-  .rca-news-widget h3 {
-    background-color: #d91e18;
-    padding: 5px 5px 5px 10px;
-    color: #fff;
-    margin: 0px; }
-  .rca-news-widget img {
-    margin-right: 15px;
-    border-radius: 3px; }
-
-.rca-post {
-  border-bottom: 1px solid #b3b3b3;
-  margin-bottom: 10px; }
-  .rca-post h4 {
-    margin: 5px 0 0 0; }
-  .rca-post p {
-    margin: 15px 0 5px 0; }
-    .rca-post p img {
-      margin-top: 5px; }
-  .rca-post .rca-post-info {
-    color: #b3b3b3;
-    margin-top: 5px;
-    font-size: 13px; }
-  .rca-post .rca-post-desc img {
-    max-width: 100%;
-    margin: 10px 0 0 0; }
-
-.rca-blog-image {
-  position: relative;
-  text-align: center;
-  background-color: #b3b3b3; }
-  .rca-blog-image img {
-    max-width: 100%;
-    max-height: 300px; }
-  .rca-blog-image .rca-blog-head {
-    position: absolute;
-    bottom: 3px;
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(125, 125, 125, 0.7);
-    color: #fff; }
-
-.rca-footer {
-  padding: 10px 0; }
-  .rca-footer li {
-    display: inline-block;
-    padding: 0 5px; }
-
-
-
-@media (max-width: 767px) {
-  .rca-column-1, .rca-column-2, .rca-column-3, .rca-column-4, .rca-column-5, .rca-column-6, .rca-column-7, .rca-column-8, .rca-column-9, .rca-column-10, .rca-column-11, .rca-column-12 {
-    width: 100%;
-    padding: 0; }
-  .rca-mini-widget.rca-stats {
-    min-width: 0; }
-  .rca-hide-mobile {
-    display: none !important; }
-  .rca-stats .rca-name-tag .rca-name-info {
-    width: 100px; }
-  .rca-menu-scroll .rca-season-list > li {
-    float: left;
-    width: 33.33%;
-    border-right: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6; }
-    .rca-menu-scroll .rca-season-list > li:nth-child(3), .rca-menu-scroll .rca-season-list > li:nth-child(6), .rca-menu-scroll .rca-season-list > li:nth-child(9), .rca-menu-scroll .rca-season-list > li:nth-child(12), .rca-menu-scroll .rca-season-list > li:nth-child(15), .rca-menu-scroll .rca-season-list > li:nth-child(18) {
-      border-right: none; } }
-
-@media (min-width: 768px) and (max-width: 992px) {
-  .rca-column-1, .rca-column-2, .rca-column-3, .rca-column-4, .rca-column-5, .rca-column-6 {
-    width: 50%; } }
-
-@media (min-width: 767px) {
-  .rca-column-1, .rca-column-2, .rca-column-3, .rca-column-4, .rca-column-5, .rca-column-6, .rca-column-7, .rca-column-8, .rca-column-9, .rca-column-10, .rca-column-11, .rca-column-12 {
-    float: left; }
-  .rca-hide-desk {
-    display: none !important; } }
-</style>
-
-  </head>
-  <body>
-   
-
-
-        <div class="rca-column-4">
-       
-          <div class="rca-mini-widget rca-top-border rca-tab-simple">
-            
-            <div id="ltab-1" class="rca-padding rca-tab-content rca-multi-season active">    
-           
-              <div id="iltab-1" class="rca-tab-content active">         
-                <div class="rca-padding">
-                  <h3 class="rca-match-title">
-                    <a href="/widgets.html">
-                      MLC: 0/0 in 0
-                    </a>
-                  </h3>
-                  <p class="rca-match-info">
-                    <span>Scorp: 100/10 in 9.0</span>
-                    <span>CRR: here</span>
-                    <span>Req RR: here</span>
-                  </p>
-                  <div class="rca-top-padding">
-                    <div class="rca-batsman striker">
-                      <span class="player">V Kohli</span>
-                      <span>0(0)</span>
-                    </div>
-                    <div class="rca-batsman">
-                      <span class="player">MS Dhoni</span>
-                      <span>0(0</span>
-                    </div>
-                  </div>
-                  <div class="rca-ball-detail">
-                    <div class="rca-match-schedule">
-                      Over: 0
-                    </div>
-                    <ul class="rca-ball-by">
-                      <li class="b6">0</li>
-                      <li class="">0</li>
-                      <li class="w">0</li>
-                      <li class="">0</li>
-                      <li class="">0</li>
-                      <li class="b6">0</li>
-                    </ul>
-                  </div>
-                </div>
-         
-              </div>
-  
-            </div>
-  
-  
-          </div>
- 
-        </div>
-
-    <div class="rca-container rca-margin">
-      
-      
-      <div class="rca-row">
-        
-        <div class="rca-column-6">
-       
- 
-        
-
-
-
-
-          <div class="rca-mini-widget rca-history-info">
-            
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Match:</span>
-              <span class="rca-col" id="showteams"></span>
-            </div>
-            
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Match ID:</span>
-              <span class="rca-col" id="showmatchid"></span>
-            </div>
-      
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Ground:</span>
-              <span class="rca-col" id="showground"></span>
-            </div>
-            
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Match Type:</span>
-              <span class="rca-col"  id="showovers"></span>
-            </div>
-            
-            <div class="rca-row">
-              <span class="rca-col rca-history-title">Toss:</span>
-              <span class="rca-col" id="showtoss"></span>
-            </div>
-          </div>
-
-
-
-        <div class="rca-mini-widget rca-history-info">
-            
-            <div class="rca-row">
-            
-              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttonzero">0</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttonone">1</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttontwo">2</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark" id="buttonthree">3</button></span>
-            </div>
-            
-            <div class="rca-row">
-              <span class="rca-col"><button type="button" class="btn btn-dark">4</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark">5</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-dark">6</button></span>
-              <span class="rca-col"><button type="button" class="btn btn-danger" id="buttonwicket">W</button></span>
-            </div>
-      
- 
-
-          </div>
-
-
-        </div>
-
-        <div class="rca-column-6">
-       
-          <div class="rca-medium-widget rca-top-border ">
-            <ul class="rca-tab-list">
-              <li class="rca-tab-link active" data-tab="tab-41" onclick="showTab(this);">SCORECARD</li>
-              <li class="rca-tab-link" data-tab="tab-42" onclick="showTab(this);">SQUAD</li>
-              <li class="rca-tab-link" data-tab="tab-43" onclick="showTab(this);">Ball By Ball</li>
-            </ul>
-            
-            <div id="tab-41" class="rca-tab-content rca-padding active">
-              <div class="rca-batting-score rca-padding">
-                <h3>Team <span id="currbatteam"></span> Batting: <strong> 92/2 in 8.5</strong></h3>
-                <div class="rca-row">
-                  <div class="rca-header rca-table">
-                    <div class="rca-col rca-player">
-                      Batsmen
-                    </div>
-                    <div class="rca-col">
-                      R
-                    </div>
-                    <div class="rca-col">
-                      4s
-                    </div>
-                    <div class="rca-col">
-                      6s
-                    </div>
-                    <div class="rca-col">
-                      SR
-                    </div>
-                  </div>
-                </div>
-                <div class="rca-row">
-                  <div class="rca-table">
-                    <div class="rca-col rca-player">
-                      Player 1 name here
-                    </div>
-                    <div class="rca-col">
-                      8 (7)
-                    </div>
-                    <div class="rca-col">
-                      0
-                    </div>
-                    <div class="rca-col">
-                      1
-                    </div>
-                    <div class="rca-col">
-                      114.29
-                    </div>
-                  </div>
-                </div>
-                <div class="rca-row">
-                  <div class="rca-table">
-                    <div class="rca-col rca-player">
-                      Player 2 name here
-                    </div>
-                    <div class="rca-col">
-                      8 (7)
-                    </div>
-                    <div class="rca-col">
-                      0
-                    </div>
-                    <div class="rca-col">
-                      1
-                    </div>
-                    <div class="rca-col">
-                      114.29
-                    </div>
-                  </div>
-                </div>
-                <div class="rca-clear"></div>
-                <div class="rca-padding">
-                  <span>Fours: <strong>0</strong></span>, <span>Sixes: <strong>0</strong></span>, <span>Extras: <strong>0</strong></span>
-                </div>
-              </div>
-              <div class="rca-bowling-score rca-padding">
-                <h3>Team X Bowling:</h3>
-                <div class="rca-row">
-                  <div class="rca-header rca-table">
-                    <div class="rca-col rca-player">
-                      Bowler
-                    </div>
-                    <div class="rca-col small">
-                      O
-                    </div>
-                    <div class="rca-col small">
-                      M
-                    </div>
-                    <div class="rca-col small">
-                      R
-                    </div>
-                    <div class="rca-col small">
-                      W
-                    </div>
-                    <div class="rca-col small">
-                      Econ
-                    </div>
-                    <div class="rca-col small">
-                      Extras
-                    </div>
-                  </div>
-                </div>
-                <div class="rca-row">
-                  <div class="rca-table">
-                    <div class="rca-col rca-player">
-                      Player Y
-                    </div>
-                    <div class="rca-col small">
-                      6
-                    </div>
-                    <div class="rca-col small">
-                      2
-                    </div>
-                    <div class="rca-col small">
-                      38
-                    </div>
-                    <div class="rca-col small">
-                      2
-                    </div>
-                    <div class="rca-col small">
-                      7.00
-                    </div>
-                    <div class="rca-col small">
-                      3
-                    </div>
-                  </div>
-                </div>
-           
-                <div class="rca-clear"></div>
-              </div>
-
-            </div>
-
-
-
-
-
-            <div id="tab-42" class="rca-tab-content rca-padding">
-              <ul class="rca-tab-list small">
-                <li class="rca-tab-link active" id="team1pla" data-tab="tab-411" onclick="showTab(this);"></li>
-                <li class="rca-tab-link" id="team2pla" data-tab="tab-412" onclick="showTab(this);"></li>
-              </ul>
-              <div id="tab-411" class="rca-tab-content rca-padding active">
-                            
-                  <div class="rca-switch filled">
-                    <span class="active">Team X</span><span>Team Y</span>
-                  </div>
-                </div> 
-
-                <h5>Playing 11</h5>
-
-                <div class="rca-batting-score" id="team1pla11">
-                  
-                  
-                
-                </div>
-              
-              </div>
-              
-              <div id="tab-412" class="rca-tab-content rca-padding active">
-                               
-                  <div class="rca-switch filled">
-                    <span class="active">Team X</span><span>Team Y</span>
-                  </div>
-                </div> 
-                <h5>Playing 11</h5>
-                
-                <div class="rca-batting-score" id="team2pla11">
-                
-                </div>
-              
-              </div>
-            </div>
-
-        </div>
-      </div>
-    </div> 
-  
-  <script>
-
-    function showTab(event) 
-    {
-      var sourceParent = event.parentElement.parentElement;
-      var sourceChilds = sourceParent.getElementsByClassName("rca-tab-content");
-      var sourceLinkParent = sourceParent.getElementsByClassName("rca-tab-link");
-      for (var i=0; i < sourceChilds.length; i++) {
-        sourceChilds.item(i).classList.remove("active");
-      }
-      for (var i=0; i < sourceLinkParent.length; i++) {
-        sourceLinkParent.item(i).classList.remove("active");
-      }
-      var dataTab= event.getAttribute("data-tab");
-
-      event.classList.add("active");
-      document.getElementById(dataTab).className += ' active';
-    }
-  </script>
-    
-
-<script type="module">
-  
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-
-          import { getDatabase , set , ref , push , child , onValue , get } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-          
-          var firebaseConfig = 
-          {
-            apiKey: "AIzaSyAest1kY2wkdzwWCPf7-bkwyhWLekXZDhE",
-            authDomain: "cricket-master-d3c58.firebaseapp.com",
-            databaseURL: "https://cricket-master-d3c58-default-rtdb.firebaseio.com",
-            projectId: "cricket-master-d3c58",
-            storageBucket: "cricket-master-d3c58.appspot.com",
-            messagingSenderId: "554998698559",
-            appId: "1:554998698559:web:6617512d672bc484305e8a"
-          };
-
-          
-          const app = initializeApp(firebaseConfig);
-          const database = getDatabase(app);
-
-          var selectedmatch = localStorage.getItem("MatchSelected");
-
-          console.log("match selected is"+selectedmatch);
-
-const matchref = ref(database,selectedmatch+"/");
-
-function getdetails() 
-{
-  
-  onValue(matchref,(snapshot)=>
-  {
-    snapshot.forEach(snap => {
-      
-      const issue = snap.val(); 
-
-      console.log(issue);
-
-      document.getElementById("showteams").innerHTML += `${issue.Team1} vs ${issue.Team2}`
-      document.getElementById("showmatchid").innerHTML += `${issue.MatchID}` 
-      document.getElementById("showground").innerHTML += `${issue.Ground}` 
-      document.getElementById("showovers").innerHTML += `${issue.Overs} overs` 
-      document.getElementById("showtoss").innerHTML += `${issue.Team1} won the toss and opted to ${issue.OptedTo}` 
-      
-      document.getElementById("team1pla").innerHTML += `${issue.Team1}` 
-      document.getElementById("team2pla").innerHTML += `${issue.Team2}` 
-
-      document.getElementById("team1pla11").innerHTML += `
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[0]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[1]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[2]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[3]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[4]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[5]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[6]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[7]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[8]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[9]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teamaselected[10]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-                                                        `
-
-
-            document.getElementById("team2pla11").innerHTML += `
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[0]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[1]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[2]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[3]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[4]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[5]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[6]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[7]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[8]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[9]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-
-                <div class="rca-player-detail">
-                    <span class="rca-player">${issue.teambselected[10]}</span>
-                    <span class="rca-right rca-basic-text">Batsman</span>
-                </div>
-                                                        `
-
-    })
-  }
-)}
-
-
-window.onload=getdetails;
-
-
-</script>
-
-
-
-  </body>  
-</html>  -->
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -1460,15 +73,12 @@ window.onload=getdetails;
         <header class="header">
  
 
-
-    
-        </header>
-        <!-- Header strat -->
-
-        <div id="main" class="main-container">
+         <div id="main" class="main-container">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9">
+                        <section class="live-matches p-0">
+
                         <section class="live-matches p-0">
                             <div class="card card-shadow p-0">
                                 <div class="score-card score-card-lg d-md-flex p-0">
@@ -1487,7 +97,7 @@ window.onload=getdetails;
                                                 </div>
                                                 <div class="score-update ml-10">
                         <strong id="teamascore">0</strong>/<strong id="teamawickets">0</strong>
-                                         <p class="text-muted" id="teamaovers">0 ov</p>
+                                         <p class="text-muted" id="teamaovers">0.0</p>
                                                 </div>
                                             </div>
                                          
@@ -1504,7 +114,7 @@ window.onload=getdetails;
                                                 </div>
                                                 <div class="score-update">
                           <strong id="teambscore">0</strong>/<strong id="teambwickets">0</strong>
-                                                    <p class="text-muted" id="teambovers">0 ov</p>
+                                                    <p class="text-muted" id="teambovers">0.0</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1519,14 +129,29 @@ window.onload=getdetails;
                                        Current Over : <span id="currentovertext">  </span>   
                                     </div>
 
+                         <button class="btn btn-dark" onclick="openPage('Live', this, 'red')" id="defaultOpen">Live</button>
+                          <button class="btn btn-dark" onclick="openPage('Commentary', this, 'green')">Commentary</button>
+                          <button class="btn btn-dark" onclick="openPage('Scorecard', this, 'blue')">Scorecard</button>
+                          <button class="btn btn-dark" onclick="openPage('Teams', this, 'orange')">Teams</button>
+                     
                                 </div>
                             </div>
-                            
 
+                          </section>
+                        </div>
+                      </div>
+        </header>
+        <!-- Header strat -->
 
-                                        
+<div id="Live" class="tabcontent">
+  <div id="Live">
+        <div id="main" class="main-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <section class="live-matches p-0">
 
-                            <div class="card card-shadow p-0">
+                          <div class="card card-shadow p-0" id="live">
                                 <div class="table-responsive">
                                     <table class="widget-table table table-striped table-medium no-border">
                                         <thead>
@@ -1600,6 +225,13 @@ window.onload=getdetails;
                                 </div>
                             </div>
 
+                            <div class="card card-shadow">
+                                <div class="spell-sum-box">
+                        <h5>Last Bat: <span id="lastbat"> </span></h5>
+                                </div>
+                            </div>
+
+
  <div id="popup">
         
        
@@ -1660,89 +292,54 @@ window.onload=getdetails;
                                 </div>
                             </div>
                         </section>
+</div>
+</div>
 
 
-                        <!-- Full Commentary start -->
-                        <section class="pt-0">
-                            <div class="widget widget-rankings">
-                                <h3 class="widget-title">Full Commentary</h3>
-                                <div class="card card-shadow">
-                                   
-                                    <div class="commentary-box">
-                                        <div class="commentary-header">
-                                            <h5>In this over</h5>
-                                            <p>Over 90.5 Wicket 5 Runs 0 WICKETS Bowler: Shannon Gabriel</p>
-                                        </div>
-                                        <div class="commentary-body">
-                                            <ul class="commentary-list">
-                                                <li>
-                                                    <div>
-                                                        <h5>89.6</h5>
-                                                        <span class="bg-success">6</span>
-                                                    </div>
-                                                    <p>
-                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
-                                                        augment his batting arsenal.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5>89.5</h5>
-                                                        <span>2</span>
-                                                    </div>
-                                                    <p>
-                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
-                                                        augment his batting arsenal.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5>89.4</h5>
-                                                        <span>3</span>
-                                                    </div>
-                                                    <p>
-                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
-                                                        augment his batting arsenal.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5>83.3</h5>
-                                                        <span class="bg-danger">W</span>
-                                                    </div>
-                                                    <p>
-                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
-                                                        augment his batting arsenal.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5>89.2</h5>
-                                                        <span>0</span>
-                                                    </div>
-                                                    <p>
-                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
-                                                        augment his batting arsenal.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5>89.1</h5>
-                                                        <span class="bg-primary">4</span>
-                                                    </div>
-                                                    <p>
-                                                        It's not like Smith needed to augment his batting arsenal, but the erstwhile captain has now. It's not like Smith needed. It's not like Smith needed to
-                                                        augment his batting arsenal.
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- Full Commentary end -->
-                    </div>
+<div class="modal fade" id="onlybatterdisplay" role="dialog">
+  <div class="modal-dialog" class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Choose new batter</h4>
+      </div>
+      
+      <div class="modal-body">
+        <div class="dropdown">
+          <select id="selectnewbatter">
+              <option>Batter list</option>
+          </select>
+
+
+          <h3>Select wicket type</h3>
+        <select class="form-select" id="wicketdisplay" aria-label="Default select example">    
+            <option value="b" id="bowled">Bowled</option>
+            <option value="c" id="caught">Caught</option>
+            <option value="c&b" id="caught&bowled">C&B</option>
+            <option value="lbw" id="lbw">LBW</option>
+        </select> 
+
+        <br><br>
+
+        <select class="form-select" id="bowlerlistifcaught" aria-label="Default select example" style="visibility:hidden;"> 
+
+
+        </select>
+
+        <br><br>
+
+        <button type="submit" id="savewickettype" class="btn btn-primary">Save Wicket</button>
+
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" id="savenewbatter" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
@@ -1768,15 +365,267 @@ window.onload=getdetails;
   </div>
 </div>
 
-                <div class="col-lg-3">
-                        <!-- Right Sidebar start -->
-                        <aside class="sidebar right-sidebar">
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+<div id="Commentary" class="tabcontent">
+   <div id="Commentary">                    
+    <div id="main" class="main-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <section class="live-matches p-0">
+
+                        <section class="pt-0">
+                            <div class="widget widget-rankings">
+                                <h3 class="widget-title">Full Commentary</h3>
+                                <div class="card card-shadow">
+                                   
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                            <p id="inthisovertext"></p>
+                                        </div>
+                                        
+                                        <div class="commentary-body">
+                                            
+                                            <ul class="commentary-list" id="addcommentary">
+
+
+
+
+                                            </ul>
+
+                                                
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+    </div> 
+  </div>
+</div>
+
+<div id="Scorecard" class="tabcontent">
+    <div id="Scorecard">
+      <div id="main" class="main-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <section class="live-matches p-0">
+
+                        <div class="accordion" id="accordion">
+                                <div class="accordion-item">
+                                    <h5 class="" data-toggle="collapse" data-target="#bd_innings" aria-expanded="true">Bangladesh Innings</h5>
+                                    <div id="bd_innings" class="collapse show" data-parent="#accordion">
+                                        <div class="acr-body">
+                                            <div class="card card-shadow p-0">
+                                                <div class="table-responsive">
+                                                    <table class="widget-table table table-striped table-medium no-border">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Batsmen</th>
+                                                                <th scope="col"></th>
+                                                                <th scope="col">r</th>
+                                                                <th scope="col">b</th>
+                                                                <th scope="col">4s</th>
+                                                                <th scope="col">6s</th>
+                                                                <th scope="col">sr</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Todd Astle</td>
+                                                                <td>c Astle b Nuttall</td>
+                                                                <td><strong>14</strong></td>
+                                                                <td>10</td>
+                                                                <td>3</td>
+                                                                <td>0</td>
+                                                                <td>140.00</td>
+                                                            </tr>
+                                            
+                                                   
+                                                            <tr>
+                                                                <td><strong>Extras</strong></td>
+                                                                <td>b 0, lb 2, w 0, nb 0, p 0</td>
+                                                                <td class="text-left" colspan="5"><strong>2</strong></td>
+                                                            </tr>
+                                                            <tr class="score-text-bold">
+                                                                <td>Total Score</td>
+                                                                <td>10 wkts, 79.1 Ov</td>
+                                                                <td class="text-left" colspan="5">259</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="spell-sum-box px-30 py-20">
+                                                        <h5>Did not bat: <span>Anton Devcich (c), Brett Hampton, Scott Kuggeleijn, Tim Southee, Anurag Verma, Joe Walker, Trent Boult</span></h5>
+                                                        <h5 class="d-sm-flex">
+                                                            Fall of Wickets:
+                                                            <span class="ml-05"
+                                                                >19-1 (Lahiru Thirimanne, 6.4), 51-2 (Oshada Fernando, 18.2), 53-3 (Dimuth Karunaratne, 19.6), 76-4 (Kusal Mendis, 25.4), 90-5 (Niroshan Dickwella,
+                                                                29.2), 133-6 (Dhananjaya de Silva, 38.5), 142-7 (Suranga Lakmal, 40.1), 152-8 (Kusal Perera, 44.3), 184-9 (Kasun Rajitha, 55.3), 191-10 (Lasith
+                                                                Embuldeniya, 59.2)
+                                                            </span>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-shadow p-0">
+                                                <div class="table-responsive">
+                                                    <table class="widget-table table table-striped table-medium no-border">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Bowlers</th>
+                                                                <th scope="col">o</th>
+                                                                <th scope="col">m</th>
+                                                                <th scope="col">r</th>
+                                                                <th scope="col">w</th>
+                                                                <th scope="col">econ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#"><strong>joe Walker*</strong></a> (ob)
+                                                                </td>
+                                                                <td><strong>2.5</strong></td>
+                                                                <td>0</td>
+                                                                <td>22</td>
+                                                                <td>0</td>
+                                                                <td>7.76</td>
+                                                            </tr>
+                                              
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h5 class="collapsed" data-toggle="collapse" data-target="#ind_innings" aria-expanded="true">India Innings</h5>
+                                    <div id="ind_innings" class="collapse" data-parent="#accordion">
+                                        <div class="acr-body">
+                                            <div class="card card-shadow p-0">
+                                                <div class="table-responsive">
+                                                    <table class="widget-table table table-striped table-medium no-border">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Batsmen</th>
+                                                                <th scope="col"></th>
+                                                                <th scope="col">r</th>
+                                                                <th scope="col">b</th>
+                                                                <th scope="col">4s</th>
+                                                                <th scope="col">6s</th>
+                                                                <th scope="col">sr</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Todd Astle</td>
+                                                                <td>c Astle b Nuttall</td>
+                                                                <td><strong>14</strong></td>
+                                                                <td>10</td>
+                                                                <td>3</td>
+                                                                <td>0</td>
+                                                                <td>140.00</td>
+                                                            </tr>
+                                                
+                                                            <tr>
+                                                                <td><strong>Extras</strong></td>
+                                                                <td>b 0, lb 2, w 0, nb 0, p 0</td>
+                                                                <td class="text-left" colspan="5"><strong>2</strong></td>
+                                                            </tr>
+                                                            <tr class="score-text-bold">
+                                                                <td>Total Score</td>
+                                                                <td>10 wkts, 79.1 Ov</td>
+                                                                <td class="text-left" colspan="5">259</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="spell-sum-box px-30 py-20">
+                                                        <h5>Did not bat: <span>Anton Devcich (c), Brett Hampton, Scott Kuggeleijn, Tim Southee, Anurag Verma, Joe Walker, Trent Boult</span></h5>
+                                                        <h5 class="d-sm-flex">
+                                                            Fall of Wickets:
+                                                            <span class="ml-05"
+                                                                >19-1 (Lahiru Thirimanne, 6.4), 51-2 (Oshada Fernando, 18.2), 53-3 (Dimuth Karunaratne, 19.6), 76-4 (Kusal Mendis, 25.4), 90-5 (Niroshan Dickwella,
+                                                                29.2), 133-6 (Dhananjaya de Silva, 38.5), 142-7 (Suranga Lakmal, 40.1), 152-8 (Kusal Perera, 44.3), 184-9 (Kasun Rajitha, 55.3), 191-10 (Lasith
+                                                                Embuldeniya, 59.2)
+                                                            </span>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-shadow p-0">
+                                                <div class="table-responsive">
+                                                    <table class="widget-table table table-striped table-medium no-border">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Bowlers</th>
+                                                                <th scope="col">o</th>
+                                                                <th scope="col">m</th>
+                                                                <th scope="col">r</th>
+                                                                <th scope="col">w</th>
+                                                                <th scope="col">econ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#"><strong>joe Walker*</strong></a> (ob)
+                                                                </td>
+                                                                <td><strong>2.5</strong></td>
+                                                                <td>0</td>
+                                                                <td>22</td>
+                                                                <td>0</td>
+                                                                <td>7.76</td>
+                                                            </tr>
+                                                  
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="Teams" class="tabcontent">
+  <div id="Teams">
+
+     <div id="main" class="main-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <section class="live-matches p-0">
+
+                  <div class="col-lg-3">
+
+                                <aside class="sidebar right-sidebar">
                             <div class="widget widget-upcoming-match">
                                 <h3 class="widget-title">Teams</h3>
 
                                 <div class="card card-shadow">
                                     <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#series" class="active" id="team1pla"></a></li>
+                        <li class="active"><a data-toggle="tab" href="#series" class="active" id="team1pla"></a></li>
                             <li><a data-toggle="tab" href="#league" id="team2pla"></a></li>
                                     </ul>
 
@@ -1817,13 +666,25 @@ window.onload=getdetails;
                                     <!-- <div class="card-header"></div> -->
                                 </div>
                             </div>
-
-
+                        </aside>
 
 
                 </div>
-            </div>
-        </div>
+  </div>
+</div>
+
+</section>
+</div>
+</div>
+</div>
+
+
+                            
+
+
+
+
+
 
 
         <!-- JS -->
@@ -1854,6 +715,30 @@ window.onload=getdetails;
       event.classList.add("active");
       document.getElementById(dataTab).className += ' active';
     }
+
+    function openPage(pageName, elmnt, color) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Remove the background color of all tablinks/buttons
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+
+  // Show the specific tab content
+  document.getElementById(pageName).style.display = "block";
+
+  // Add the specific color to the button used to open the tab content
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
   </script>
 
 
@@ -1870,6 +755,10 @@ window.onload=getdetails;
 
     var select = document.getElementById("selectbowler");
 
+    var selectnewbatter = document.getElementById("selectnewbatter");
+    var savenewbatter = document.getElementById("savenewbatter");
+    var savewickettype = document.getElementById("savewickettype");
+
     let btnwicket = document.querySelector('#buttonwicket');
     
     //declare striker and non striker details
@@ -1882,6 +771,10 @@ window.onload=getdetails;
     let batter1namepara = document.getElementById('batter1namepara');
     let batter2namepara = document.getElementById('batter2namepara'); 
 
+
+    let inthisovertext = document.getElementById("inthisovertext");
+    let addcommentary = document.getElementById("addcommentary");
+
     let strikerstar = document.getElementById('strikerstar');
     let nonstrikerstar = document.getElementById('nonstrikerstar'); 
 
@@ -1891,6 +784,14 @@ window.onload=getdetails;
     let batter1bowlcount = document.getElementById('batter1bowlcount');
     let batter2scorepara = document.getElementById('batter2scorepara');
     let batter2bowlcount = document.getElementById('batter2bowlcount');
+    let batter1strikeratecount = document.getElementById('batter1strikeratecount');
+    let batter2strikeratecount = document.getElementById('batter2strikeratecount');
+
+    let batter1fourcount = document.getElementById('batter1fourcount');
+    let batter1sixcount = document.getElementById('batter1sixcount');
+
+    let batter2fourcount = document.getElementById('batter2fourcount');
+    let batter2sixcount = document.getElementById('batter2sixcount');
 
     //bowler details
 
@@ -1938,7 +839,7 @@ window.onload=getdetails;
   
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-          import { getDatabase , set , ref , push , child , onValue , get} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          import { getDatabase , set , ref , update , push , child , onValue , get} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
           
           var firebaseConfig = 
           {
@@ -1968,6 +869,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
     
             var teamaselected = localStorage.getItem("teamaselected");
             var teambselected = localStorage.getItem("teambselected");
+
             
             console.log("selectedmatch"+selectedmatch)
             
@@ -1976,6 +878,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
               console.log("Team A"+teamaselected);
                console.log("Team B"+teambselected);
 
+    
                let getstrikerslist;
                let getbowlerslist;
 
@@ -1983,25 +886,30 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                    var battingfirst = teamaselected;
                }
 
                if (teamtoss == teamaselected && choice == "Bowl")
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                    var battingfirst = teambselected;
                }
 
                if (teamtoss == teambselected && choice == "Bat")
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                    var battingfirst = teambselected;
                }
 
                if (teamtoss == teambselected && choice == "Bowl")
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                    var battingfirst = teamaselected;
                }
+
           
 
 const matchref = ref(database,selectedmatch+"/");
@@ -2017,7 +925,8 @@ var nonstrikerscore=0;
 var strikerballs=0;
 var nonstrikerballs=0;
 
-
+var teama=[];
+var teamb=[];
     
 
 function getdetails() 
@@ -2043,7 +952,7 @@ function getdetails()
               
               document.getElementById("matchdetails").innerHTML = `<b>${issue.MatchID}</b> at ${issue.Ground}, ${issue.Overs} overs match` 
               
-              document.getElementById("tossdetails").innerHTML = `${issue.Team1} won the toss and opted to ${issue.OptedTo}` 
+              document.getElementById("tossdetails").innerHTML = `${issue.Toss} won the toss and opted to ${issue.OptedTo}` 
               
               document.getElementById("team1pla").innerHTML = `${issue.Team1}` 
               document.getElementById("team2pla").innerHTML = `${issue.Team2}` 
@@ -2060,6 +969,8 @@ function getdetails()
                         <h5>${issue.teamaselected[8]}</h5>
                         <h5>${issue.teamaselected[9]}</h5>
                         <h5>${issue.teamaselected[10]}</h5>`
+
+
 
 
                     document.getElementById("team2pla11").innerHTML = `
@@ -2081,15 +992,11 @@ function getdetails()
       }
 
 
-/*  function removeoutbatters()
-{
-
-} */
-
 var battersarray = [];
 var bowlersarray = [];
 var bowlerusedarray = []
 var unique = [];
+
 
 function openiniup()
 {
@@ -2157,14 +1064,30 @@ function openiniup()
         saveinitplayers.addEventListener('click', () => 
           {
                 striker = document.getElementById('strikerlistdisplay').value;
+
+                const getindexintialstriker = battersarray.indexOf(striker);
+
+                if (getindexintialstriker > -1) 
+                    { 
+                      battersarray.splice(getindexintialstriker, 1); 
+                    }
+                
+
                 nonstriker = document.getElementById('nonstrikerlistdisplay').value;
+
+                const getindexintialnonstriker = battersarray.indexOf(nonstriker);
+
+                if (getindexintialnonstriker > -1) 
+                    { 
+                      battersarray.splice(getindexintialnonstriker, 1); 
+                    }
+                
+
                 currentbowler =document.getElementById('bowlerlistdisplay').value;
 
                 bowlerusedarray.push(currentbowler);  
 
-                console.log(bowlerusedarray);
-
-                console.log("initial baller is"+bowlerusedarray);
+                 console.log("initial baller is"+bowlerusedarray);
 
                 batter1namepara.innerHTML = striker;
                 batter2namepara.innerHTML = nonstriker;
@@ -2182,21 +1105,32 @@ function openiniup()
     }
 
 
-
-
-
 btn0.addEventListener('click', () => 
           {
             
 
             val_of_button = 0;
-            ball_count = ball_count + 1;
-           
+            
+            ball_count = ball_count + 1
+
             score = score + 0;
-            currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
+            
+            currentovertext.insertAdjacentHTML("beforeend"," " +val_of_button);
 
             var doneballs = currentbowlerovers.innerText;
-           
+
+            if (battingfirst==teamaselected)
+            {
+                teamaovers.innerHTML = parseFloat(  document.getElementById("teamaovers").innerText*10 + 0.1*10  )/10 ;
+            }
+
+
+            addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">0</span>
+                                                    </div>
+                                                </li>`
 
             ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10; 
             
@@ -2221,7 +1155,14 @@ btn0.addEventListener('click', () =>
                  overdone = overdone+1;
                  
                  ballerballcount = ballerballcount+0.4; 
-                 
+
+                  addcommentary.innerHTML += `
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                            <p id="inthisovertext"></p>
+                                        </div>
+                                    </div> `
 
                  /* temp = striker;    //temp = Cypher
                  striker = nonstriker;  // striker = kj
@@ -2268,21 +1209,34 @@ btn0.addEventListener('click', () =>
 
           }); 
 
-         btn1.addEventListener('click', () => 
+btn1.addEventListener('click', () => 
           {
               
               val_of_button = 1;
               score = score + 1;
-              teamascore.innerHTML = score;
+              
 
               currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
 
               ball_count = ball_count + 1;
 
+               if (battingfirst==teamaselected)
+              {
+                teamaovers.innerHTML = parseFloat(  document.getElementById("teamaovers").innerText*10 + 0.1*10  )/10 ;
+                teamascore.innerHTML = score;
+                }
 
-               var doneballs = currentbowlerovers.innerText;
 
-               var donescore = currentbowlerrunsgiven.innerText;
+               var doneballs = currentbowlerovers.innerText;  // to increment bowler ball count by 0.1
+
+               addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-info text-white">1</span>
+                                                    </div>
+                                                </li>`
+
+               var donescore = currentbowlerrunsgiven.innerText;  //to increment bowler score by 1
 
                ballerruncount = parseInt(donescore)+1;
             
@@ -2319,6 +1273,15 @@ btn0.addEventListener('click', () =>
               
               if (ball_count%6==0)
               {
+
+                addcommentary.innerHTML += `
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                            <p id="inthisovertext"></p>
+                                        </div>
+                                    </div> `
+
                  overdone = overdone+1;
                  ball_count = 0;
 
@@ -2373,6 +1336,15 @@ btn2.addEventListener('click', () =>
             score = score + 2;
 
             teamascore.innerHTML = score;
+
+            addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-success text-white">2</span>
+                                                    </div>
+                                                </li>`
+            
+
             currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
 
              
@@ -2428,71 +1400,488 @@ btn2.addEventListener('click', () =>
 
           }); 
 
+var previousbattername;
+                        var previousbatterruns;
+                        var previousbatterballs;
+                        var previousbatterfours;
+                        var previousbattersix;
+                        var previousbatterstrikerate;
+
 
 btnwicket.addEventListener('click', () => 
-          {
+    {
             
-
             val_of_button = "W";
             ball_count = ball_count + 1;
 
-            
-            score = score + 0;
 
-            teamascore.innerHTML = score;
+            console.log(ball_count);
+
+            var doneballs = currentbowlerovers.innerText;
+
+            ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10;
+
+            currentbowlerovers.innerHTML = ballerballcount;
+
+            currentbowlerwickets.innerHTML = parseInt(currentbowlerwickets.innerText) + 1;
+
+                
             currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
 
-             
-             if (strikerstar.innerText=="*")
-              {
-                  strikerscore = strikerscore+2;
-                  strikerballs = strikerballs + 1;
+            wickets = wickets+1;
 
-                  batter1scorepara.innerHTML = strikerscore;
-                  batter1bowlcount.innerHTML = strikerballs;
-                  
-             }
+            if (battingfirst==teamaselected)
+            {
+                teamawickets.innerHTML = wickets;
+                teamaovers.innerHTML = parseFloat(document.getElementById("teamaovers").innerText*10 + 0.1*10 )/10 ;
 
-              else if (nonstrikerstar.innerText=="*")
-              {
-                  nonstrikerscore = nonstrikerscore+2;
-                  nonstrikerballs = nonstrikerballs+1;
-                  batter2scorepara.innerHTML = nonstrikerscore;
-                  batter2bowlcount.innerHTML = nonstrikerballs;
-          
-              }
+                addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-danger text-white">W</span>
+                                                    </div>
+                                                </li>`
             
+                if (ball_count%6!=0)   //wicket fell but over not done yet
+                {
+                        if (strikerstar.innerText=="*")
+                          {
+                              strikerballs = strikerballs + 1;
+                              batter1bowlcount.innerHTML = strikerballs; 
+
+                        previousbattername = batter1namepara.innerText;
+                        previousbatterruns = batter1scorepara.innerText;
+                        previousbatterballs = batter1bowlcount.innerText;
+                        previousbatterfours = batter1fourcount.innerText;
+                        previousbattersix = batter1sixcount.innerText;
+                        previousbatterstrikerate = batter1strikeratecount.innerText;
+
+                        
+
+
+                        set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText) , 
+                                  {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText
+                                  });
+
+                        strikerscore=0;
+                        strikerballs=0; 
+
+                        batter1namepara.innerHTML="";
+                        batter1scorepara.innerHTML=nonstrikerscore;
+                        batter1bowlcount.innerHTML=nonstrikerballs;
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
+
+
+                             
+                        
+
+
+                        display_only_batsmen_ui();  // to select new batter after some batter is OUT
+
+
+
+                         }
+
+                        else if (nonstrikerstar.innerText=="*")
+                        {
               
-              if (ball_count%6==0)
-              {
-                 overdone = overdone+1;
-                 ball_count = 0;
+                            nonstrikerballs = nonstrikerballs+1;
+                            batter2bowlcount.innerHTML = nonstrikerballs;
+
+                            previousbattername = batter2namepara.innerText;
+                        previousbatterruns = batter2scorepara.innerText;
+                        previousbatterballs = batter2bowlcount.innerText;
+                        previousbatterfours = batter2fourcount.innerText;
+                        previousbattersix = batter2sixcount.innerText;
+                        previousbatterstrikerate = batter2strikeratecount.innerText;
+
+                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter2namepara.innerText) , 
+                                  {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText
+                                  });
+
+                            nonstrikerscore=0;
+                            nonstrikerballs=0; 
+
+                        batter2namepara.innerHTML="";
+                        batter2scorepara.innerHTML=nonstrikerscore;
+                        batter2bowlcount.innerHTML=nonstrikerballs;
+                        batter2fourcount.innerHTML="0";
+                        batter2sixcount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0";
+
+                        display_only_batsmen_ui();
+                  
+                      }
+              
+                }
+
+                else if (ball_count%6==0)  // come here for wicket + over done
+                {
+                     overdone = overdone+1;
+                     ball_count = 0;
 
                  /* temp = striker;    //temp = Cypher
                  striker = nonstriker;  // striker = kj
                  nonstriker = temp;   // nonstriker = cypher */
                 
-                 teamaovers.innerHTML = overdone+".0";
+                   teamaovers.innerHTML = overdone+".0";
+
+                   ballerballcount = ballerballcount+0.4;
 
 
-                 if (strikerstar.innerText=="*")
-                 {
-                    strikerstar.innerHTML="";
-                    nonstrikerstar.innerHTML="*";
-                 }
+                    if (strikerstar.innerText=="*")
+                    {
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+                    }
                  
 
-                 else if (nonstrikerstar.innerText=="*")
-                  {
-                      nonstrikerstar.innerHTML="";
-                      strikerstar.innerHTML="*";
-                  }
+                    else if (nonstrikerstar.innerText=="*")
+                    {
+                        nonstrikerstar.innerHTML="";
+                        strikerstar.innerHTML="*";
+                    }
 
-                  currentovertext.innerHTML = "";
+                    currentovertext.innerHTML = "";
 
               }
+            }
 
-          }); 
+});
+
+
+savewickettype.addEventListener('click',() =>
+{
+
+    var wicketselected = document.getElementById('wicketdisplay').value;
+
+     if (wicketselected=="c")
+     {
+        document.getElementById("bowlerlistifcaught").style.visibility="visible";
+        onValue(getbowlerslist,(snapshot)=>
+          {
+            snapshot.forEach(snap => 
+            {
+              
+              const issue = snap.val();
+         document.getElementById('bowlerlistifcaught').innerHTML +=
+        `    <option value="${issue}">${issue}</option> `
+            })
+         })
+     }   
+
+
+});
+
+savenewbatter.addEventListener('click', () => 
+{
+
+ var wicketselected = document.getElementById('wicketdisplay').value;
+
+    if (wicketselected=="b")   
+    {
+        
+        document.getElementById("lastbat").innerHTML = 
+                        `${previousbattername}  b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+        if (battingfirst==teamaselected)
+        {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/"), 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                }   
+        }   
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+
+                }   
+
+                    
+        } 
+    }   
+
+       if (wicketselected=="lbw")
+    {
+        document.getElementById("lastbat").innerHTML = 
+                        `${previousbattername} lbw ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+        
+            if (battingfirst==teamaselected)
+            {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }       
+            }
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }   
+
+                    
+        } 
+
+
+    }  
+
+     if (wicketselected=="c")
+    {
+
+        var bowlercaught = document.getElementById('bowlerlistifcaught').value;
+
+        document.getElementById("lastbat").innerHTML = 
+                        `
+    ${previousbattername} c ${bowlercaught} b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)
+                        `
+
+        if (battingfirst==teamaselected)
+        {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught
+                                      });
+
+                    strikerscore=0;
+                    strikerballs=0; 
+
+                        batter1namepara.innerHTML="";
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="";
+                        batter1sixcount.innerHTML="";
+                        batter1strikeratecount.innerHTML="";
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught
+                                      });
+
+                    nonstrikerscore=0;
+                    nonstrikerballs=0; 
+
+                        batter2namepara.innerHTML="";
+                        batter2scorepara.innerHTML=nonstrikerscore;
+                        batter2bowlcount.innerHTML=nonstrikerballs;
+                        batter2fourcount.innerHTML="";
+                        batter2sixcount.innerHTML="";
+                        batter2strikeratecount.innerHTML="";
+
+
+                }
+                    
+        }   
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught,
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught,
+
+                                      });
+                }
+
+                    
+        }
+
+    } 
+
+    if (wicketselected=="c&b")
+    {
+
+
+        document.getElementById("lastbat").innerHTML = 
+                        `
+    ${previousbattername} c&b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)
+                        `
+
+        if (battingfirst==teamaselected)
+        {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                    strikerscore=0;
+                    strikerballs=0; 
+
+                        batter1namepara.innerHTML="";
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="";
+                        batter1sixcount.innerHTML="";
+                        batter1strikeratecount.innerHTML="";
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                    nonstrikerscore=0;
+                    nonstrikerballs=0; 
+
+                        batter2namepara.innerHTML="";
+                        batter2scorepara.innerHTML=nonstrikerscore;
+                        batter2bowlcount.innerHTML=nonstrikerballs;
+                        batter2fourcount.innerHTML="";
+                        batter2sixcount.innerHTML="";
+                        batter2strikeratecount.innerHTML="";
+
+
+                }
+                    
+        }   
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText,
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText,
+
+                                      });
+                }
+
+                    
+        }
+
+    }
+
+
+
+
+
+
+});
+
+
+ 
+
+        
+
+
+
+function display_only_batsmen_ui()
+{
+     
+     $('#onlybatterdisplay').modal({show:true});
+     createbatters(battersarray);
+
+} 
+ 
 
 function createelements(bowlersarray)
 {
@@ -2501,10 +1890,68 @@ function createelements(bowlersarray)
                         var opt = bowlersarray[i];
                         var el = document.createElement("option");
                         el.textContent = opt;
-                        el.value = opt;
-                      
+                        el.value = opt;       
                         select.appendChild(el);
                     }
+}
+
+function createbatters(battersarray)
+{
+    var newbatterselected;
+
+    for (var i = 0; i < battersarray.length ; i++) 
+                    {
+
+                        var opt = battersarray[i];
+                        var el = document.createElement("option");
+                        el.textContent = opt;
+                        el.value = opt;     
+                        selectnewbatter.appendChild(el);                   
+                    }                 
+
+    savenewbatter.addEventListener('click',()=>
+    {
+
+        newbatterselected = selectnewbatter.value;
+
+        const getindex = battersarray.indexOf(newbatterselected);
+
+        if (getindex > -1) 
+        { 
+          battersarray.splice(getindex, 1); 
+        }
+
+        console.log(battersarray);
+    
+
+        if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        
+     }   
+
+     else
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+     }
+
+         $('#onlybatterdisplay').modal('hide');
+    })
+
+    
+    
 }
 
 
@@ -2624,6 +2071,8 @@ window.onload = getdetails;
 
 
 </script>
+
+<!-- RELATED CODES: Cam Fletcher c selfert b Boult 0 (2b 0x4 0x6) SR: 0 ) | </span>FOW: 47/6 (7.4 ov) -->
 
     </body>
 </html>
