@@ -133,7 +133,7 @@
                                 <ul class="nav nav-tabs mb-0">
                     <li class="active"><a onclick="openPage('Live', this)" id="defaultOpen">Live</a></li>
                     <li class="active"><a onclick="openPage('Commentary', this)">Commentary</a></li>
-                    <li class="active"><a onclick="openPage('Scorecard', this)">Scorecard</a></li>
+                    <li class="active"><a id="scorecardbutton" onclick="openPage('Scorecard', this)">Scorecard</a></li>
                     <li class="active"><a onclick="openPage('Teams', this)">Teams</a></li>
                                     
                                 </ul>
@@ -774,6 +774,8 @@ document.getElementById("defaultOpen").click();
 
     let strikerstar = document.getElementById('strikerstar');
     let nonstrikerstar = document.getElementById('nonstrikerstar'); 
+
+    let scorecardbutton = document.getElementById('scorecardbutton');
 
 
     // batter details
@@ -1568,6 +1570,14 @@ btnwicket.addEventListener('click', () =>
 });
 
 
+
+
+scorecardbutton.addEventListener('click',() =>
+{
+       
+})
+
+
 savewickettype.addEventListener('click',() =>
 {
 
@@ -1591,6 +1601,10 @@ savewickettype.addEventListener('click',() =>
 
 });
 
+
+
+
+
 savenewbatter.addEventListener('click', () => 
 {
 
@@ -1613,7 +1627,7 @@ savenewbatter.addEventListener('click', () =>
                                       });
 
 
-                    document.getElementById("batterdetailsforteama").innerHTML +=
+                    /* document.getElementById("batterdetailsforteama").innerHTML +=
                     `                                       <tr>
                                                                 <td>${previousbattername}</td>
                                                                 <td> b ${currentbowlernamepara.innerText}</td>
@@ -1623,7 +1637,7 @@ savenewbatter.addEventListener('click', () =>
                                                                 <td>${previousbattersix}</td>
                                                                 <td>${previousbatterstrikerate}</td>
                                                                </tr> 
-                    `
+                    ` */
 
 
 
@@ -1639,7 +1653,7 @@ savenewbatter.addEventListener('click', () =>
                                       });
 
 
-                    document.getElementById("batterdetailsforteama").innerHTML +=
+                    /* document.getElementById("batterdetailsforteama").innerHTML +=
                     `                                          <tr>
                                                                 <td>${previousbattername}</td>
                                                                 <td>b ${currentbowlernamepara.innerText}</td>
@@ -1649,7 +1663,7 @@ savenewbatter.addEventListener('click', () =>
                                                                 <td>${previousbattersix}</td>
                                                                 <td>${previousbatterstrikerate}</td>
                                                                 </tr>
-                    `       
+                    `     */  
 
                 }   
         }   
@@ -1664,7 +1678,7 @@ savenewbatter.addEventListener('click', () =>
                                         BowlerName : currentbowlernamepara.innerText
                                       });
 
-                    document.getElementById("batterdetailsforteamb").innerHTML +=
+                    /* document.getElementById("batterdetailsforteamb").innerHTML +=
                     `
                                                                 <td>${previousbattername}</td>
                                                                 <td>b ${currentbowlernamepara.innerText}</td>
@@ -1673,8 +1687,8 @@ savenewbatter.addEventListener('click', () =>
                                                                 <td>${previousbatterfours}</td>
                                                                 <td>${previousbattersix}</td>
                                                                 <td>${previousbatterstrikerate}</td>
-                    `
-
+                    ` */
+ 
 
                 }   
 
@@ -1687,7 +1701,7 @@ savenewbatter.addEventListener('click', () =>
                                       });
 
 
-                    document.getElementById("batterdetailsforteamb").innerHTML +=
+                    /* document.getElementById("batterdetailsforteamb").innerHTML +=
                     `
                                                                 <td>${previousbattername}</td>
                                                                 <td>b ${currentbowlernamepara.innerText}</td>
@@ -1696,7 +1710,7 @@ savenewbatter.addEventListener('click', () =>
                                                                 <td>${previousbatterfours}</td>
                                                                 <td>${previousbattersix}</td>
                                                                 <td>${previousbatterstrikerate}</td>
-                    `
+                    ` */
 
 
                 }   
