@@ -318,7 +318,7 @@
 
 
           <h3>Select wicket type</h3>
-        <select class="form-select" id="wicketdisplay" aria-label="Default select example">    
+        <select class="form-select" id="wicketdisplay" aria-label="Default select example" onchange="disablecarbrand(this)">    
             <option value="b" id="bowled">Bowled</option>
             <option value="c" id="caught">Caught</option>
             <option value="c&b" id="caught&bowled">C&B</option>
@@ -327,14 +327,15 @@
 
         <br><br>
 
-        <select class="form-select" id="bowlerlistifcaught" aria-label="Default select example" style="visibility:hidden;"> 
+
+        <select class="form-select" id="bowlerlistifcaught" aria-label="Default select example" disabled=""> 
 
 
         </select>
 
         <br><br>
 
-        <button type="submit" id="savewickettype" class="btn btn-primary">Save Wicket</button>
+        <!-- <button type="submit" id="savewickettype" class="btn btn-primary">Save Wicket</button> -->
 
         </div>
       </div>
@@ -457,6 +458,16 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="batterdetailsforteama">
+
+                                                            <tr id="initialstriker">
+
+
+                                                            </tr>
+
+                                                            <tr id="initialnonstriker">
+
+
+                                                            </tr>
                                                             
 
                                             
@@ -735,7 +746,27 @@
 }
 
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+document.getElementById("defaultOpen").click
+
+
+
+            function disablecarbrand(answer)
+            {
+                console.log(answer.value);
+                if (answer.value=="c")
+                {
+                    document.getElementById("bowlerlistifcaught").disabled=false;
+
+
+
+                }
+                else
+                {
+                    document.getElementById("bowlerlistifcaught").disabled=true;
+                }
+            }
+ 
+
   </script>
 
 
@@ -841,7 +872,7 @@ document.getElementById("defaultOpen").click();
   
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-          import { getDatabase , set , ref , update , push , child , onValue , get} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          import { getDatabase , set , ref , update , push , child , onValue , get , remove} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
           
           var firebaseConfig = 
           {
@@ -883,11 +914,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
     
                let getstrikerslist;
                let getbowlerslist;
+               let getrembattersa;
+               let getrembattersb;
 
               if (teamtoss == teamaselected && choice == "Bat")
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                
                     var battingfirst = teamaselected;
                }
 
@@ -895,6 +929,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+        
                     var battingfirst = teambselected;
                }
 
@@ -902,6 +937,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                   
                     var battingfirst = teambselected;
                }
 
@@ -909,6 +945,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                {
                     getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                    
                     var battingfirst = teamaselected;
                }
 
@@ -1077,7 +1114,7 @@ function openiniup()
                     { 
                       battersarray.splice(getindexintialstriker, 1); 
                     }
-                
+
 
                 nonstriker = document.getElementById('nonstrikerlistdisplay').value;
 
@@ -1091,13 +1128,38 @@ function openiniup()
 
                 currentbowler =document.getElementById('bowlerlistdisplay').value;
 
-                bowlerusedarray.push(currentbowler);  
+                bowlerusedarray.push(currentbowler); 
+
+  
 
                  console.log("initial baller is"+bowlerusedarray);
 
                 batter1namepara.innerHTML = striker;
                 batter2namepara.innerHTML = nonstriker;
                 currentbowlernamepara.innerHTML = currentbowler;
+
+                document.getElementById("initialstriker").innerHTML +=
+                    `
+                                                                <td>${striker}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                    `
+
+
+                    document.getElementById("initialnonstriker").innerHTML +=
+                    `
+                                                                <td>${nonstriker}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                    `
 
                 localStorage.setItem("initial_ui_opened",1);
 
@@ -1131,12 +1193,7 @@ btn0.addEventListener('click', () =>
             }
 
 
-            addcommentary.innerHTML += ` <li>
-                                                    <div>
-                                                        <h5>${teamaovers.innerText}</h5>
-                                                        <span class="p-3 mb-2 bg-secondary text-white">0</span>
-                                                    </div>
-                                                </li>`
+
 
             ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10; 
             
@@ -1147,12 +1204,34 @@ btn0.addEventListener('click', () =>
                   
                   strikerballs = strikerballs + 1;
                   batter1bowlcount.innerHTML = strikerballs;   
+
+                   addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">0</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+
+
              }
 
               else if (nonstrikerstar.innerText=="*")
               {
                   nonstrikerballs = nonstrikerballs+1;
                   batter2bowlcount.innerHTML = nonstrikerballs;
+
+                   addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">0</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter2namepara.innerText}
+                                                    </p>
+                                                </li>`
               }
             
               
@@ -1161,15 +1240,6 @@ btn0.addEventListener('click', () =>
                  overdone = overdone+1;
                  
                  ballerballcount = ballerballcount+0.4; 
-
-                  addcommentary.innerHTML += `
-                                    <div class="commentary-box">
-                                        <div class="commentary-header">
-                                            <h5>In this over</h5>
-                                            <p id="inthisovertext"></p>
-                                        </div>
-                                    </div> `
-
                  /* temp = striker;    //temp = Cypher
                  striker = nonstriker;  // striker = kj
                  nonstriker = temp;   // nonstriker = cypher */
@@ -1196,6 +1266,18 @@ btn0.addEventListener('click', () =>
 
                  if (strikerstar.innerText=="*")
                  {
+            
+                     addcommentary.innerHTML += `
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                        </div>
+                                        <p>
+                                            ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                        </p>
+                                        <p id="inthisovertext"></p>
+                                    </div> `
+
                     strikerstar.innerHTML="";
                     nonstrikerstar.innerHTML="*";
                  }
@@ -1203,6 +1285,18 @@ btn0.addEventListener('click', () =>
 
                  else if (nonstrikerstar.innerText=="*")
                   {
+                      
+                     addcommentary.innerHTML += `
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                        </div>
+                                        <p>
+                                            ${currentbowlernamepara.innerText} to ${batter2namepara.innerText}
+                                        </p>
+                                        <p id="inthisovertext"></p>
+                                    </div> `
+
                       nonstrikerstar.innerHTML="";
                       strikerstar.innerHTML="*";
                   }
@@ -1235,12 +1329,6 @@ btn1.addEventListener('click', () =>
 
                var doneballs = currentbowlerovers.innerText;  // to increment bowler ball count by 0.1
 
-               addcommentary.innerHTML += ` <li>
-                                                    <div>
-                                                        <h5>${teamaovers.innerText}</h5>
-                                                        <span class="p-3 mb-2 bg-info text-white">1</span>
-                                                    </div>
-                                                </li>`
 
                var donescore = currentbowlerrunsgiven.innerText;  //to increment bowler score by 1
 
@@ -1255,6 +1343,17 @@ btn1.addEventListener('click', () =>
               
               if (strikerstar.innerText=="*")
               {
+                  
+                  addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-info text-white">1</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+
                   strikerscore = strikerscore+1;
                   strikerstar.innerHTML="";
                   nonstrikerstar.innerHTML="*";
@@ -1266,6 +1365,19 @@ btn1.addEventListener('click', () =>
               
               else if (nonstrikerstar.innerText=="*")
               {
+                    
+                    addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-info text-white">1</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter2namepara.innerText}
+                                                    </p>
+                                                </li>`  
+
+
+
                   nonstrikerscore = nonstrikerscore+1;
                   nonstrikerstar.innerHTML="";
                   strikerstar.innerHTML="*";
@@ -1280,13 +1392,7 @@ btn1.addEventListener('click', () =>
               if (ball_count%6==0)
               {
 
-                addcommentary.innerHTML += `
-                                    <div class="commentary-box">
-                                        <div class="commentary-header">
-                                            <h5>In this over</h5>
-                                            <p id="inthisovertext"></p>
-                                        </div>
-                                    </div> `
+
 
                  overdone = overdone+1;
                  ball_count = 0;
@@ -1311,6 +1417,19 @@ btn1.addEventListener('click', () =>
 
                  if (strikerstar.innerText=="*")
                  {
+                    
+                    addcommentary.innerHTML += `
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                        </div>
+                                        <p>
+                                            ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                        </p>
+                                        <p id="inthisovertext"></p>
+                                    </div> `
+
+
                     strikerstar.innerHTML="";
                     nonstrikerstar.innerHTML="*";
                    
@@ -1319,6 +1438,19 @@ btn1.addEventListener('click', () =>
 
                  else if (nonstrikerstar.innerText=="*")
                   {
+                      
+                    addcommentary.innerHTML += `
+                                    <div class="commentary-box">
+                                        <div class="commentary-header">
+                                            <h5>In this over</h5>
+                                        </div>
+                                        <p>
+                                            ${currentbowlernamepara.innerText} to ${batter2namepara.innerText}
+                                        </p>
+                                        <p id="inthisovertext"></p>
+                                    </div> `
+
+
                       nonstrikerstar.innerHTML="";
                       strikerstar.innerHTML="*";
                      
@@ -1414,6 +1546,19 @@ var previousbattername;
                         var previousbatterstrikerate;
 
 
+onValue(getbowlerslist,(snapshot)=>
+                          {
+                            snapshot.forEach(snap => 
+                            {
+                              
+                              const issue = snap.val();
+                         document.getElementById('bowlerlistifcaught').innerHTML +=
+                        `    <option value="${issue}">${issue}</option> `
+                            })
+                         })
+
+
+
 btnwicket.addEventListener('click', () => 
     {
             
@@ -1486,10 +1631,7 @@ btnwicket.addEventListener('click', () =>
                         batter1strikeratecount.innerHTML="0";
 
 
-                             
                         
-
-
                         display_only_batsmen_ui();  // to select new batter after some batter is OUT
 
 
@@ -1574,11 +1716,32 @@ btnwicket.addEventListener('click', () =>
 
 scorecardbutton.addEventListener('click',() =>
 {
-       
+     document.getElementById("initialstriker").innerHTML =
+                    `
+                                                                <td>${batter1namepara.innerText}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>${batter1scorepara.innerText}</strong></td>
+                                                                <td>${batter1bowlcount.innerText}</td>
+                                                                <td>${batter1fourcount.innerText}</td>
+                                                                <td>${batter1sixcount.innerText}</td>
+                                                                <td>${batter1strikeratecount.innerText}</td>
+                    `
+
+
+    document.getElementById("initialnonstriker").innerHTML =
+                    `
+                                                                <td>${batter2namepara.innerText}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>${batter2scorepara.innerText}</strong></td>
+                                                                <td>${batter2bowlcount.innerText}</td>
+                                                                <td>${batter2fourcount.innerText}</td>
+                                                                <td>${batter2sixcount.innerText}</td>
+                                                                <td>${batter2strikeratecount.innerText}</td>
+                    `
 })
 
 
-savewickettype.addEventListener('click',() =>
+/* savewickettype.addEventListener('click',() =>
 {
 
     var wicketselected = document.getElementById('wicketdisplay').value;
@@ -1599,22 +1762,28 @@ savewickettype.addEventListener('click',() =>
      }   
 
 
-});
+});  */
 
 
+ var temp="out";
 
-
+ var newbatterselected="";
 
 savenewbatter.addEventListener('click', () => 
 {
 
  var wicketselected = document.getElementById('wicketdisplay').value;
 
+ newbatterselected = selectnewbatter.value;      
+        
     if (wicketselected=="b")   
     {
         
         document.getElementById("lastbat").innerHTML = 
                         `${previousbattername}  b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+
+
 
         if (battingfirst==teamaselected)
         {
@@ -1625,6 +1794,32 @@ savenewbatter.addEventListener('click', () =>
                                         WicketType : "b",
                                         BowlerName : currentbowlernamepara.innerText
                                       });
+
+
+                     document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+            
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
 
 
                     /* document.getElementById("batterdetailsforteama").innerHTML +=
@@ -1652,6 +1847,30 @@ savenewbatter.addEventListener('click', () =>
                                         BowlerName : currentbowlernamepara.innerText
                                       });
 
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
 
                     /* document.getElementById("batterdetailsforteama").innerHTML +=
                     `                                          <tr>
@@ -1733,6 +1952,32 @@ savenewbatter.addEventListener('click', () =>
                                         WicketType : "lbw",
                                         BowlerName : currentbowlernamepara.innerText
                                       });
+
+                    document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>lbw ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+
                 }   
 
                 if (nonstrikerstar.innerText=="*")
@@ -1742,6 +1987,33 @@ savenewbatter.addEventListener('click', () =>
                                         WicketType : "lbw",
                                         BowlerName : currentbowlernamepara.innerText
                                       });
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>lbw ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+
+
                 }       
             }
 
@@ -1791,6 +2063,30 @@ savenewbatter.addEventListener('click', () =>
                                         BowlerName : bowlercaught
                                       });
 
+                    document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c ${bowlercaught} b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
                     strikerscore=0;
                     strikerballs=0; 
 
@@ -1810,6 +2106,31 @@ savenewbatter.addEventListener('click', () =>
                                         WicketType : "c",
                                         BowlerName : bowlercaught
                                       });
+
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c ${bowlercaught} b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
 
                     nonstrikerscore=0;
                     nonstrikerballs=0; 
@@ -1871,6 +2192,31 @@ savenewbatter.addEventListener('click', () =>
                                         BowlerName : currentbowlernamepara.innerText
                                       });
 
+
+                    document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c&b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
                     strikerscore=0;
                     strikerballs=0; 
 
@@ -1890,6 +2236,30 @@ savenewbatter.addEventListener('click', () =>
                                         WicketType : "c&b",
                                         BowlerName : currentbowlernamepara.innerText
                                       });
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c&b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
 
                     nonstrikerscore=0;
                     nonstrikerballs=0; 
@@ -1933,60 +2303,7 @@ savenewbatter.addEventListener('click', () =>
     }
 
 
-
-
-
-
-});
-
-
- 
-
-        
-
-
-
-function display_only_batsmen_ui()
-{
-     
-     $('#onlybatterdisplay').modal({show:true});
-     createbatters(battersarray);
-
-} 
- 
-
-function createelements(bowlersarray)
-{
-    for (var i = 0; i < bowlersarray.length; i++) 
-                    {
-                        var opt = bowlersarray[i];
-                        var el = document.createElement("option");
-                        el.textContent = opt;
-                        el.value = opt;       
-                        select.appendChild(el);
-                    }
-}
-
-function createbatters(battersarray)
-{
-    var newbatterselected;
-
-    for (var i = 0; i < battersarray.length ; i++) 
-                    {
-
-                        var opt = battersarray[i];
-                        var el = document.createElement("option");
-                        el.textContent = opt;
-                        el.value = opt;     
-                        selectnewbatter.appendChild(el);                   
-                    }                 
-
-    savenewbatter.addEventListener('click',()=>
-    {
-
-        newbatterselected = selectnewbatter.value;
-
-        const getindex = battersarray.indexOf(newbatterselected);
+const getindex = battersarray.indexOf(newbatterselected);
 
         if (getindex > -1) 
         { 
@@ -1994,9 +2311,11 @@ function createbatters(battersarray)
         }
 
         console.log(battersarray);
-    
 
-        if (strikerstar.innerText=="*")
+
+         $('#onlybatterdisplay').modal('hide');
+
+     if (strikerstar.innerText=="*")
      {
 
                         batter1namepara.innerHTML=newbatterselected;
@@ -2017,14 +2336,48 @@ function createbatters(battersarray)
                         batter2sixcount.innerHTML=0;
                         batter2strikeratecount.innerHTML=0;
                         
-     }
-
-         $('#onlybatterdisplay').modal('hide');
-    })
-
+     }       
     
+})
+
+
+
+function display_only_batsmen_ui()
+{
+     
+     $('#onlybatterdisplay').modal({show:true});
+     createbatters(battersarray); 
+} 
+ 
+
+function createelements(bowlersarray)
+{
     
+    for (var i = 0; i < bowlersarray.length; i++) 
+                    {
+                        var opt = bowlersarray[i];
+                        var el = document.createElement("option");
+                        el.textContent = opt;
+                        el.value = opt;       
+                        select.appendChild(el);
+                    }
 }
+
+function createbatters(battersarray)
+{
+    document.getElementById("selectnewbatter").innerHTML="";
+    for (var i = 0; i < battersarray.length ; i++) 
+                    {
+
+                        selectnewbatter.innerHTML +=`
+                            <option value="${battersarray[i]}">${battersarray[i]}</option>
+                        `
+                
+                    }                 
+} 
+
+
+
 
 
 
