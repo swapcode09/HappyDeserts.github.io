@@ -3,7 +3,7 @@
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no , shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <!-- Favicon icon -->
         <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
 
@@ -348,6 +348,7 @@
   </div>
 </div>
 
+
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
      <div class="modal-content">
@@ -371,6 +372,60 @@
     </div>
   </div>
 </div>
+
+
+
+    <div class="modal fade" id="batterbowler" role="dialog">
+  <div class="modal-dialog" class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Choose new batter</h4>
+      </div>
+      
+      <div class="modal-body">
+        <div class="dropdown">
+          <select id="selectnewbatteroverchange">
+              <option>Batter list</option>
+          </select>
+
+
+          <h3>Select wicket type</h3>
+        <select class="form-select" id="wicketdisplayoverchange" aria-label="Default select example" onchange="disablecarbrandoverchange(this)">    
+            <option value="b" id="bowled">Bowled</option>
+            <option value="c" id="caught">Caught</option>
+            <option value="c&b" id="caught&bowled">C&B</option>
+            <option value="lbw" id="lbw">LBW</option>
+        </select> 
+
+        <br><br>
+
+
+        <select class="form-select" id="bowlerlistifcaughtoverchange" aria-label="Default select example" disabled=""> 
+
+
+        </select>
+
+        <br><br>
+
+        <!-- <button type="submit" id="savewickettype" class="btn btn-primary">Save Wicket</button> -->
+
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" id="savenewbatteroverchange" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 
 
@@ -756,15 +811,31 @@ document.getElementById("defaultOpen").click
                 if (answer.value=="c")
                 {
                     document.getElementById("bowlerlistifcaught").disabled=false;
-
-
-
+                    
                 }
                 else
                 {
                     document.getElementById("bowlerlistifcaught").disabled=true;
                 }
             }
+
+            function disablecarbrandoverchange(answer)
+            {
+                console.log(answer.value);
+                if (answer.value=="c")
+                {
+                    document.getElementById("bowlerlistifcaughtoverchange").disabled=false;
+                    
+                }
+                else
+                {
+                    document.getElementById("bowlerlistifcaughtoverchange").disabled=true;
+                }
+            }
+            
+            
+
+
  
 
   </script>
@@ -783,9 +854,17 @@ document.getElementById("defaultOpen").click
 
     var select = document.getElementById("selectbowler");
 
+    var selectoverchange = document.getElementById("selectbowleroverchange");
+
     var selectnewbatter = document.getElementById("selectnewbatter");
+
+    var selectnewbatteroverchange = document.getElementById("selectnewbatteroverchange");
+
     var savenewbatter = document.getElementById("savenewbatter");
-    var savewickettype = document.getElementById("savewickettype");
+
+    var savenewbatteroverchange = document.getElementById("savenewbatteroverchange");
+
+    /* var savewickettype = document.getElementById("savewickettype"); */
 
     let btnwicket = document.querySelector('#buttonwicket');
     
@@ -1559,6 +1638,19 @@ onValue(getbowlerslist,(snapshot)=>
 
 
 
+onValue(getbowlerslist,(snapshot)=>
+                          {
+                            snapshot.forEach(snap => 
+                            {
+                              
+                              const issue = snap.val();
+                         document.getElementById('bowlerlistifcaughtoverchange').innerHTML +=
+                        `    <option value="${issue}">${issue}</option> `
+                            })
+                         })
+
+
+
 btnwicket.addEventListener('click', () => 
     {
             
@@ -1595,6 +1687,8 @@ btnwicket.addEventListener('click', () =>
             
                 if (ball_count%6!=0)   //wicket fell but over not done yet
                 {
+                        console.log("in if part");
+
                         if (strikerstar.innerText=="*")
                           {
                               strikerballs = strikerballs + 1;
@@ -1624,8 +1718,8 @@ btnwicket.addEventListener('click', () =>
                         strikerballs=0; 
 
                         batter1namepara.innerHTML="";
-                        batter1scorepara.innerHTML=nonstrikerscore;
-                        batter1bowlcount.innerHTML=nonstrikerballs;
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="0";
                         batter1sixcount.innerHTML="0";
                         batter1strikeratecount.innerHTML="0";
@@ -1679,36 +1773,115 @@ btnwicket.addEventListener('click', () =>
 
                 else if (ball_count%6==0)  // come here for wicket + over done
                 {
+                     
+
+                    console.log("in else part");
                      overdone = overdone+1;
                      ball_count = 0;
-
-                 /* temp = striker;    //temp = Cypher
-                 striker = nonstriker;  // striker = kj
-                 nonstriker = temp;   // nonstriker = cypher */
                 
                    teamaovers.innerHTML = overdone+".0";
 
                    ballerballcount = ballerballcount+0.4;
 
+                   currentbowlerovers.innerHTML = ballerballcount; 
+
+                   set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+currentbowlernamepara.innerText) , {
+                                    BowlerName : currentbowlernamepara.innerText,
+                                    Overs : currentbowlerovers.innerText,
+                                    RunsGiven : currentbowlerrunsgiven.innerText,
+                                    WicketsTaken : currentbowlerwickets.innerText,
+                                    Economy : currentbowlerecon.innerText
+                                  });
+
+                 ballerballcount = 0;
+
 
                     if (strikerstar.innerText=="*")
                     {
-                        strikerstar.innerHTML="";
-                        nonstrikerstar.innerHTML="*";
+                        
+                        strikerballs = strikerballs + 1;
+                        batter1bowlcount.innerHTML = strikerballs; 
+
+                        previousbattername = batter1namepara.innerText;
+                        previousbatterruns = batter1scorepara.innerText;
+                        previousbatterballs = batter1bowlcount.innerText;
+                        previousbatterfours = batter1fourcount.innerText;
+                        previousbattersix = batter1sixcount.innerText;
+                        previousbatterstrikerate = batter1strikeratecount.innerText;
+
+                        set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText) , 
+                                  {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText
+                                  });
+
+                        strikerscore=0;
+                        strikerballs=0; 
+
+                        batter1namepara.innerHTML="";
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
+
+                        display_batsmen_bowler_ui(); 
+
+                        over_change_ui();
+
+                         strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*"; 
                     }
                  
 
-                    else if (nonstrikerstar.innerText=="*")
+                    else if (nonstrikerstar.innerText=="*") 
                     {
+                        nonstrikerballs = nonstrikerballs + 1;
+                        batter1bowlcount.innerHTML = nonstrikerballs; 
+
+                        previousbattername = batter2namepara.innerText;
+                        previousbatterruns = batter2scorepara.innerText;
+                        previousbatterballs = batter2bowlcount.innerText;
+                        previousbatterfours = batter2fourcount.innerText;
+                        previousbattersix = batter2sixcount.innerText;
+                        previousbatterstrikerate = batter2strikeratecount.innerText;
+
+                        set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText) , 
+                                  {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText
+                                  });
+
+                        nonstrikerscore=0;
+                        nonstrikerballs=0; 
+
+                        batter2namepara.innerHTML="";
+                        batter2scorepara.innerHTML=strikerscore;
+                        batter2bowlcount.innerHTML=strikerballs;
+                        batter2fourcount.innerHTML="0";
+                        batter2sixcount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0";
+
+                        display_batsmen_bowler_ui(); 
+
+                        over_change_ui();
+
                         nonstrikerstar.innerHTML="";
                         strikerstar.innerHTML="*";
-                    }
+                    } 
 
                     currentovertext.innerHTML = "";
 
               }
             }
-
 });
 
 
@@ -1769,13 +1942,18 @@ scorecardbutton.addEventListener('click',() =>
 
  var newbatterselected="";
 
+
+
 savenewbatter.addEventListener('click', () => 
 {
 
  var wicketselected = document.getElementById('wicketdisplay').value;
 
- newbatterselected = selectnewbatter.value;      
-        
+ console.log("wicket fell by"+wicketselected);
+
+    newbatterselected = selectnewbatter.value; 
+    console.log("new batter is"+newbatterselected);
+
     if (wicketselected=="b")   
     {
         
@@ -2303,7 +2481,7 @@ savenewbatter.addEventListener('click', () =>
     }
 
 
-const getindex = battersarray.indexOf(newbatterselected);
+        const getindex = battersarray.indexOf(newbatterselected);
 
         if (getindex > -1) 
         { 
@@ -2312,8 +2490,584 @@ const getindex = battersarray.indexOf(newbatterselected);
 
         console.log(battersarray);
 
+        $('#onlybatterdisplay').modal('hide');
+         
 
-         $('#onlybatterdisplay').modal('hide');
+     if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        
+     }   
+
+     else
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+     }       
+    
+})
+
+
+
+savenewbatteroverchange.addEventListener('click', () => 
+{
+
+ var wicketselected = document.getElementById('wicketdisplayoverchange').value;
+
+ console.log("wicket fell by"+wicketselected);
+
+    newbatterselected = selectnewbatteroverchange.value; 
+    console.log("new batter is"+newbatterselected);
+
+    if (wicketselected=="b")   
+    {
+        
+        document.getElementById("lastbat").innerHTML = 
+                        `${previousbattername}  b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+
+
+
+        if (battingfirst==teamaselected)
+        {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/"), 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+
+                     document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+            
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+
+                    /* document.getElementById("batterdetailsforteama").innerHTML +=
+                    `                                       <tr>
+                                                                <td>${previousbattername}</td>
+                                                                <td> b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                                               </tr> 
+                    ` */
+
+
+
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+                    /* document.getElementById("batterdetailsforteama").innerHTML +=
+                    `                                          <tr>
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                                                </tr>
+                    `     */  
+
+                }   
+        }   
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                    /* document.getElementById("batterdetailsforteamb").innerHTML +=
+                    `
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                    ` */
+ 
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+
+                    /* document.getElementById("batterdetailsforteamb").innerHTML +=
+                    `
+                                                                <td>${previousbattername}</td>
+                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                    ` */
+
+
+                }   
+
+                    
+        } 
+    }   
+
+       if (wicketselected=="lbw")
+    {
+        document.getElementById("lastbat").innerHTML = 
+                        `${previousbattername} lbw ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+        
+            if (battingfirst==teamaselected)
+            {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                    document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>lbw ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>lbw ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+
+
+                }       
+            }
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "lbw",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+                }   
+
+                    
+        } 
+
+
+    }  
+
+     if (wicketselected=="c")
+    {
+
+        var bowlercaught = document.getElementById('bowlerlistifcaughtoverchange').value;
+
+        document.getElementById("lastbat").innerHTML = 
+                        `
+    ${previousbattername} c ${bowlercaught} b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)
+                        `
+
+        if (battingfirst==teamaselected)
+        {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught
+                                      });
+
+                    document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c ${bowlercaught} b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+                    strikerscore=0;
+                    strikerballs=0; 
+
+                        batter1namepara.innerHTML="";
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="";
+                        batter1sixcount.innerHTML="";
+                        batter1strikeratecount.innerHTML="";
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught
+                                      });
+
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c ${bowlercaught} b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+                    nonstrikerscore=0;
+                    nonstrikerballs=0; 
+
+                        batter2namepara.innerHTML="";
+                        batter2scorepara.innerHTML=nonstrikerscore;
+                        batter2bowlcount.innerHTML=nonstrikerballs;
+                        batter2fourcount.innerHTML="";
+                        batter2sixcount.innerHTML="";
+                        batter2strikeratecount.innerHTML="";
+
+
+                }
+                    
+        }   
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught,
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c",
+                                        BowlerName : bowlercaught,
+
+                                      });
+                }
+
+                    
+        }
+
+    } 
+
+    if (wicketselected=="c&b")
+    {
+
+
+        document.getElementById("lastbat").innerHTML = 
+                        `
+    ${previousbattername} c&b ${currentbowlernamepara.innerText} ${previousbatterruns} (${previousbatterballs} ${previousbatterfours}x4 ${previousbattersix}x6) SR: ${previousbatterstrikerate} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)
+                        `
+
+        if (battingfirst==teamaselected)
+        {
+                if (strikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+
+                    document.getElementById("initialstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c&b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+                    strikerscore=0;
+                    strikerballs=0; 
+
+                        batter1namepara.innerHTML="";
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="";
+                        batter1sixcount.innerHTML="";
+                        batter1strikeratecount.innerHTML="";
+
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                    document.getElementById("initialnonstriker").innerHTML =`
+                                                                <td>${previousbattername}</td>
+                                                                <td>c&b ${currentbowlernamepara.innerText}</td>
+                                                                <td><strong>${previousbatterruns}</strong></td>
+                                                                <td>${previousbatterballs}</td>
+                                                                <td>${previousbatterfours}</td>
+                                                                <td>${previousbattersix}</td>
+                                                                <td>${previousbatterstrikerate}</td>
+                                        `
+
+                    document.getElementById('initialnonstriker').id = temp;
+
+             document.getElementById("batterdetailsforteama").innerHTML +=
+                                          `              <tr id="initialnonstriker">
+                                                                <td>${newbatterselected}</td>
+                                                                <td>not out</td>
+                                                                <td><strong>0</strong></td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                                <td>0</td>
+                                                         </tr>
+                                        `
+
+                    nonstrikerscore=0;
+                    nonstrikerballs=0; 
+
+                        batter2namepara.innerHTML="";
+                        batter2scorepara.innerHTML=nonstrikerscore;
+                        batter2bowlcount.innerHTML=nonstrikerballs;
+                        batter2fourcount.innerHTML="";
+                        batter2sixcount.innerHTML="";
+                        batter2strikeratecount.innerHTML="";
+
+
+                }
+                    
+        }   
+
+        else
+        {   
+                if (strikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText,
+                                      });
+                }   
+
+                if (nonstrikerstar.innerText=="*")
+                {
+                    set (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teambselected+"/"+previousbattername+"/") , 
+                    {
+                                        WicketType : "c&b",
+                                        BowlerName : currentbowlernamepara.innerText,
+
+                                      });
+                }
+
+                    
+        }
+
+    }
+
+
+        const getindex = battersarray.indexOf(newbatterselected);
+
+        if (getindex > -1) 
+        { 
+          battersarray.splice(getindex, 1); 
+        }
+
+        console.log(battersarray);
+
+        $('#batterbowler').modal('hide');
+         
 
      if (strikerstar.innerText=="*")
      {
@@ -2349,6 +3103,11 @@ function display_only_batsmen_ui()
      createbatters(battersarray); 
 } 
  
+function display_batsmen_bowler_ui()
+{
+    $('#batterbowler').modal({show:true});
+     createbattersoverchange(battersarray);
+}
 
 function createelements(bowlersarray)
 {
@@ -2366,6 +3125,7 @@ function createelements(bowlersarray)
 function createbatters(battersarray)
 {
     document.getElementById("selectnewbatter").innerHTML="";
+    
     for (var i = 0; i < battersarray.length ; i++) 
                     {
 
@@ -2377,8 +3137,19 @@ function createbatters(battersarray)
 } 
 
 
+function createbattersoverchange(battersarray)
+{
+    document.getElementById("selectnewbatteroverchange").innerHTML="";
+    
+    for (var i = 0; i < battersarray.length ; i++) 
+                    {
 
-
+                        selectnewbatteroverchange.innerHTML +=`
+                            <option value="${battersarray[i]}">${battersarray[i]}</option>
+                        `
+                
+                    }                 
+} 
 
 
 var uniquebowlers = [];
