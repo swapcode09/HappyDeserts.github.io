@@ -65,7 +65,7 @@
 
   
     </head>
-    <body style="font-size:16px">
+    <body>
 
        
 
@@ -250,7 +250,7 @@
                                         
                                         <ul>
                                             <li>
-                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonzero">0</button></span>
+                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonzero">0</button></span>
                                             </li>
                                             <li>
                                                 <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonone">1</button></span>
@@ -489,8 +489,8 @@
 
                         <div class="accordion" id="accordion">
                                 <div class="accordion-item">
-                                    <h5 class="" data-toggle="collapse" data-target="#bd_innings" aria-expanded="true" id="teamainns"></h5>
-                                    <div id="bd_innings" class="collapse show" data-parent="#accordion">
+                <h5 class="" data-toggle="collapse" data-target="#bd_innings" aria-expanded="true" id="teamainns"></h5>
+                                    <div class="collapse show" data-parent="#accordion">
                                         <div class="acr-body">
                                             <div class="card card-shadow p-0">
                                                 
@@ -573,20 +573,13 @@
                                                                 <th scope="col">econ</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="#"><strong>joe Walker*</strong></a> (ob)
-                                                                </td>
-                                                                <td><strong>2.5</strong></td>
-                                                                <td>0</td>
-                                                                <td>22</td>
-                                                                <td>0</td>
-                                                                <td>7.76</td>
-                                                            </tr>
+
+                                                        <tbody id="bowlerdetailsforteamb">
+                                                            
                                               
                                                         </tbody>
                                                     </table>
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -1002,6 +995,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                 
                     var battingfirst = teamaselected;
+                    var bowlingfirst = teambselected;
                }
 
                if (teamtoss == teamaselected && choice == "Bowl")
@@ -1010,6 +1004,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
         
                     var battingfirst = teambselected;
+                    var bowlingfirst = teamaselected;
                }
 
                if (teamtoss == teambselected && choice == "Bat")
@@ -1018,6 +1013,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
                    
                     var battingfirst = teambselected;
+                    var bowlingfirst = teamaselected;
                }
 
                if (teamtoss == teambselected && choice == "Bowl")
@@ -1026,6 +1022,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
                     getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                     
                     var battingfirst = teamaselected;
+                    var bowlingfirst = teambselected;
                }
 
           
@@ -1220,7 +1217,7 @@ function openiniup()
                 document.getElementById("initialstriker").innerHTML +=
                     `
                                                                 <td>${striker}</td>
-                                                                <td>not out</td>
+                                                                <td><i><h6>not out</h6></i></td>
                                                                 <td><strong>0</strong></td>
                                                                 <td>0</td>
                                                                 <td>0</td>
@@ -1232,7 +1229,7 @@ function openiniup()
                     document.getElementById("initialnonstriker").innerHTML +=
                     `
                                                                 <td>${nonstriker}</td>
-                                                                <td>not out</td>
+                                                                <td><i><h6>not out</h6>not out</td>
                                                                 <td><strong>0</strong></td>
                                                                 <td>0</td>
                                                                 <td>0</td>
@@ -1331,7 +1328,7 @@ btn0.addEventListener('click', () =>
                  currentbowlerwickets=0;
                  currentbowlerecon=0; */
 
-                 set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+currentbowlernamepara.innerText) , {
+                 set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+bowlingfirst+"/"+currentbowlernamepara.innerText) , {
                                     BowlerName : currentbowlernamepara.innerText,
                                     Overs : currentbowlerovers.innerText,
                                     RunsGiven : currentbowlerrunsgiven.innerText,
@@ -1482,7 +1479,7 @@ btn1.addEventListener('click', () =>
 
                  teamaovers.innerHTML = overdone+".0";
 
-                 set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+currentbowlernamepara.innerText) , {
+                 set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+bowlingfirst+"/"+currentbowlernamepara.innerText) , {
                                     BowlerName : currentbowlernamepara.innerText,
                                     Overs : currentbowlerovers.innerText,
                                     RunsGiven : currentbowlerrunsgiven.innerText,
@@ -1623,6 +1620,7 @@ var previousbattername;
                         var previousbatterfours;
                         var previousbattersix;
                         var previousbatterstrikerate;
+                        var previousbowlername;
 
 
 onValue(getbowlerslist,(snapshot)=>
@@ -1785,7 +1783,7 @@ btnwicket.addEventListener('click', () =>
 
                    currentbowlerovers.innerHTML = ballerballcount; 
 
-                   set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+currentbowlernamepara.innerText) , {
+                   set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+bowlingfirst+"/"+currentbowlernamepara.innerText) , {
                                     BowlerName : currentbowlernamepara.innerText,
                                     Overs : currentbowlerovers.innerText,
                                     RunsGiven : currentbowlerrunsgiven.innerText,
@@ -1808,6 +1806,7 @@ btnwicket.addEventListener('click', () =>
                         previousbatterfours = batter1fourcount.innerText;
                         previousbattersix = batter1sixcount.innerText;
                         previousbatterstrikerate = batter1strikeratecount.innerText;
+                        previousbowlername = currentbowlernamepara.innerText;
 
                         set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText) , 
                                   {
@@ -1822,19 +1821,19 @@ btnwicket.addEventListener('click', () =>
                         strikerscore=0;
                         strikerballs=0; 
 
-                        batter1namepara.innerHTML="";
+                        /* batter1namepara.innerHTML="";
                         batter1scorepara.innerHTML=strikerscore;
                         batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="0";
                         batter1sixcount.innerHTML="0";
-                        batter1strikeratecount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0"; */
 
                         display_batsmen_bowler_ui(); 
 
                         over_change_ui();
 
-                         strikerstar.innerHTML="";
-                        nonstrikerstar.innerHTML="*"; 
+                         /* strikerstar.innerHTML="";
+                         nonstrikerstar.innerHTML="*";  */
                     }
                  
 
@@ -1863,19 +1862,19 @@ btnwicket.addEventListener('click', () =>
                         nonstrikerscore=0;
                         nonstrikerballs=0; 
 
-                        batter2namepara.innerHTML="";
+                        /* batter2namepara.innerHTML="";
                         batter2scorepara.innerHTML=strikerscore;
                         batter2bowlcount.innerHTML=strikerballs;
                         batter2fourcount.innerHTML="0";
                         batter2sixcount.innerHTML="0";
-                        batter2strikeratecount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0"; */
 
                         display_batsmen_bowler_ui(); 
 
                         over_change_ui();
 
-                        nonstrikerstar.innerHTML="";
-                        strikerstar.innerHTML="*";
+                        /* nonstrikerstar.innerHTML="";
+                        strikerstar.innerHTML="*"; */
                     } 
 
                     currentovertext.innerHTML = "";
@@ -1889,6 +1888,11 @@ btnwicket.addEventListener('click', () =>
 
 scorecardbutton.addEventListener('click',() =>
 {
+    
+    console.log(battingfirst);
+    console.log(bowlingfirst);
+
+
      document.getElementById("initialstriker").innerHTML =
                     `
                                                                 <td>${batter1namepara.innerText}</td>
@@ -1911,6 +1915,32 @@ scorecardbutton.addEventListener('click',() =>
                                                                 <td>${batter2sixcount.innerText}</td>
                                                                 <td>${batter2strikeratecount.innerText}</td>
                     `
+
+    /* if (battingfirst==teamaselected)
+    {
+        const getbowlerdetailsforteamb = ref(database,selectedmatch+"Data/"+"BowlerData/");
+
+        console.log(getbowlerdetailsforteamb);
+
+          onValue(getbowlerdetailsforteamb,(snapshot)=>
+          {
+            snapshot.forEach(snap => 
+            {
+              const issue = snap.val();
+
+              console.log(issue);
+
+
+
+            })
+          })
+    } */
+ 
+
+
+
+
+
 })
 
 
@@ -2546,13 +2576,13 @@ savenewbatteroverchange.addEventListener('click', () =>
                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+teamaselected+"/"+previousbattername+"/"), 
                     {
                                         WicketType : "b",
-                                        BowlerName : currentbowlernamepara.innerText
+                                        BowlerName : previousbowlername
                                       });
 
 
                      document.getElementById("initialstriker").innerHTML =`
                                                                 <td>${previousbattername}</td>
-                                                                <td>b ${currentbowlernamepara.innerText}</td>
+                                                                <td>b ${previousbowlername}</td>
                                                                 <td><strong>${previousbatterruns}</strong></td>
                                                                 <td>${previousbatterballs}</td>
                                                                 <td>${previousbatterfours}</td>
@@ -2574,6 +2604,8 @@ savenewbatteroverchange.addEventListener('click', () =>
                                                                 <td>0</td>
                                                          </tr>
                                         `
+
+
 
 
                     /* document.getElementById("batterdetailsforteama").innerHTML +=
@@ -3078,6 +3110,9 @@ savenewbatteroverchange.addEventListener('click', () =>
                         batter1fourcount.innerHTML=0;
                         batter1sixcount.innerHTML=0;
                         batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
                         
      }   
 
@@ -3089,8 +3124,12 @@ savenewbatteroverchange.addEventListener('click', () =>
                         batter2fourcount.innerHTML=0;
                         batter2sixcount.innerHTML=0;
                         batter2strikeratecount.innerHTML=0;
-                        
-     }       
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }     
+
+     
+
     
 })
 
@@ -3205,7 +3244,7 @@ function over_change_ui(bowlersarray)
 
                         console.log("fetching current bowler data");
 
-                        const getbowlerdata = ref(database,selectedmatch+"/"+"Data"+"/"+"BowlerData/"+newbowler+"/");
+                        const getbowlerdata = ref(database,selectedmatch+"/"+"Data"+"/"+"BowlerData/"+bowlingfirst+"/"+newbowler+"/");
                       
                           onValue(getbowlerdata,(snapshot)=>
                               {
