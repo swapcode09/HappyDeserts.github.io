@@ -1197,6 +1197,8 @@ schedulematch.addEventListener('click', () =>
   var noofovers = document.getElementById("noofovers").value;
   var matchname = document.getElementById("matchname").value;
 
+  localStorage.setItem("TotalOvers",noofovers);
+                
 
   var ele = document.getElementsByName("teamtoss");
 
