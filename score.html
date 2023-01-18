@@ -287,15 +287,23 @@
                                                 <span class="bg-danger"><button type="button" class="btn btn-light" id="buttonwicket">W</button></span>
                                             </li>
                                             <li>
-                                                <span class="bg-success"><button type="button" class="btn btn-dark">Lb</button></span>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonlb">Lb</button></span>
                                             </li>
                                             <li>
-                                                <span class="bg-success"><button type="button" class="btn btn-dark">Nb</button></span>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonnb">Nb</button></span>
                                             </li>
                                             <li>
-                                                <span class="bg-success"><button type="button" class="btn btn-dark">Wd</button></span>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonwide">Wd</button></span>
                                             </li>
                                            
+                                             <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonbye">B</button></span>
+                                            </li>
+
+                                            <li>
+                                                <span class="bg-success"><button type="button" class="btn btn-dark" id="buttonextra">Ex</button></span>
+                                            </li>
+
                                         </ul>                                  
                                     </div>
 
@@ -469,8 +477,41 @@
   </div>
 </div>
 
+<!-- MODAL FOR WIDE BALL -->
+
+    <div class="modal fade" id="extramodal" role="dialog">
+  <div class="modal-dialog" class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="dropdown">
+   
+
+          <h5>Extra run will be awarded. You need to mention extra runs</h5>
+           <br><br>
+
+           <form>
+             <div class="form-group">
+                <label for="exampleFormControlTextarea1">Extra Runs</label>
+                <input type="text" id="extraruns">
+              </div>
+           </form>
+
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" id="extramodalsave" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 
 
+</div>
 
 </div>
 
@@ -903,6 +944,13 @@ document.getElementById("defaultOpen").click
     let btn6 = document.querySelector('#buttonsix');
     let btnwicket = document.querySelector('#buttonwicket');
 
+    let btnwide = document.getElementById("buttonwide");
+    let btnnb = document.getElementById("buttonnb");
+    let btnlb = document.getElementById("buttonlb");
+    let btnb = document.getElementById("buttonbye");
+
+    let btnex = document.getElementById("buttonextra");
+
     var select = document.getElementById("selectbowler");
 
     var selectoverchange = document.getElementById("selectbowleroverchange");
@@ -914,6 +962,14 @@ document.getElementById("defaultOpen").click
     var savenewbatter = document.getElementById("savenewbatter");
 
     var savenewbatteroverchange = document.getElementById("savenewbatteroverchange");
+
+
+
+    let extramodalsave = document.getElementById("extramodalsave");
+
+    /* let extrarunswithwide = document.getElementById("extrarunswithwide");
+    let extrarunswithlb = document.getElementById("extrarunswithlb");
+    let extrarunswithnb = document.getElementById("extrarunswithnb"); */
 
     /* var savewickettype = document.getElementById("savewickettype"); */
 
@@ -1311,6 +1367,8 @@ function openiniupinnschange()
                     teamaovers.innerText="0.0";
                     teamawickets.innerText=0;
                     teamascore.innerText="0";
+                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
                 }
                 else
                 {
@@ -1319,6 +1377,8 @@ function openiniupinnschange()
                     teambovers.innerText="0.0";
                      teambwickets.innerText=0;
                     teambscore.innerText="0";
+                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
                 }
 
 
@@ -1346,6 +1406,7 @@ function openiniupinnschange()
                     `
            
                 document.getElementById("popup2").style.display = "none";
+
 
 
           });
@@ -3958,6 +4019,291 @@ btn6.addEventListener('click', () =>
                 }     
 });
 
+var toadd;
+
+btnwide.addEventListener('click', () => 
+{
+    
+      score = score+1;
+
+      var donescore = currentbowlerrunsgiven.innerText;
+
+      if (battingfirst==teamaselected)
+      {
+        teamascore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">WD</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      if (battingfirst==teambselected)
+      {
+        teambscore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">WD</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      ballerruncount = parseInt(donescore)+1;
+      currentbowlerrunsgiven.innerHTML = ballerruncount;
+      
+});
+
+
+btnnb.addEventListener('click', () => 
+{
+    score = score+1;
+
+    var donescore = currentbowlerrunsgiven.innerText;  //to increment bowler score by 1
+
+      if (battingfirst==teamaselected)
+      {
+        teamascore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">NB</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      if (battingfirst==teambselected)
+      {
+        teambscore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">NB</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      
+      ballerruncount = parseInt(donescore)+1;
+      currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+
+});
+
+btnlb.addEventListener('click', () => 
+{
+    score = score+1;
+
+    var doneballs = currentbowlerovers.innerText;
+
+      if (battingfirst==teamaselected)
+      {
+        teamascore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">LB</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      if (battingfirst==teambselected)
+      {
+        teambscore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">LB}</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10;
+      currentbowlerovers.innerHTML = ballerballcount;
+
+});
+
+btnb.addEventListener('click', () => 
+{
+    score = score+1;
+
+    var doneballs = currentbowlerovers.innerText;
+
+      if (battingfirst==teamaselected)
+      {
+        teamascore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">B</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      if (battingfirst==teambselected)
+      {
+        teambscore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">B</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+      }
+
+      ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10;
+      currentbowlerovers.innerHTML = ballerballcount;
+
+});
+
+btnex.addEventListener('click', () => 
+{
+    $('#extramodal').modal({show:true});
+
+    var donescore = currentbowlerrunsgiven.innerText;
+
+    extramodalsave.addEventListener('click', () => 
+    {
+        
+        toadd = document.getElementById("extraruns").value;
+        
+        $('#extramodal').modal('hide');
+
+        if (toadd%2!==0)
+        {
+            
+            if (battingfirst==teamaselected)
+            {
+                    score = parseInt(teamascore.innerText) + parseInt(toadd);
+                    teamascore.innerHTML = score; 
+
+                                        if (strikerstar.innerText=="*")
+                                        {
+                                            strikerstar.innerHTML="";
+                                            nonstrikerstar.innerHTML="*";
+                                        }
+                                        if (nonstrikerstar.innerText=="*")
+                                        {
+                                            strikerstar.innerHTML="*";
+                                            nonstrikerstar.innerHTML="";
+                                        } 
+
+                addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">${toadd}</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+
+               ballerruncount = parseInt(donescore)+1;
+               currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+            }
+
+            else 
+            {
+                score = parseInt(teambscore.innerText) + parseInt(toadd);
+                teambscore.innerHTML = score; 
+
+                                        if (strikerstar.innerText=="*")
+                                        {
+                                            strikerstar.innerHTML="";
+                                            nonstrikerstar.innerHTML="*";
+                                        }
+                                        if (nonstrikerstar.innerText=="*")
+                                        {
+                                            strikerstar.innerHTML="*";
+                                            nonstrikerstar.innerHTML="";
+                                        } 
+
+                                        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">${toadd}</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+                ballerruncount = parseInt(donescore)+1;
+               currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+            }                        
+
+        }
+
+        else if (toadd%2==0)
+        {
+            if (battingfirst==teamaselected)
+            {
+                    score = parseInt(teamascore.innerText) + parseInt(toadd);
+                    teamascore.innerHTML = score;
+
+                    ballerruncount = parseInt(donescore)+parseInt(toadd);
+                    currentbowlerrunsgiven.innerHTML = ballerruncount; 
+
+                    addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">${toadd}</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+            }
+            else
+            {
+                    score = parseInt(teambscore.innerText) + parseInt(toadd);
+                    teambscore.innerHTML = score; 
+
+                    ballerruncount = parseInt(donescore)+parseInt(toadd);
+                 currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+                 addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">${toadd}</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+            }
+        }
+
+
+    });
+});
+
 
 var previousbattername;
                         var previousbatterruns;
@@ -3968,42 +4314,87 @@ var previousbattername;
                         var previousbowlername;
 
 
+if (battingfirst==teamaselected)
+{
+    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
 
-onValue(getbowlerslist,(snapshot)=>
-                          {
-                            snapshot.forEach(snap => 
-                            {
-                              
-                              const issue = snap.val();
-                         document.getElementById('bowlerlistifcaught').innerHTML +=
-                        `    <option value="${issue}">${issue}</option> `
-                            })
-                         })
+            onValue(getbowlerslist,(snapshot)=>
+                                      {
+                                        snapshot.forEach(snap => 
+                                        {
+                                          
+                                          const issue = snap.val();
+                                     document.getElementById('bowlerlistifcaught').innerHTML +=
+                                    `    <option value="${issue}">${issue}</option> `
+                                        })
+                                     })
 
 
 
-onValue(getbowlerslist,(snapshot)=>
-                          {
-                            snapshot.forEach(snap => 
-                            {
-                              
-                              const issue = snap.val();
-                         document.getElementById('bowlerlistifcaughtoverchange').innerHTML +=
-                        `    <option value="${issue}">${issue}</option> `
-                            })
-                         })
+            onValue(getbowlerslist,(snapshot)=>
+                                      {
+                                        snapshot.forEach(snap => 
+                                        {
+                                          
+                                          const issue = snap.val();
+                                     document.getElementById('bowlerlistifcaughtoverchange').innerHTML +=
+                                    `    <option value="${issue}">${issue}</option> `
+                                        })
+                                     })
 
-onValue(getbowlerslist,(snapshot)=>
-                          {
-                            snapshot.forEach(snap => 
-                            {
-                              
-                              const issue = snap.val();
-                         document.getElementById('bowlerlistifcaughtoverchangelastbatter').innerHTML +=
-                        `    <option value="${issue}">${issue}</option> `
-                            })
-                         })
+            onValue(getbowlerslist,(snapshot)=>
+                                      {
+                                        snapshot.forEach(snap => 
+                                        {
+                                          
+                                          const issue = snap.val();
+                                     document.getElementById('bowlerlistifcaughtoverchangelastbatter').innerHTML +=
+                                    `    <option value="${issue}">${issue}</option> `
+                                        })
+                                     })
+}
 
+else
+{
+ getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+
+            onValue(getbowlerslist,(snapshot)=>
+                                      {
+                                        snapshot.forEach(snap => 
+                                        {
+                                          
+                                          const issue = snap.val();
+                                     document.getElementById('bowlerlistifcaught').innerHTML +=
+                                    `    <option value="${issue}">${issue}</option> `
+                                        })
+                                     })
+
+
+
+            onValue(getbowlerslist,(snapshot)=>
+                                      {
+                                        snapshot.forEach(snap => 
+                                        {
+                                          
+                                          const issue = snap.val();
+                                     document.getElementById('bowlerlistifcaughtoverchange').innerHTML +=
+                                    `    <option value="${issue}">${issue}</option> `
+                                        })
+                                     })
+
+            onValue(getbowlerslist,(snapshot)=>
+                                      {
+                                        snapshot.forEach(snap => 
+                                        {
+                                          
+                                          const issue = snap.val();
+                                     document.getElementById('bowlerlistifcaughtoverchangelastbatter').innerHTML +=
+                                    `    <option value="${issue}">${issue}</option> `
+                                        })
+                                     })
+}
 
 btnwicket.addEventListener('click', () => 
     {
