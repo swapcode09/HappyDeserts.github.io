@@ -1102,7 +1102,7 @@ window.onload=readteamsandmatches;
             <section class="live-matches pt-0">
               <div class="card card-shadow">
                 <ul class="nav nav-tabs mb-0">
-                  <li class="active"><a data-toggle="tab" href="#live_match" class="active">Matches</a></li>
+                  <li class="active"><a data-toggle="tab" href="#live_match" class="active"><h6>Matches</h6></a></li>
                 </ul>
               </div>
               
@@ -1336,8 +1336,8 @@ function readteamsandmatches()
                     <div class="score-card score-card-lg d-md-flex p-0">
                       <div class="score-card-inner flex-grow-1 px-20 py-20">
                         <div class="score-card-header mb-15">
-                          <strong class="text-red">Match</strong>
-                          <span>${issue2.MatchID}, ${issue2.Ground}, ${issue2.Overs} overs match</span>
+                          <strong class="text-red"><h5>Match</h5></strong>
+                          <span><h6>${issue2.MatchID}, ${issue2.Ground}, ${issue2.Overs} overs match</h6></span>
                         </div>
                         <div class="score-card-body">
                           <div class="country-info">
@@ -1345,7 +1345,7 @@ function readteamsandmatches()
                               <figure>
                                 <img src="images/teamalogo.png" alt="" />
                               </figure>
-                              <span class="country-name">${issue2.Team1}</span>
+                              <span class="country-name"><h6>${issue2.Team1}</h6></span>
                             </div>
                         
                           </div>
@@ -1357,13 +1357,13 @@ function readteamsandmatches()
                               <figure>
                                 <img src="images/teamblogo.png" alt="" />
                               </figure>
-                              <span class="country-name">${issue2.Team2}</span>
+                              <span class="country-name"><h6>${issue2.Team2}</h6></span>
                             </div>
                            
                           </div>
                         </div>
                         <br>
-                        <div class="floating-text text-14"><span class="d-block"><b>${issue2.Toss}</b> won the toss and opted to <b>${issue2.OptedTo}</b></span></div>
+                        <div class="floating-text text-14"><span class="d-block"><h5><b>${issue2.Toss}</b> won the toss and opted to <b>${issue2.OptedTo}</b></h5></span></div>
                       </div>
                       
 
