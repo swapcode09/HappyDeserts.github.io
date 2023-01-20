@@ -1826,45 +1826,38 @@ btn0.addEventListener('click', () =>
                                         `
               }
 
-                var check1 = document.getElementById(currentbowlernamepara.innerText);
+        
 
-                     console.log(check1);
+                
 
-                                          
-                                          if (check1!=null)
-                                          {
-                                            document.getElementById(`${currentbowlernamepara.innerText}`).innerHTML =
-                                                            `
-                                                            <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
-                                                                <td>${currentbowlerrunsgiven.innerText}</td>
-                                                                <td>${currentbowlerwickets.innerText}</td>
-                                                                <td>${currentbowlerecon.innerText}</td>
-                                                            `                       
+                                                                                                                           {
                                             
-                                          }
-
-                                          else
-                                          {
-                                            console.log("baller not exu");  
-                                            document.getElementById("bowlerdetailsforteama").innerHTML += `
-                                                             <tr id="${currentbowlernamepara.innerText}">
-                                                                <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
-                                                                <td>${currentbowlerrunsgiven.innerText}</td>
-                                                                <td>${currentbowlerwickets.innerText}</td>
-                                                                <td>${currentbowlerecon.innerText}</td>
-                                                            </tr> `      
-                                          }
+                                                         
+                                                            
+    
 
 
+                     
+                          
+
+                                                                                   
+                                            
+                                       
+
+                                     
+                                          
+                                   
+                                            
+                                                             
+                                                                
+                         
+                                                                                     
+
+                                                           
+                                               
             if (innsover==2)
               {
-                  
+                 
                   target = localStorage.getItem("Target");
                   rem_score = target - parseInt(document.getElementById("teambscore").innerText);
                   console.log("rem score is"+rem_score);
@@ -1899,6 +1892,42 @@ btn0.addEventListener('click', () =>
                                             WicketsTaken : currentbowlerwickets.innerText,
                                             Economy : currentbowlerecon.innerText
                                           });
+                
+                
+var check1 = document.getElementById(currentbowlernamepara.innerText);
+
+                     console.log(check1);
+
+                                          
+                                          if (check1!=null)
+                                          {
+                                            document.getElementById(`${currentbowlernamepara.innerText}`).innerHTML =
+                                                            `
+                                                            <td>
+                                                                    <strong>${currentbowlernamepara.innerText}</strong>
+                                                                </td>
+                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
+                                                                <td>${currentbowlerrunsgiven.innerText}</td>
+                                                                <td>${currentbowlerwickets.innerText}</td>
+                                                                <td>${currentbowlerecon.innerText}</td>
+                                                            `                       
+                                            
+                                          }
+
+                                          else
+                                          {
+                                            console.log("baller not exu");  
+                                            document.getElementById("bowlerdetailsforteama").innerHTML += `
+                                                             <tr id="${currentbowlernamepara.innerText}">
+                                                                <td>
+                                                                    <strong>${currentbowlernamepara.innerText}</strong>
+                                                                </td>
+                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
+                                                                <td>${currentbowlerrunsgiven.innerText}</td>
+                                                                <td>${currentbowlerwickets.innerText}</td>
+                                                                <td>${currentbowlerecon.innerText}</td>
+                                                            </tr> `      
+                                          }
 
             
 
