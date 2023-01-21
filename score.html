@@ -855,14 +855,6 @@
 </div>
 
 
-                            
-
-
-
-
-
-
-
         <!-- JS -->
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
@@ -937,8 +929,8 @@ document.getElementById("defaultOpen").click
                     document.getElementById("strikerrunout").disabled=false;
                     document.getElementById("nonstrikerrunout").disabled=false;
 
-                    document.getElementById("strikername").innerHTML = `${batter1namepara.innerText}`
-                    document.getElementById("nonstrikername").innerHTML = `${batter2namepara.innerText}`
+                    document.getElementById("strikername").innerHTML = `${batter1namepara.innerText}`;
+                    document.getElementById("nonstrikername").innerHTML = `${batter2namepara.innerText}`;
 
                 }
                 else
@@ -972,6 +964,9 @@ document.getElementById("defaultOpen").click
                     document.getElementById("runoutradio").disabled=false;
                     document.getElementById("strikerrunout").disabled=false;
                     document.getElementById("nonstrikerrunout").disabled=false;
+
+                    document.getElementById("strikername").innerHTML = `${batter1namepara.innerText}`;
+                    document.getElementById("nonstrikername").innerHTML = `${batter2namepara.innerText}`;
                 }
                 else
                 {
@@ -1005,6 +1000,11 @@ document.getElementById("defaultOpen").click
                     document.getElementById("runoutradio").disabled=true;
                     document.getElementById("strikerrunout").disabled=true;
                     document.getElementById("nonstrikerrunout").disabled=true;
+
+                    document.getElementById("strikername").innerHTML = `${batter1namepara.innerText}`;
+                    document.getElementById("nonstrikername").innerHTML = `${batter2namepara.innerText}`;
+
+
                 }
             }
             
@@ -1667,6 +1667,89 @@ function openiniup()
 
     }
 
+
+function addtoscorecard()
+{
+    if (battingfirst==teamaselected)
+    {
+            var check1 = document.getElementById(currentbowlernamepara.innerText);
+
+                     console.log(check1);
+
+                                          
+                                          if (check1!=null)
+                                          {
+                                            document.getElementById(`${currentbowlernamepara.innerText}`).innerHTML =
+                                                            `
+                                                            <td>
+                                                                    <strong>${currentbowlernamepara.innerText}</strong>
+                                                                </td>
+                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
+                                                                <td>${currentbowlerrunsgiven.innerText}</td>
+                                                                <td>${currentbowlerwickets.innerText}</td>
+                                                                <td>${currentbowlerecon.innerText}</td>
+                                                            `                       
+                                            
+                                          }
+
+                                          else
+                                          {
+                                            console.log("baller not exu");  
+                                            document.getElementById("bowlerdetailsforteamb").innerHTML += `
+                                                             <tr id="${currentbowlernamepara.innerText}">
+                                                                <td>
+                                                                    <strong>${currentbowlernamepara.innerText}</strong>
+                                                                </td>
+                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
+                                                                <td>${currentbowlerrunsgiven.innerText}</td>
+                                                                <td>${currentbowlerwickets.innerText}</td>
+                                                                <td>${currentbowlerecon.innerText}</td>
+                                                            </tr> `      
+                                          }
+    }
+
+    else if (battingfirst==teambselected)
+    {
+            var check1 = document.getElementById(currentbowlernamepara.innerText);
+
+                     console.log(check1);
+
+                                          
+                                          if (check1!=null)
+                                          {
+                                            document.getElementById(`${currentbowlernamepara.innerText}`).innerHTML =
+                                                            `
+                                                            <td>
+                                                                    <strong>${currentbowlernamepara.innerText}</strong>
+                                                                </td>
+                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
+                                                                <td>${currentbowlerrunsgiven.innerText}</td>
+                                                                <td>${currentbowlerwickets.innerText}</td>
+                                                                <td>${currentbowlerecon.innerText}</td>
+                                                            `                       
+                                            
+                                          }
+
+                                          else
+                                          {
+                                            console.log("baller not exu");  
+                                            document.getElementById("bowlerdetailsforteama").innerHTML += `
+                                                             <tr id="${currentbowlernamepara.innerText}">
+                                                                <td>
+                                                                    <strong>${currentbowlernamepara.innerText}</strong>
+                                                                </td>
+                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
+                                                                <td>${currentbowlerrunsgiven.innerText}</td>
+                                                                <td>${currentbowlerwickets.innerText}</td>
+                                                                <td>${currentbowlerecon.innerText}</td>
+                                                            </tr> `      
+                                          }
+    }
+
+
+}
+
+
 btn0.addEventListener('click', () => 
 {
             
@@ -1826,38 +1909,10 @@ btn0.addEventListener('click', () =>
                                         `
               }
 
-        
 
-                
-
-                                                                                                                           {
-                                            
-                                                         
-                                                            
-    
-
-
-                     
-                          
-
-                                                                                   
-                                            
-                                       
-
-                                     
-                                          
-                                   
-                                            
-                                                             
-                                                                
-                         
-                                                                                     
-
-                                                           
-                                               
             if (innsover==2)
               {
-                 
+                  
                   target = localStorage.getItem("Target");
                   rem_score = target - parseInt(document.getElementById("teambscore").innerText);
                   console.log("rem score is"+rem_score);
@@ -1892,46 +1947,10 @@ btn0.addEventListener('click', () =>
                                             WicketsTaken : currentbowlerwickets.innerText,
                                             Economy : currentbowlerecon.innerText
                                           });
-                
-                
-var check1 = document.getElementById(currentbowlernamepara.innerText);
-
-                     console.log(check1);
-
-                                          
-                                          if (check1!=null)
-                                          {
-                                            document.getElementById(`${currentbowlernamepara.innerText}`).innerHTML =
-                                                            `
-                                                            <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
-                                                                <td>${currentbowlerrunsgiven.innerText}</td>
-                                                                <td>${currentbowlerwickets.innerText}</td>
-                                                                <td>${currentbowlerecon.innerText}</td>
-                                                            `                       
-                                            
-                                          }
-
-                                          else
-                                          {
-                                            console.log("baller not exu");  
-                                            document.getElementById("bowlerdetailsforteama").innerHTML += `
-                                                             <tr id="${currentbowlernamepara.innerText}">
-                                                                <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
-                                                                <td>${currentbowlerrunsgiven.innerText}</td>
-                                                                <td>${currentbowlerwickets.innerText}</td>
-                                                                <td>${currentbowlerecon.innerText}</td>
-                                                            </tr> `      
-                                          }
 
             
-
-        
+            addtoscorecard();
+    
               if (ball_count%6==0) // BUTTON 0 PRESSED AND OVER DONE
               {
                  overdone = overdone+1;   
@@ -1945,6 +1964,8 @@ var check1 = document.getElementById(currentbowlernamepara.innerText);
                  { teambovers.innerHTML = overdone+".0"; }
 
                  currentbowlerovers.innerHTML = ballerballcount; 
+
+                 addtoscorecard();
 
                  if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
                  {  
@@ -2381,6 +2402,8 @@ btn1.addEventListener('click', () =>
                                             Economy : currentbowlerecon.innerText
                                           });
 
+              addtoscorecard();
+
 
               if (ball_count%6==0)
               {
@@ -2395,6 +2418,8 @@ btn1.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                 currentbowlerovers.innerHTML = ballerballcount;
+
+                addtoscorecard();
 
 
                 if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
@@ -2823,10 +2848,6 @@ btn2.addEventListener('click', () =>
 
               }
 
-
-
-
-
             }
 
 
@@ -2843,6 +2864,8 @@ btn2.addEventListener('click', () =>
                                             Economy : currentbowlerecon.innerText
                                           });
 
+               addtoscorecard();
+
 
               if (ball_count%6==0)
               {
@@ -2857,6 +2880,8 @@ btn2.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                 currentbowlerovers.innerHTML = ballerballcount;
+
+                 addtoscorecard();
 
 
                 if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
@@ -3302,6 +3327,8 @@ btn3.addEventListener('click', () =>
                                             Economy : currentbowlerecon.innerText
                                           });
 
+               addtoscorecard();
+
 
               if (ball_count%6==0)
               {
@@ -3316,6 +3343,8 @@ btn3.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                 currentbowlerovers.innerHTML = ballerballcount;
+
+                 addtoscorecard();
 
 
                 if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
@@ -3752,6 +3781,8 @@ btn4.addEventListener('click', () =>
                                             Economy : currentbowlerecon.innerText
                                           });
 
+               addtoscorecard();
+
 
               if (ball_count%6==0)
               {
@@ -3766,6 +3797,8 @@ btn4.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                 currentbowlerovers.innerHTML = ballerballcount;
+
+                 addtoscorecard();
 
 
                 if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
@@ -4208,6 +4241,8 @@ btn5.addEventListener('click', () =>
                                             Economy : currentbowlerecon.innerText
                                           });
 
+               addtoscorecard();
+
 
               if (ball_count%6==0)
               {
@@ -4222,6 +4257,8 @@ btn5.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                 currentbowlerovers.innerHTML = ballerballcount;
+
+                 addtoscorecard();
 
 
                 if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
@@ -4662,6 +4699,8 @@ btn6.addEventListener('click', () =>
                                             Economy : currentbowlerecon.innerText
                                           });
 
+               addtoscorecard();
+
 
               if (ball_count%6==0)
               {
@@ -4676,6 +4715,8 @@ btn6.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                 currentbowlerovers.innerHTML = ballerballcount;
+
+                 addtoscorecard();
 
 
                 if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON 0
@@ -4963,7 +5004,7 @@ btnwide.addEventListener('click', () =>
                                                 </li>`
 
 
-                                                if (innsover==2)
+                if (innsover==2)
               {
                   rem_score = (target) - parseInt((document.getElementById("teambscore").innerText));
                   console.log("rem score is"+rem_score);
@@ -4987,6 +5028,8 @@ btnwide.addEventListener('click', () =>
 
       ballerruncount = parseInt(donescore)+1;
       currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+       addtoscorecard();
       
 });
 
@@ -5009,6 +5052,27 @@ btnnb.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+
+                if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
       }
 
       if (battingfirst==teambselected)
@@ -5023,11 +5087,34 @@ btnnb.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+
+                if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
       }
 
       
       ballerruncount = parseInt(donescore)+1;
       currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+      addtoscorecard();
 
 
 });
@@ -5052,6 +5139,26 @@ btnlb.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+             if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
       }
 
       if (battingfirst==teambselected)
@@ -5066,10 +5173,32 @@ btnlb.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+             if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
       }
 
       ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10;
       currentbowlerovers.innerHTML = ballerballcount;
+
+      addtoscorecard();
 
 });
 
@@ -5093,6 +5222,26 @@ btnb.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+            if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
       }
 
       if (battingfirst==teambselected)
@@ -5107,12 +5256,37 @@ btnb.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+              if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
       }
 
       ballerballcount = (parseFloat(doneballs)*10 + 0.1*10)/10;
       currentbowlerovers.innerHTML = ballerballcount;
 
+      addtoscorecard();
+
 });
+
+
+// NEED TO CHECK WIN CONDITIONS AND BOWLER SCORECARD UPDATE FOR THIS BUTTON
 
 btnex.addEventListener('click', () => 
 {
@@ -5155,6 +5329,8 @@ btnex.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
+
+
 
                ballerruncount = parseInt(donescore)+1;
                currentbowlerrunsgiven.innerHTML = ballerruncount;
@@ -5348,86 +5524,6 @@ const getbowlersforb = ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+bowl
 
 const getbowlersfora = ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+bowlingfirst);
 
-/* if (battingfirst==teamaselected)
-{
-    var check1 = document.getElementById(currentbowlernamepara.innerText);
-
-                                          if (check1!=null)
-                                          {
-                                             console.log("baller exis");
-                                             document.getElementById(currentbowlernamepara.innerText).innerHTML=
-                                             `
-                                                                 <td>
-                                                                    <strong>${issue.BowlerName}</strong>
-                                                                </td>
-                                                                <td><strong>${issue.Overs}</strong></td>
-                                                                <td>${issue.RunsGiven}</td>
-                                                                <td>${issue.WicketsTaken}</td>
-                                                                <td>${issue.Economy}</td>
-                                             `
-
-                                          }
-
-                                          else
-                                          {
-                                            console.log("baller not exu");
-                                            document.getElementById("bowlerdetailsforteamb").innerHTML = `
-                                                             <tr id="${issue.BowlerName}">
-                                                                <td>
-                                                                    <strong>${issue.BowlerName}</strong>
-                                                                </td>
-                                                                <td><strong>${issue.Overs}</strong></td>
-                                                                <td>${issue.RunsGiven}</td>
-                                                                <td>${issue.WicketsTaken}</td>
-                                                                <td>${issue.Economy}</td>
-                                                            </tr> `
-                                     
-                                          }
-                                     })
-
-})
-     } */
-
-/* if (battingfirst==teambselected)
-{
-    var check1 = document.getElementById(currentbowlernamepara.innerText);
-
-                     console.log(check1);
-
-                                          
-                                          if (check1!=null)
-                                          {
-                                            document.getElementById(`${currentbowlernamepara.innerText}`).innerHTML +=
-                                                            `
-                                                            <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
-                                                                <td>${currentbowlerrunsgiven.innerText}</td>
-                                                                <td>${currentbowlerwickets.innerText}</td>
-                                                                <td>${currentbowlerecon.innerText}</td>
-                                                            `                       
-                                            
-                                          }
-
-                                          else
-                                          {
-                                            console.log("baller not exu");  
-                                            document.getElementById("bowlerdetailsforteama").innerHTML += `
-                                                             <tr id="${currentbowlernamepara.innerText}">
-                                                                <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlerovers.innerText}</strong></td>
-                                                                <td>${currentbowlerrunsgiven.innerText}</td>
-                                                                <td>${currentbowlerwickets.innerText}</td>
-                                                                <td>${currentbowlerecon.innerText}</td>
-                                                            </tr> `      
-                                          }
-
-
-}  */
-
 btnwicket.addEventListener('click', () => 
     {
             
@@ -5447,7 +5543,8 @@ btnwicket.addEventListener('click', () =>
 
             currentbowlerwickets.innerHTML = parseInt(currentbowlerwickets.innerText) + 1;
 
-                
+            addtoscorecard();
+   
             currentovertext.insertAdjacentHTML("beforeend"," " + val_of_button);
 
             wickets = parseInt(wickets)+1;
@@ -5643,6 +5740,8 @@ btnwicket.addEventListener('click', () =>
                  { teambovers.innerHTML = overdone+".0"; }
 
                  currentbowlerovers.innerHTML = ballerballcount;
+
+                 addtoscorecard();
 
 
                   if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON WICKET
@@ -6390,6 +6489,8 @@ btnwicket.addEventListener('click', () =>
 
                    currentbowlerovers.innerHTML = ballerballcount;
 
+                   addtoscorecard();
+
                     if (overdone == totalovers)  // THIS GETS EXECUTED ONLY WHEN INNS IS OVER ON BUTTON WICKET
                   {  
                     // SAVE BOWER DATA 1ST EVEN IF INNS IS OVER
@@ -6843,31 +6944,6 @@ scorecardbutton.addEventListener('click',() =>
                                                                 <td>${batter2sixcount.innerText}</td>
                                                                 <td>${batter2strikeratecount.innerText}</td>
                     `
-
-                    var check1 = document.getElementById(currentbowlernamepara.innerText);
-
-                                          
-                                          if (check1!=null)
-                                          {
-                                             console.log("exis");                                    
-                                         }
-
-                                          else
-                                          {
-                                            console.log("baller not exu");  
-                                            document.getElementById("bowlerdetailsforteama").innerHTML = `
-                                                             <tr id="${currentbowlernamepara.innerText}">
-                                                                <td>
-                                                                    <strong>${currentbowlernamepara.innerText}</strong>
-                                                                </td>
-                                                                <td><strong>${currentbowlernamepara.innerText}</strong></td>
-                                                                <td>${currentbowlernamepara.innerText}</td>
-                                                                <td>${currentbowlernamepara.innerText}</td>
-                                                                <td>${currentbowlernamepara.innerText}</td>
-                                                            </tr> `      
-                                          }
-    
-
                
     }
 
