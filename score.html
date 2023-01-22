@@ -355,11 +355,13 @@
 
         <br><br>
 
+        <!-- RUN OUT FOR NORMAL BALLS -->
+
          <div class="form-check" id="runoutradio" disabled="">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="strikerrunout">
-                <label class="form-check-label">Striker <strong id="strikername"></strong></label>
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="strikerrunout" value="strikerro" onchange="throwwhoout(this)">
+            <label class="form-check-label">Striker <strong id="strikername"></strong></label>
                 <br>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="nonstrikerrunout">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="nonstrikerrunout" value="nostrikerro" onchange="throwwhoout(this)">
                 <label class="form-check-label">Non Striker <strong id="nonstrikername"></strong></label>
         </div>
 
@@ -438,12 +440,14 @@
 
         <br><br>
 
+            <!-- RUN OUT FOR OVER CHANGE -->
+
        <div class="form-check" id="runoutradiooverchange" disabled="">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="strikerrunout">
-                <label class="form-check-label">Striker <strong id="strikername"></strong></label>
+<input class="form-check-input" type="radio" name="flexRadioDefault" id="strikerrunoutoverchange" value="strikerro" onchange="throwwhoout(this)">
+                <label class="form-check-label">Striker <strong id="strikernameoverchange"></strong></label>
                 <br>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="nonstrikerrunout">
-                <label class="form-check-label">Non Striker <strong id="nonstrikername"></strong></label>
+<input class="form-check-input" type="radio" name="flexRadioDefault" id="nonstrikerrunoutoverchange" value="nostrikerro" onchange="throwwhoout(this)">
+                <label class="form-check-label">Non Striker <strong id="nonstrikernameoverchange"></strong></label>
         </div>
         <!-- <button type="submit" id="savewickettype" class="btn btn-primary">Save Wicket</button> -->
 
@@ -470,7 +474,7 @@
    
 
           <h3>Select wicket type</h3>
-        <select class="form-select" id="wicketdisplayoverchange" aria-label="Default select example" onchange="disablecarbrandoverchangelastabatter(this)">    
+        <select class="form-select" id="wicketdisplaylastbatter" aria-label="Default select example" onchange="disablecarbrandoverchangelastabatter(this)">    
             <option value="b" id="bowled">Bowled</option>
             <option value="c" id="caught">Caught</option>
             <option value="c&b" id="caught&bowled">C&B</option>
@@ -489,12 +493,14 @@
 
         <br><br>
 
+        <!-- RUN OUT FOR INNS CHANGE CHANGE -->
+
         <div class="form-check" id="runoutradiolastbatter" disabled="">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="strikerrunout">
-                <label class="form-check-label">Striker <strong id="strikername"></strong></label>
+<input class="form-check-input" type="radio" name="flexRadioDefault" id="strikerrunoutlastbatter" value="strikerro" onchange="throwwhoout(this)">
+                <label class="form-check-label">Striker <strong id="strikernamelastbatter"></strong></label>
                 <br>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="nonstrikerrunout">
-                <label class="form-check-label">Non Striker <strong id="nonstrikername"></strong></label>
+<input class="form-check-input" type="radio" name="flexRadioDefault" id="nonstrikerrunoutlastbatter" value="nostrikerro" onchange="throwwhoout(this)">
+                <label class="form-check-label">Non Striker <strong id="nonstrikernamelastbatter"></strong></label>
         </div>
         <!-- <button type="submit" id="savewickettype" class="btn btn-primary">Save Wicket</button> -->
 
@@ -961,18 +967,18 @@ document.getElementById("defaultOpen").click
 
                 if (answer.value=="runout")
                 {   
-                    document.getElementById("runoutradio").disabled=false;
-                    document.getElementById("strikerrunout").disabled=false;
-                    document.getElementById("nonstrikerrunout").disabled=false;
+                    document.getElementById("runoutradiooverchange").disabled=false;
+                    document.getElementById("strikerrunoutoverchange").disabled=false;
+                    document.getElementById("nonstrikerrunoutoverchange").disabled=false;
 
-                    document.getElementById("strikername").innerHTML = `${batter1namepara.innerText}`;
-                    document.getElementById("nonstrikername").innerHTML = `${batter2namepara.innerText}`;
+                    document.getElementById("strikernameoverchange").innerHTML = `${batter1namepara.innerText}`;
+                    document.getElementById("nonstrikernameoverchange").innerHTML = `${batter2namepara.innerText}`;
                 }
                 else
                 {
-                    document.getElementById("runoutradio").disabled=true;
-                    document.getElementById("strikerrunout").disabled=true;
-                    document.getElementById("nonstrikerrunout").disabled=true;
+                    document.getElementById("runoutradiooverchange").disabled=true;
+                    document.getElementById("strikerrunoutoverchange").disabled=true;
+                    document.getElementById("nonstrikerrunoutoverchange").disabled=true;
                 }
             }
 
@@ -991,24 +997,28 @@ document.getElementById("defaultOpen").click
 
                 if (answer.value=="runout")
                 {   
-                    document.getElementById("runoutradio").disabled=false;
-                    document.getElementById("strikerrunout").disabled=false;
-                    document.getElementById("nonstrikerrunout").disabled=false;
+                    document.getElementById("runoutradiolastbatter").disabled=false;
+                    document.getElementById("strikerrunoutlastbatter").disabled=false;
+                    document.getElementById("nonstrikerrunoutlastbatter").disabled=false;
+
+                    document.getElementById("strikernamelastbatter").innerHTML = `${batter1namepara.innerText}`;
+                    document.getElementById("nonstrikernamelastbatter").innerHTML = `${batter2namepara.innerText}`;
                 }
                 else
                 {
-                    document.getElementById("runoutradio").disabled=true;
-                    document.getElementById("strikerrunout").disabled=true;
-                    document.getElementById("nonstrikerrunout").disabled=true;
-
-                    document.getElementById("strikername").innerHTML = `${batter1namepara.innerText}`;
-                    document.getElementById("nonstrikername").innerHTML = `${batter2namepara.innerText}`;
-
-
+                    document.getElementById("runoutradiolastbatter").disabled=true;
+                    document.getElementById("strikerrunoutlastbatter").disabled=true;
+                    document.getElementById("nonstrikerrunoutlastbatter").disabled=true;
                 }
             }
+
+        var whout;
             
-            
+            function throwwhoout(who)
+            {
+               console.log("who is out"+who.value);
+                whout=who.value;
+            }
 
 
  
@@ -1145,7 +1155,7 @@ document.getElementById("defaultOpen").click
 <script type="module"> 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-          import { getDatabase , set , ref , update , push , child , onValue , get , remove} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+          import { getDatabase , set , ref , update , push , child , onValue , get , remove , query , orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
           
           var firebaseConfig = 
           {
@@ -1261,6 +1271,9 @@ var nonstrikerballs=0;
 var teama=[];
 var teamb=[];
     
+const batterdatafora = ref(database,selectedmatch+"/"+"Data/BatterData/"+teambselected+"/");
+
+let teamabatter = [];
 
 function getdetails() 
 {
@@ -1269,7 +1282,28 @@ function getdetails()
             openiniup();
     }
 
-    
+        onValue(batterdatafora,(snapshot)=>
+          {
+            snapshot.forEach(snap => 
+            {
+              
+              const issue = snap.val(); 
+
+              console.log(issue);
+              
+            /* teamabatter.push(issue);  */                
+            
+            });
+             
+             /* let sortedProducts = teamabatter.sort(
+            (p1, p2) => (p1.Balls > p2.Balls) ? 1 : (p1.Balls < p2.Balls) ? -1 : 0);
+
+        console.log("Products sorted based on descending order of their prices are:")
+        console.log(sortedProducts);   */        
+        
+        });
+
+
           onValue(matchref,(snapshot)=>
           {
             snapshot.forEach(snap => 
@@ -1278,6 +1312,9 @@ function getdetails()
               const issue = snap.val(); 
 
               console.log(issue);
+
+              /* teamabatter = issue.teamaselected */
+
 
             
               document.getElementById("teamAname").innerHTML = `${issue.Team1}`
@@ -1749,6 +1786,113 @@ function addtoscorecard()
 
 }
 
+function switchteams()
+{
+    // SWITCH TEAMS
+                        if (battingfirst==teamaselected)
+                        {
+                            innsover = innsover+1;
+                            
+                            balls=0;
+                            
+                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
+                            console.log("target set by team a is"+target);
+
+                            localStorage.setItem("Target",target);
+
+                            temp_for_inns_switch = teamaselected;
+                            battingfirst = teambselected;
+                            bowlingfirst = teamaselected;
+                            console.log("now batting 2nd will be"+battingfirst);
+                            console.log("now bowling 2nd will be"+bowlingfirst);
+
+                            strikerscore=0;
+                            strikerballs=0;
+                            nonstrikerscore=0;
+                            nonstrikerballs=0;
+                            ballerballcount=0;
+                            overdone=0;
+
+                            ball_count = 0;
+
+                            wickets="0";
+
+                            batter1namepara.innerText="";
+                            batter1scorepara.innerText=strikerscore;
+                            batter1bowlcount.innerText=strikerballs;
+                            batter1fourcount.innerText="0";
+                            batter1sixcount.innerText="0";
+                            batter1strikeratecount.innerText="0";
+
+                            batter2namepara.innerText="";
+                            batter2scorepara.innerText=nonstrikerscore;
+                            batter2bowlcount.innerText=nonstrikerballs;
+                            batter2fourcount.innerText="0";
+                            batter2sixcount.innerText="0";
+                            batter2strikeratecount.innerText="0";
+
+                            /* currentbowlerovers.innerText=ballerballcount; */
+
+                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+
+                            openiniupinnschange();
+
+                            
+                        }
+                        
+                        // SWITCH TEAMS
+                        else 
+                        {
+                            
+                            innsover = innsover+1;
+
+                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
+                            console.log("target set by team b is"+target);
+
+                            localStorage.setItem("Target",target);
+
+                            balls=0;
+
+                            temp_for_inns_switch = teambselected;
+                            battingfirst = teamaselected;
+                            bowlingfirst = teambselected;
+                            console.log("now batting 2nd will be"+battingfirst);
+                            console.log("now bowling 2nd will be"+bowlingfirst);
+
+                            strikerscore=0;
+                            strikerballs=0;
+                            nonstrikerscore=0;
+                            nonstrikerballs=0;
+                            ballerballcount=0;
+                            overdone = 0;
+
+                            ball_count = 0;
+
+                            teamawickets = 0;
+                            teambwickets = 0;
+                            wickets=0;
+
+                            batter1namepara.innerText="";
+                            batter1scorepara.innerText=strikerscore;
+                            batter1bowlcount.innerText=strikerballs;
+                            batter1fourcount.innerText="0";
+                            batter1sixcount.innerText="0";
+                            batter1strikeratecount.innerText="0";
+
+                            batter2namepara.innerText="";
+                            batter2scorepara.innerText=nonstrikerscore;
+                            batter2bowlcount.innerText=nonstrikerballs;
+                            batter2fourcount.innerText="0";
+                            batter2sixcount.innerText="0";
+                            batter2strikeratecount.innerText="0";
+
+                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
+                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
+
+                            openiniupinnschange();
+                        }
+}
 
 btn0.addEventListener('click', () => 
 {
@@ -2017,113 +2161,11 @@ btn0.addEventListener('click', () =>
                               nonstrikerstar.innerHTML="";
                               strikerstar.innerHTML="*";
                           }
-
-                          currentovertext.innerHTML = "";    
-
-                        // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-                            
-                            balls=0;
-                            
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone=0;
-
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
                         
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
+                          currentovertext.innerHTML = "";  
+                          switchteams()  
 
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            balls=0;
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                        
                  }
                 
                     // BUTTON 0 PRESSED INNS NOT DONE BUT OVERDONE
@@ -2178,7 +2220,8 @@ btn0.addEventListener('click', () =>
                               strikerstar.innerHTML="*";
                           }
 
-                          currentovertext.innerHTML = "";                 
+                          currentovertext.innerHTML = "";      
+
                 }
         }
 });
@@ -2475,123 +2518,7 @@ btn1.addEventListener('click', () =>
 
                           currentovertext.innerHTML = "";   
 
-                          // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-                            
-                            /*if (innsover == 2)
-                            {
-                               alert("match over");
-                            } */
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-                            score = 0;
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-                           
-          
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
-                        
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
-
-                            /* if (innsover == 2)
-                            {
-                                alert("match over");
-                            } */
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
- 
-                            score = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                          switchteams();
 
                     } 
 
@@ -2937,116 +2864,7 @@ btn2.addEventListener('click', () =>
 
                           currentovertext.innerHTML = "";   
 
-                          // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-        
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-                            score = 0;
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-                           
-          
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
-                        
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
-
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
- 
-                            score = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                        switchteams();
 
                     } 
 
@@ -3400,114 +3218,7 @@ btn3.addEventListener('click', () =>
 
                           currentovertext.innerHTML = "";   
 
-                          // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-                            score = 0;
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-                           
-          
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
-                        
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
- 
-                            score = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                          switchteams();
 
                     } 
 
@@ -3854,115 +3565,7 @@ btn4.addEventListener('click', () =>
 
                           currentovertext.innerHTML = "";   
 
-                          // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-                        
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-                            score = 0;
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-                           
-          
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
-                        
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
-
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
- 
-                            score = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                         switchteams();
 
                     } 
 
@@ -4313,116 +3916,7 @@ btn5.addEventListener('click', () =>
                           }
 
                           currentovertext.innerHTML = "";   
-
-                          // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-             
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-                            score = 0;
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-                           
-          
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
-                        
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
-
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
- 
-                            score = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                            switchteams();
 
                     } 
 
@@ -4772,116 +4266,7 @@ btn6.addEventListener('click', () =>
 
                           currentovertext.innerHTML = "";   
 
-                          // SWITCH TEAMS
-                        if (battingfirst==teamaselected)
-                        {
-                            innsover = innsover+1;
-               
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                            console.log("target set by team a is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teamaselected;
-                            battingfirst = teambselected;
-                            bowlingfirst = teamaselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-                            score = 0;
-                            ball_count = 0;
-
-                            wickets="0";
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            /* currentbowlerovers.innerText=ballerballcount; */
-                           
-          
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                            openiniupinnschange();
-
-                            
-                        }
-                        
-                        // SWITCH TEAMS
-                        else 
-                        {
-                            
-                            innsover = innsover+1;
-
-
-                            balls=0;
-
-                            var target=parseInt(document.getElementById("teambscore").innerText) + 1;
-                            console.log("target set by team b is"+target);
-
-                            localStorage.setItem("Target",target);
-
-                            temp_for_inns_switch = teambselected;
-                            battingfirst = teamaselected;
-                            bowlingfirst = teambselected;
-                            console.log("now batting 2nd will be"+battingfirst);
-                            console.log("now bowling 2nd will be"+bowlingfirst);
-
-                            strikerscore=0;
-                            strikerballs=0;
-                            nonstrikerscore=0;
-                            nonstrikerballs=0;
-                            ballerballcount=0;
-                            overdone = 0;
-
-                            ball_count = 0;
- 
-                            score = 0;
-
-                            teamawickets = 0;
-                            teambwickets = 0;
-                            wickets=0;
-
-                            batter1namepara.innerText="";
-                            batter1scorepara.innerText=strikerscore;
-                            batter1bowlcount.innerText=strikerballs;
-                            batter1fourcount.innerText="0";
-                            batter1sixcount.innerText="0";
-                            batter1strikeratecount.innerText="0";
-
-                            batter2namepara.innerText="";
-                            batter2scorepara.innerText=nonstrikerscore;
-                            batter2bowlcount.innerText=nonstrikerballs;
-                            batter2fourcount.innerText="0";
-                            batter2sixcount.innerText="0";
-                            batter2strikeratecount.innerText="0";
-
-                            getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                            getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                            openiniupinnschange();
-                        }
+                         switchteams(); 
 
                     } 
 
@@ -5532,7 +4917,6 @@ btnwicket.addEventListener('click', () =>
 
             balls = balls+1;
 
-
             console.log(ball_count);
 
             var doneballs = currentbowlerovers.innerText;
@@ -5571,57 +4955,7 @@ btnwicket.addEventListener('click', () =>
 
                     console.log("inns 1 is over");
                                     
-                                    /*if (innsover == 2)
-                                    {
-                                       alert("match over");
-                                    } */
-
-                                    balls=0;
-
-                                    temp_for_inns_switch = teamaselected;
-                                    battingfirst = teambselected;
-                                    bowlingfirst = teamaselected;
-                                    console.log("now batting 2nd will be"+battingfirst);
-                                    console.log("now bowling 2nd will be"+bowlingfirst);
-
-                                    strikerscore=0;
-                                    strikerballs=0;
-                                    nonstrikerscore=0;
-                                    nonstrikerballs=0;
-                                    ballerballcount=0;
-                                    
-                                    overdone = 0;
-
-                                    ball_count = 0;
-
-                                    wickets="0";
-
-
-                                    /* currentbowlerovers=0;
-                                    currentbowlerwickets = 0;
-                                    currentbowlerrunsgiven = 0;
-                                    currentbowlerecon = 0; */
-         
-                                    batter1namepara.innerText="";
-                                    batter1scorepara.innerTextstrikerscore;
-                                    batter1bowlcount.innerText=strikerballs;
-                                    batter1fourcount.innerText="0";
-                                    batter1sixcount.innerText="0";
-                                    batter1strikeratecount.innerText="0";
-
-                                    batter2namepara.innerText="";
-                                    batter2scorepara.innerText=nonstrikerscore;
-                                    batter2bowlcount.innerText=nonstrikerballs;
-                                    batter2fourcount.innerText="0";
-                                    batter2sixcount.innerText="0";
-                                    batter2strikeratecount.innerText="0";
-
-                                    /* currentbowlerovers.innerText=ballerballcount; */
-                                   
-                                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                                    openiniupinnschange();
+                                   switchteams();
                 }
 
                 teamaovers.innerHTML = parseFloat(document.getElementById("teamaovers").innerText*10 + 0.1*10 )/10;
@@ -5640,8 +4974,10 @@ btnwicket.addEventListener('click', () =>
                 {
                         console.log("yes wicket fell but over not done");
 
-                        if (strikerstar.innerText=="*")
-                          {
+                        // EXECUTING OTHER WICKETS IF IT IS NOT RUN OUT
+                      
+                            if (strikerstar.innerText=="*")
+                            {
                             
 
                             previousbattername = batter1namepara.innerText;
@@ -5662,20 +4998,20 @@ btnwicket.addEventListener('click', () =>
                                         Six : batter1sixcount.innerText
                                   });
 
-                        strikerscore=0;
-                        strikerballs=0; 
+                                strikerscore=0;
+                                strikerballs=0; 
 
-                        /* batter1namepara.innerHTML="";  */
+                        /* batter1namepara.innerHTML="";  
                         batter1scorepara.innerHTML=strikerscore;
                         batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="0";
                         batter1sixcount.innerHTML="0";
-                        batter1strikeratecount.innerHTML="0";  
+                        batter1strikeratecount.innerHTML="0";  */
 
                 
                         display_only_batsmen_ui();  // to select new batter after some batter is OUT
 
-                        strikerscore=0;
+                        /* strikerscore=0;
                         strikerballs=0; 
 
                         batter1namepara.innerHTML=""; 
@@ -5683,12 +5019,12 @@ btnwicket.addEventListener('click', () =>
                         batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="0";
                         batter1sixcount.innerHTML="0";
-                        batter1strikeratecount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";  */ 
 
                     }
 
-                        else if (nonstrikerstar.innerText=="*")
-                        {
+                            else if (nonstrikerstar.innerText=="*")
+                            {
               
                            
 
@@ -5710,19 +5046,20 @@ btnwicket.addEventListener('click', () =>
                                         Six : batter2sixcount.innerText
                                   });
 
-                          nonstrikerscore=0;
+                            nonstrikerscore=0;
                             nonstrikerballs=0; 
 
-                        /* batter2namepara.innerHTML=""; */
+                         /*  batter2namepara.innerHTML=""; 
                         batter2scorepara.innerHTML=nonstrikerscore;
                         batter2bowlcount.innerHTML=nonstrikerballs;
                         batter2fourcount.innerHTML="0";
                         batter2sixcount.innerHTML="0";
-                        batter2strikeratecount.innerHTML="0"; 
+                        batter2strikeratecount.innerHTML="0";  */
                    
                         display_only_batsmen_ui();
                   
                       }
+                         
               
                 }
 
@@ -5763,8 +5100,8 @@ btnwicket.addEventListener('click', () =>
                     $('#wicketforlastbatter').modal({show:true});
 
                     wicketforlastbattersave.addEventListener('click', () => 
-                        {
-                            lastbatterwicketype = document.getElementById("wicketdisplayoverchange").value;
+                    {
+                            lastbatterwicketype = document.getElementById("wicketdisplaylastbatter").value;
                             console.log("last batter out by"+lastbatterwicketype);
                             $('#wicketforlastbatter').modal('hide');
 
@@ -5916,263 +5253,66 @@ btnwicket.addEventListener('click', () =>
                                     }
                                 }   
 
-                            
-
-                            // SAVE LAST BATTER DATA FOR TEAM B
-                            /* else
-                            {
-                                if (lastbatterwicketype=="b") 
+                                if (lastbatterwicketype=="runout")
                                 {
-                                    if (strikerstar.innerText=="*")
-                                    {
-                                    
-                                        console.log("yes last batter out was striker");
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter1namepara.innerText,
-                                                                Runs : batter1scorepara.innerText,
-                                                                Balls : batter1bowlcount.innerText,
-                                                                StrikeRate : batter1strikeratecount.innerText,
-                                                                Fours : batter1fourcount.innerText,
-                                                                Six : batter1sixcount.innerText,
-                                                                WicketType : "b",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
+                                    if (whout=="strikerro")
+                                     {
+                     document.getElementById("lastbat").innerHTML = 
+                                `${batter1namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter1scorepara.innerText} (${batter1bowlcount.innerText} ${batter1fourcount.innerText}x4 ${batter1sixcount.innerText}x6) SR: ${batter1strikeratecount.innerText} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
 
-                                    }  
 
-                                    else if (nonstrikerstar.innerText=="*")
-                                    {
-                                           
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter2namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter2namepara.innerText,
-                                                                Runs : batter2scorepara.innerText,
-                                                                Balls : batter2bowlcount.innerText,
-                                                                StrikeRate : batter2strikeratecount.innerText,
-                                                                Fours : batter2fourcount.innerText,
-                                                                Six : batter2sixcount.innerText,
-                                                                WicketType : "b",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
-                                    }
+                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter1namepara.innerText+"/"), 
+                        {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });                             
 
-                                }
+                    }
 
-                                if (lastbatterwicketype=="lbw")
-                                {
-                                    if (strikerstar.innerText=="*")
-                                    {
-                                    
-                                       
+                 else if (whout=="nostrikerro")
+                {
+                                          
+                    document.getElementById("lastbat").innerHTML = 
+                                `${batter2namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter2scorepara.innerText} (${batter2bowlcount.innerText} ${batter2fourcount.innerText}x4 ${batter2sixcount.innerText}x6) SR: ${batter2strikeratecount.innerText} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
 
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter1namepara.innerText,
-                                                                Runs : batter1scorepara.innerText,
-                                                                Balls : batter1bowlcount.innerText,
-                                                                StrikeRate : batter1strikeratecount.innerText,
-                                                                Fours : batter1fourcount.innerText,
-                                                                Six : batter1sixcount.innerText,
-                                                                WicketType : "lbw",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
-
-                                    }  
-
-                                    else if (nonstrikerstar.innerText=="*")
-                                    {
-                                            
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter2namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter2namepara.innerText,
-                                                                Runs : batter2scorepara.innerText,
-                                                                Balls : batter2bowlcount.innerText,
-                                                                StrikeRate : batter2strikeratecount.innerText,
-                                                                Fours : batter2fourcount.innerText,
-                                                                Six : batter2sixcount.innerText,
-                                                                WicketType : "lbw",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
-                                    }
-                                } 
-
-                                if (lastbatterwicketype=="c&b")
-                                {
-                                    if (strikerstar.innerText=="*")
-                                    {
                                         
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter1namepara.innerText,
-                                                                Runs : batter1scorepara.innerText,
-                                                                Balls : batter1bowlcount.innerText,
-                                                                StrikeRate : batter1strikeratecount.innerText,
-                                                                Fours : batter1fourcount.innerText,
-                                                                Six : batter1sixcount.innerText,
-                                                                WicketType : "c&b",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter2namepara.innerText+"/"), 
+                        {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
 
-                                    }  
+                            
+                }
 
-                                    else if (nonstrikerstar.innerText=="*")
-                                    {
-                                             
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter2namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter2namepara.innerText,
-                                                                Runs : batter2scorepara.innerText,
-                                                                Balls : batter2bowlcount.innerText,
-                                                                StrikeRate : batter2strikeratecount.innerText,
-                                                                Fours : batter2fourcount.innerText,
-                                                                Six : batter2sixcount.innerText,
-                                                                WicketType : "c&b",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
-                                    }
-                                }
 
-                                if (lastbatterwicketype=="c")
-                                {
-                                    if (strikerstar.innerText=="*")
-                                    {
-                                         
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter1namepara.innerText,
-                                                                Runs : batter1scorepara.innerText,
-                                                                Balls : batter1bowlcount.innerText,
-                                                                StrikeRate : batter1strikeratecount.innerText,
-                                                                Fours : batter1fourcount.innerText,
-                                                                Six : batter1sixcount.innerText,
-                                                                WicketType : "c",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
+            }
 
-                                    }  
-
-                                    else if (nonstrikerstar.innerText=="*")
-                                    {
-                                             
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter2namepara.innerText+"/") , 
-                                                          {
-                                                                Name : batter2namepara.innerText,
-                                                                Runs : batter2scorepara.innerText,
-                                                                Balls : batter2bowlcount.innerText,
-                                                                StrikeRate : batter2strikeratecount.innerText,
-                                                                Fours : batter2fourcount.innerText,
-                                                                Six : batter2sixcount.innerText,
-                                                                WicketType : "c",
-                                                                BowlerName : currentbowlernamepara.innerText
-                                                          });
-                                    }
-                                }
-
-                            } */
+                            
 
                             // SWITCH TEAMS ONLY AFTER SAVING LAST BATTER DATA
                                 if (battingfirst==teamaselected)
                                 {
-                                    innsover = innsover+1;
-                                    
-                            
-
-                                    temp_for_inns_switch = teamaselected;
-                                    battingfirst = teambselected;
-                                    bowlingfirst = teamaselected;
-                                    console.log("now batting 2nd will be"+battingfirst);
-                                    console.log("now bowling 2nd will be"+bowlingfirst);
-
-                                    var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                                    console.log("target set by team a is"+target);
-                                    localStorage.setItem("Target",target);
-
-                                    strikerscore=0;
-                                    strikerballs=0;
-                                    nonstrikerscore=0;
-                                    nonstrikerballs=0;
-                                    ballerballcount=0;
-                                    
-                                    overdone = 0;
-
-                                    ball_count = 0;
-
-                                    wickets="0";
-         
-                                    batter1namepara.innerText="";
-                                    batter1scorepara.innerTextstrikerscore;
-                                    batter1bowlcount.innerText=strikerballs;
-                                    batter1fourcount.innerText="0";
-                                    batter1sixcount.innerText="0";
-                                    batter1strikeratecount.innerText="0";
-
-                                    batter2namepara.innerText="";
-                                    batter2scorepara.innerText=nonstrikerscore;
-                                    batter2bowlcount.innerText=nonstrikerballs;
-                                    batter2fourcount.innerText="0";
-                                    batter2sixcount.innerText="0";
-                                    batter2strikeratecount.innerText="0";
-
-                                    /* currentbowlerovers.innerText=ballerballcount; */
-                                   
-                                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                                    openiniupinnschange();
-
-                                    
+                                    switchteams();              
                                 }
                                 
                                 // SWITCH TEAMS
                                 else 
                                 {
                                     
-                                    innsover = innsover+1;
-
-                                    temp_for_inns_switch = teambselected;
-                                    battingfirst = teamaselected;
-                                    bowlingfirst = teambselected;
-                                    console.log("now batting 2nd will be"+battingfirst);
-                                    console.log("now bowling 2nd will be"+bowlingfirst);
-
-
-                                    var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                                     console.log("target set by team a is"+target);
-                                    localStorage.setItem("Target",target);
-
-                                    strikerscore=0;
-                                    strikerballs=0;
-                                    nonstrikerscore=0;
-                                    nonstrikerballs=0;
-                                    ballerballcount=0;
-                                    
-
-                                    ball_count = 0;
-
-
-                                    teamawickets = 0;
-                                    teambwickets = 0;
-                                    wickets=0;
-
-                                    batter1namepara.innerText="";
-                                    batter1scorepara.innerText=strikerscore;
-                                    batter1bowlcount.innerText=strikerballs;
-                                    batter1fourcount.innerText="0";
-                                    batter1sixcount.innerText="0";
-                                    batter1strikeratecount.innerText="0";
-
-                                    batter2namepara.innerText="";
-                                    batter2scorepara.innerText=nonstrikerscore;
-                                    batter2bowlcount.innerText=nonstrikerballs;
-                                    batter2fourcount.innerText="0";
-                                    batter2sixcount.innerText="0";
-                                    batter2strikeratecount.innerText="0";
-
-                                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                                    openiniupinnschange();
+                                    switchteams();
                                 }
 
                                 // UPDATE SCORECARD
@@ -6235,7 +5375,6 @@ btnwicket.addEventListener('click', () =>
                     if (strikerstar.innerText=="*")
                     {
                         
-
                         previousbattername = batter1namepara.innerText;
                         previousbatterruns = batter1scorepara.innerText;
                         previousbatterballs = batter1bowlcount.innerText;
@@ -6296,8 +5435,6 @@ btnwicket.addEventListener('click', () =>
 
                         over_change_ui();
 
-                        /* nonstrikerstar.innerHTML="";
-                        strikerstar.innerHTML="*"; */
                     } 
 
                     }
@@ -6315,55 +5452,7 @@ btnwicket.addEventListener('click', () =>
 
                 if (teambwickets.innerHTML==10)
                 {
-                    innsover = innsover+1;
-
-                    console.log("inns 1 is over");
-                                    
-                                    /*if (innsover == 2)
-                                    {
-                                       alert("match over");
-                                    } */
-
-                                    balls=0;
-
-                                    temp_for_inns_switch = teambselected;
-                                    battingfirst = teamaselected;
-                                    bowlingfirst = teambselected;
-                                    console.log("now batting 2nd will be"+battingfirst);
-                                    console.log("now bowling 2nd will be"+bowlingfirst);
-
-                                    strikerscore=0;
-                                    strikerballs=0;
-                                    nonstrikerscore=0;
-                                    nonstrikerballs=0;
-                                    ballerballcount=0;
-                                    
-                                    overdone = 0;
-
-                                    ball_count = 0;
-
-                                    wickets="0";
-
-                                    batter1namepara.innerText="";
-                                    batter1scorepara.innerTextstrikerscore;
-                                    batter1bowlcount.innerText=strikerballs;
-                                    batter1fourcount.innerText="0";
-                                    batter1sixcount.innerText="0";
-                                    batter1strikeratecount.innerText="0";
-
-                                    batter2namepara.innerText="";
-                                    batter2scorepara.innerText=nonstrikerscore;
-                                    batter2bowlcount.innerText=nonstrikerballs;
-                                    batter2fourcount.innerText="0";
-                                    batter2sixcount.innerText="0";
-                                    batter2strikeratecount.innerText="0";
-
-                                    /* currentbowlerovers.innerText=ballerballcount; */
-                                   
-                                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                                    openiniupinnschange();
+                    switchteams();
                 }
 
                 addcommentary.innerHTML += ` <li>
@@ -6378,21 +5467,18 @@ btnwicket.addEventListener('click', () =>
             
                 if (ball_count%6!=0)   //wicket fell but over not done yet
                 {
-                        console.log("in if part");
-
-                        if (strikerstar.innerText=="*")
-                        {
+        
+                            if (strikerstar.innerText=="*")
+                            {
                              
-                        previousbattername = batter1namepara.innerText;
-                        previousbatterruns = batter1scorepara.innerText;
-                        previousbatterballs = batter1bowlcount.innerText;
-                        previousbatterfours = batter1fourcount.innerText;
-                        previousbattersix = batter1sixcount.innerText;
-                        previousbatterstrikerate = batter1strikeratecount.innerText;
+                            previousbattername = batter1namepara.innerText;
+                            previousbatterruns = batter1scorepara.innerText;
+                            previousbatterballs = batter1bowlcount.innerText;
+                            previousbatterfours = batter1fourcount.innerText;
+                            previousbattersix = batter1sixcount.innerText;
+                            previousbatterstrikerate = batter1strikeratecount.innerText;
 
-                        
-
-
+                    
                         set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText) , 
                                   {
                                         Name : batter1namepara.innerText,
@@ -6404,43 +5490,33 @@ btnwicket.addEventListener('click', () =>
                                   });
 
                         /* strikerscore=0;
-                        strikerballs=0; 
+                        strikerballs=0;  */
 
-                        batter1namepara.innerHTML="";
+                        /* batter1namepara.innerHTML="";
                         batter1scorepara.innerHTML=strikerscore;
                         batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="0";
                         batter1sixcount.innerHTML="0";
                         batter1strikeratecount.innerHTML="0"; */
-
-
                         
                         display_only_batsmen_ui();  // to select new batter after some batter is OUT
 
-                        strikerscore=0;
-                        strikerballs=0; 
-
-                        /* batter1namepara.innerHTML="";  */
+                        /* batter1namepara.innerHTML="";  
                         batter1scorepara.innerHTML=strikerscore;
                         batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="0";
                         batter1sixcount.innerHTML="0";
-                        batter1strikeratecount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";  */
+                        }
 
-
-
-                         }
-
-                        else if (nonstrikerstar.innerText=="*")
-                        {
-              
-                         
-                            previousbattername = batter2namepara.innerText;
-                        previousbatterruns = batter2scorepara.innerText;
-                        previousbatterballs = batter2bowlcount.innerText;
-                        previousbatterfours = batter2fourcount.innerText;
-                        previousbattersix = batter2sixcount.innerText;
-                        previousbatterstrikerate = batter2strikeratecount.innerText;
+                            else if (nonstrikerstar.innerText=="*")
+                            { 
+                                previousbattername = batter2namepara.innerText;
+                                previousbatterruns = batter2scorepara.innerText;
+                                previousbatterballs = batter2bowlcount.innerText;
+                                previousbatterfours = batter2fourcount.innerText;
+                                previousbattersix = batter2sixcount.innerText;
+                                previousbatterstrikerate = batter2strikeratecount.innerText;
 
                             set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter2namepara.innerText) , 
                                   {
@@ -6452,8 +5528,8 @@ btnwicket.addEventListener('click', () =>
                                         Six : batter2sixcount.innerText
                                   });
 
-                            nonstrikerscore=0;
-                            nonstrikerballs=0; 
+                            /* nonstrikerscore=0;
+                            nonstrikerballs=0;  */
 
                         /* batter2namepara.innerHTML="";
                         batter2scorepara.innerHTML=nonstrikerscore;
@@ -6464,15 +5540,14 @@ btnwicket.addEventListener('click', () =>
 
                         display_only_batsmen_ui(); 
 
-                        /* batter2namepara.innerHTML=""; */
+                        /* batter2namepara.innerHTML=""; 
                         batter2scorepara.innerHTML=nonstrikerscore;
                         batter2bowlcount.innerHTML=nonstrikerballs;
                         batter2fourcount.innerHTML="0";
                         batter2sixcount.innerHTML="0";
-                        batter2strikeratecount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0";  */
                   
-                      }
-              
+                      } 
                 }
 
                 else if (ball_count%6==0)  //  wicket + over done
@@ -6507,13 +5582,9 @@ btnwicket.addEventListener('click', () =>
                     $('#wicketforlastbatter').modal({show:true});
 
 
-
-
-
-
                     wicketforlastbattersave.addEventListener('click', () => 
                         {
-                            lastbatterwicketype = document.getElementById("wicketdisplayoverchange").value;
+                            lastbatterwicketype = document.getElementById("wicketdisplaylastbatter").value;
                             console.log("last batter out by"+lastbatterwicketype);
                             $('#wicketforlastbatter').modal('hide');
 
@@ -6524,7 +5595,7 @@ btnwicket.addEventListener('click', () =>
                                     {
                                     
                                         console.log("yes last batter out was striker");
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
+                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter1namepara.innerText,
                                                                 Runs : batter1scorepara.innerText,
@@ -6561,9 +5632,7 @@ btnwicket.addEventListener('click', () =>
                                     if (strikerstar.innerText=="*")
                                     {
                                     
-                                       
-
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
+                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter1namepara.innerText,
                                                                 Runs : batter1scorepara.innerText,
@@ -6580,7 +5649,7 @@ btnwicket.addEventListener('click', () =>
                                     else if (nonstrikerstar.innerText=="*")
                                     {
                                             
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter2namepara.innerText+"/") , 
+                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter2namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter2namepara.innerText,
                                                                 Runs : batter2scorepara.innerText,
@@ -6599,7 +5668,7 @@ btnwicket.addEventListener('click', () =>
                                     if (strikerstar.innerText=="*")
                                     {
                                         
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
+                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter1namepara.innerText,
                                                                 Runs : batter1scorepara.innerText,
@@ -6616,7 +5685,7 @@ btnwicket.addEventListener('click', () =>
                                     else if (nonstrikerstar.innerText=="*")
                                     {
                                              
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter2namepara.innerText+"/") , 
+                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter2namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter2namepara.innerText,
                                                                 Runs : batter2scorepara.innerText,
@@ -6635,7 +5704,7 @@ btnwicket.addEventListener('click', () =>
                                     if (strikerstar.innerText=="*")
                                     {
                                          
-                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter1namepara.innerText+"/") , 
+                                    set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter1namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter1namepara.innerText,
                                                                 Runs : batter1scorepara.innerText,
@@ -6652,7 +5721,7 @@ btnwicket.addEventListener('click', () =>
                                     else if (nonstrikerstar.innerText=="*")
                                     {
                                              
-                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+bowlingfirst+"/"+batter2namepara.innerText+"/") , 
+                                            set (ref(database,selectedmatch+"/"+"Data/"+"BatterData/"+battingfirst+"/"+batter2namepara.innerText+"/") , 
                                                           {
                                                                 Name : batter2namepara.innerText,
                                                                 Runs : batter2scorepara.innerText,
@@ -6666,124 +5735,64 @@ btnwicket.addEventListener('click', () =>
                                     }
                                 }
 
-                             
+                                if (lastbatterwicketype=="runout")
+                                {
+                                    if (whout=="strikerro")
+                                     {
+                     document.getElementById("lastbat").innerHTML = 
+                                `${batter1namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter1scorepara.innerText} (${batter1bowlcount.innerText} ${batter1fourcount.innerText}x4 ${batter1sixcount.innerText}x6) SR: ${batter1strikeratecount.innerText} ) | </span> FOW: ${teambscore.innerText}/${teambwickets.innerText} (${teambovers.innerText} ov)`
+
+
+                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter1namepara.innerText+"/"), 
+                        {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });                             
+
+                    }
+
+                 else if (whout=="nostrikerro")
+                {
+                                          
+                    document.getElementById("lastbat").innerHTML = 
+                                `${batter2namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter2scorepara.innerText} (${batter2bowlcount.innerText} ${batter2fourcount.innerText}x4 ${batter2sixcount.innerText}x6) SR: ${batter2strikeratecount.innerText} ) | </span> FOW: ${teambscore.innerText}/${teambwickets.innerText} (${teambovers.innerText} ov)`
+
+                                        
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter2namepara.innerText+"/"), 
+                        {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                            
+                }
+
+
+            }
+                
                             // SWITCH TEAMS ONLY AFTER SAVING LAST BATTER DATA
                                 if (battingfirst==teamaselected)
                                 {
-                                    innsover = innsover+1;
-                                    
-                                        
-
-                                    temp_for_inns_switch = teamaselected;
-                                    battingfirst = teambselected;
-                                    bowlingfirst = teamaselected;
-                                    console.log("now batting 2nd will be"+battingfirst);
-                                    console.log("now bowling 2nd will be"+bowlingfirst);
-
-                                    var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                                    console.log("target set by team a is"+target);
-
-                                    localStorage.setItem("Target",target);
-
-                                    strikerscore=0;
-                                    strikerballs=0;
-                                    nonstrikerscore=0;
-                                    nonstrikerballs=0;
-                                    ballerballcount=0;
-                                    
-                                    overdone = 0;
-
-                                    ball_count = 0;
-
-                                    wickets="0";
-
-
-                                    /* currentbowlerovers=0;
-                                    currentbowlerwickets = 0;
-                                    currentbowlerrunsgiven = 0;
-                                    currentbowlerecon = 0; */
-         
-                                    batter1namepara.innerText="";
-                                    batter1scorepara.innerTextstrikerscore;
-                                    batter1bowlcount.innerText=strikerballs;
-                                    batter1fourcount.innerText="0";
-                                    batter1sixcount.innerText="0";
-                                    batter1strikeratecount.innerText="0";
-
-                                    batter2namepara.innerText="";
-                                    batter2scorepara.innerText=nonstrikerscore;
-                                    batter2bowlcount.innerText=nonstrikerballs;
-                                    batter2fourcount.innerText="0";
-                                    batter2sixcount.innerText="0";
-                                    batter2strikeratecount.innerText="0";
-
-                                    /* currentbowlerovers.innerText=ballerballcount; */
-                                   
-                                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-                                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-
-                                    openiniupinnschange();
-
-                                    
+                                    switchteams();                      
                                 }
                                 
                                 // SWITCH TEAMS
                                 else 
                                 {
                                     
-                                    innsover = innsover+1;
-
-                
-
-                                    temp_for_inns_switch = teambselected;
-                                    battingfirst = teamaselected;
-                                    bowlingfirst = teambselected;
-                                    console.log("now batting 2nd will be"+battingfirst);
-                                    console.log("now bowling 2nd will be"+bowlingfirst);
-
-
-
-                                    var target=parseInt(document.getElementById("teamascore").innerText) + 1;
-                                    console.log("target set by team a is"+target);
-
-                                    localStorage.setItem("Target",target);
-
-                                    strikerscore=0;
-                                    strikerballs=0;
-                                    nonstrikerscore=0;
-                                    nonstrikerballs=0;
-                                    ballerballcount=0;
-                                    
-
-                                    ball_count = 0;
-
-                                    /* currentbowlerovers=0;
-                                    currentbowlerwickets = 0;
-                                    currentbowlerrunsgiven = 0;
-                                    currentbowlerecon = 0; */
-
-                                    teamawickets = 0;
-                                    teambwickets = 0;
-                                    wickets=0;
-
-                                    batter1namepara.innerText="";
-                                    batter1scorepara.innerText=strikerscore;
-                                    batter1bowlcount.innerText=strikerballs;
-                                    batter1fourcount.innerText="0";
-                                    batter1sixcount.innerText="0";
-                                    batter1strikeratecount.innerText="0";
-
-                                    batter2namepara.innerText="";
-                                    batter2scorepara.innerText=nonstrikerscore;
-                                    batter2bowlcount.innerText=nonstrikerballs;
-                                    batter2fourcount.innerText="0";
-                                    batter2sixcount.innerText="0";
-                                    batter2strikeratecount.innerText="0";
-
-                                    getstrikerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teamaselected"+"/");
-                                    getbowlerslist = ref(database,selectedmatch+"/"+"Data"+"/"+"teambselected"+"/");
-
-                                    openiniupinnschange();
+                                    switchteams();
                                 }
 
                                 // UPDATE SCORECARD
@@ -6826,7 +5835,7 @@ btnwicket.addEventListener('click', () =>
                     }
                  
 
-                    else 
+                    if (overdone != totalovers)
                     {
                            set (ref(database,selectedmatch+"/"+"Data/"+"BowlerData/"+bowlingfirst+"/"+currentbowlernamepara.innerText) , {
                                             BowlerName : currentbowlernamepara.innerText,
@@ -6861,8 +5870,7 @@ btnwicket.addEventListener('click', () =>
                                                         Six : batter1sixcount.innerText
                                                   });
 
-                                        strikerscore=0;
-                                        strikerballs=0; 
+                                        
 
                                         display_batsmen_bowler_ui(); 
 
@@ -6894,8 +5902,7 @@ btnwicket.addEventListener('click', () =>
                                                         Six : batter2sixcount.innerText
                                                   });
 
-                                        nonstrikerscore=0;
-                                        nonstrikerballs=0; 
+                                        
 
                                         display_batsmen_bowler_ui(); 
 
@@ -6984,9 +5991,6 @@ scorecardbutton.addEventListener('click',() =>
 
  var newbatterselected="";
 
-
-// WICKETS FALLING OF NORMAL BALLS
-
 savenewbatter.addEventListener('click', () => 
 {
 
@@ -7041,6 +6045,16 @@ savenewbatter.addEventListener('click', () =>
                                                          </tr>
                                         `
 
+                        strikerscore=0;
+                        strikerballs=0; 
+
+                        /* batter1namepara.innerHTML="";  */
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
+
 
                 }   
 
@@ -7079,6 +6093,35 @@ savenewbatter.addEventListener('click', () =>
 
 
                 }   
+        
+
+                                if (strikerstar.innerText=="*")
+                     {
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+                                        
+                     }   
+
+                         else
+                         {
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+                                             
+                         } 
+
+
+
+
+
         }   
 
             if (wicketselected=="lbw")
@@ -7119,6 +6162,16 @@ savenewbatter.addEventListener('click', () =>
                                                          </tr>
                                         `
 
+                                        strikerscore=0;
+                        strikerballs=0; 
+
+                        /* batter1namepara.innerHTML="";  */
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
+
 
                 }   
 
@@ -7154,6 +6207,44 @@ savenewbatter.addEventListener('click', () =>
                                                          </tr>
                                         `
                 }       
+                
+
+                                if (strikerstar.innerText=="*")
+                     {
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+                                        
+                     }   
+
+                         else
+                         {
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+                                             
+                         } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 }
 
             if (wicketselected=="c")
@@ -7254,6 +6345,30 @@ savenewbatter.addEventListener('click', () =>
 
 
                 }
+
+
+                                if (strikerstar.innerText=="*")
+                     {
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+                                        
+                     }   
+
+                         else
+                         {
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+                                             
+                         } 
                     
             }  
 
@@ -7353,9 +6468,110 @@ savenewbatter.addEventListener('click', () =>
 
 
                 }
-                    
-            }   
 
+
+
+
+                                if (strikerstar.innerText=="*")
+                     {
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+                                        
+                     }   
+
+                         else
+                         {
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+                                             
+                         } 
+                    
+            }  
+
+            if (wicketselected=="runout")
+            {
+                if (whout=="strikerro")
+                 {
+                     document.getElementById("lastbat").innerHTML = 
+                                `${batter1namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter1scorepara.innerText} (${batter1bowlcount.innerText} ${batter1fourcount.innerText}x4 ${batter1sixcount.innerText}x6) SR: ${batter1strikeratecount.innerText} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+
+                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter1namepara.innerText+"/"), 
+                        {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                                        strikerscore=0;
+                                        strikerballs=0;                   
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+
+        
+                                          
+
+                 }
+
+                 else if (whout=="nostrikerro")
+                {
+                                          
+                    document.getElementById("lastbat").innerHTML = 
+                                `${batter2namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter2scorepara.innerText} (${batter2bowlcount.innerText} ${batter2fourcount.innerText}x4 ${batter2sixcount.innerText}x6) SR: ${batter2strikeratecount.innerText} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+                                        
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter2namepara.innerText+"/"), 
+                        {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                                nonstrikerscore=0;
+                                nonstrikerballs=0;
+
+
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+
+
+                           
+                                             
+                         
+                }
+
+
+            }
+
+            
         }
         
         else if (battingfirst==teambselected)
@@ -7401,6 +6617,16 @@ savenewbatter.addEventListener('click', () =>
                                                          </tr>
                                         `
 
+                        strikerscore=0;
+                        strikerballs=0; 
+
+                        batter1namepara.innerHTML=newbatterselected;  
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
+
 
                 }   
 
@@ -7437,8 +6663,39 @@ savenewbatter.addEventListener('click', () =>
                                                          </tr>
                                         `
 
+                        nonstrikerballs=0;
+                        nonstrikerscore=0;
+                        batter2namepara.innerHTML=newbatterselected;  
+                        batter2scorepara.innerHTML=strikerscore;
+                        batter2bowlcount.innerHTML=strikerballs;
+                        batter2fourcount.innerHTML="0";
+                        batter2sixcount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0";
 
+
+                }  
+                if (strikerstar.innerText=="*")
+                {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        
                 }   
+
+                 else
+                 {
+                                    batter2namepara.innerHTML=newbatterselected;
+                                    batter2scorepara.innerHTML=0;
+                                    batter2bowlcount.innerHTML=0;
+                                    batter2fourcount.innerHTML=0;
+                                    batter2sixcount.innerHTML=0;
+                                    batter2strikeratecount.innerHTML=0;
+                                     
+                 }  
         }   
 
             if (wicketselected=="lbw")
@@ -7479,6 +6736,16 @@ savenewbatter.addEventListener('click', () =>
                                                          </tr>
                                         `
 
+                                        strikerscore=0;
+                        strikerballs=0; 
+
+                        batter1namepara.innerHTML=newbatterselected; 
+                        batter1scorepara.innerHTML=strikerscore;
+                        batter1bowlcount.innerHTML=strikerballs;
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
+
 
                 }   
 
@@ -7513,7 +6780,40 @@ savenewbatter.addEventListener('click', () =>
                                                                 <td>0</td>
                                                          </tr>
                                         `
-                }       
+
+                        nonstrikerballs=0;
+                        nonstrikerscore=0;
+                        batter2namepara.innerHTML=newbatterselected;  
+                        batter2scorepara.innerHTML=strikerscore;
+                        batter2bowlcount.innerHTML=strikerballs;
+                        batter2fourcount.innerHTML="0";
+                        batter2sixcount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0";
+                    }  
+
+                    if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        
+     }   
+
+     else
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                         
+     } 
+
                 }
 
             if (wicketselected=="c")
@@ -7560,7 +6860,7 @@ savenewbatter.addEventListener('click', () =>
                     strikerscore=0;
                     strikerballs=0; 
 
-                        batter1namepara.innerHTML="";
+                        batter1namepara.innerHTML=newbatterselected;
                         batter1scorepara.innerHTML=strikerscore;
                         batter1bowlcount.innerHTML=strikerballs;
                         batter1fourcount.innerHTML="";
@@ -7614,6 +6914,29 @@ savenewbatter.addEventListener('click', () =>
 
 
                 }
+
+                if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        
+     }   
+
+     else
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                         
+     } 
                     
             }  
 
@@ -7660,12 +6983,12 @@ savenewbatter.addEventListener('click', () =>
                     strikerscore=0;
                     strikerballs=0; 
 
-                        batter1namepara.innerHTML="";
+                        batter1namepara.innerHTML=newbatterselected;
                         batter1scorepara.innerHTML=strikerscore;
                         batter1bowlcount.innerHTML=strikerballs;
-                        batter1fourcount.innerHTML="";
-                        batter1sixcount.innerHTML="";
-                        batter1strikeratecount.innerHTML="";
+                        batter1fourcount.innerHTML="0";
+                        batter1sixcount.innerHTML="0";
+                        batter1strikeratecount.innerHTML="0";
 
                 }   
 
@@ -7707,14 +7030,109 @@ savenewbatter.addEventListener('click', () =>
                         batter2namepara.innerHTML="";
                         batter2scorepara.innerHTML=nonstrikerscore;
                         batter2bowlcount.innerHTML=nonstrikerballs;
-                        batter2fourcount.innerHTML="";
-                        batter2sixcount.innerHTML="";
-                        batter2strikeratecount.innerHTML="";
+                        batter2fourcount.innerHTML="0";
+                        batter2sixcount.innerHTML="0";
+                        batter2strikeratecount.innerHTML="0";
 
 
                 }
+
+                if (strikerstar.innerText=="*")
+                {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        
+                }   
+
+                 else
+                 {
+                                    batter2namepara.innerHTML=newbatterselected;
+                                    batter2scorepara.innerHTML=0;
+                                    batter2bowlcount.innerHTML=0;
+                                    batter2fourcount.innerHTML=0;
+                                    batter2sixcount.innerHTML=0;
+                                    batter2strikeratecount.innerHTML=0;
+                                     
+                 } 
                     
-            }   
+            }  
+
+
+            if (wicketselected=="runout")
+            {
+                if (whout=="strikerro")
+                 {
+                     document.getElementById("lastbat").innerHTML = 
+                                `${batter1namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter1scorepara.innerText} (${batter1bowlcount.innerText} ${batter1fourcount.innerText}x4 ${batter1sixcount.innerText}x6) SR: ${batter1strikeratecount.innerText} ) | </span> FOW: ${teambscore.innerText}/${teambwickets.innerText} (${teambovers.innerText} ov)`
+
+
+                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter1namepara.innerText+"/"), 
+                        {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                                        strikerscore=0;
+                                        strikerballs=0;                   
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+
+        
+                                          
+
+                 }
+
+                 else if (whout=="nostrikerro")
+                {
+                                          
+                    document.getElementById("lastbat").innerHTML = 
+                                `${batter2namepara.innerText} run out ${currentbowlernamepara.innerText} ${batter2scorepara.innerText} (${batter2bowlcount.innerText} ${batter2fourcount.innerText}x4 ${batter2sixcount.innerText}x6) SR: ${batter2strikeratecount.innerText} ) | </span> FOW: ${teambscore.innerText}/${teambwickets.innerText} (${teambovers.innerText} ov)`
+
+                                        
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter2namepara.innerText+"/"), 
+                        {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : currentbowlernamepara.innerText
+                                      });
+
+                                nonstrikerscore=0;
+                                nonstrikerballs=0;
+
+
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;     
+                }
+
+
+            }
+
+            
         }
 
  
@@ -7730,7 +7148,7 @@ savenewbatter.addEventListener('click', () =>
         $('#onlybatterdisplay').modal('hide');
          
 
-     if (strikerstar.innerText=="*")
+    /* if (strikerstar.innerText=="*")
      {
 
                         batter1namepara.innerHTML=newbatterselected;
@@ -7750,11 +7168,10 @@ savenewbatter.addEventListener('click', () =>
                         batter2fourcount.innerHTML=0;
                         batter2sixcount.innerHTML=0;
                         batter2strikeratecount.innerHTML=0;
-                        
-     }       
+                         
+     }        */
     
 })
-
 
 // WICKETS FALLING ON LAST BALLS
 
@@ -7860,6 +7277,34 @@ savenewbatteroverchange.addEventListener('click', () =>
                     `     */  
 
                 }   
+
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
             }   
 
             if (wicketselected=="lbw")
@@ -7935,6 +7380,34 @@ savenewbatteroverchange.addEventListener('click', () =>
                                                          </tr>
                                         `
                 }  
+
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
             }
 
             if (wicketselected=="c")
@@ -8036,6 +7509,34 @@ savenewbatteroverchange.addEventListener('click', () =>
 
 
                 }
+
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
                     
             }   
 
@@ -8138,13 +7639,128 @@ savenewbatteroverchange.addEventListener('click', () =>
 
 
                 }
+
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
                     
-        }   
+        } 
+
+            if (wicketselected=="runout")
+            {
+                if (whout=="strikerro")
+                 {
+                     document.getElementById("lastbat").innerHTML = 
+                                `${batter1namepara.innerText} run out ${previousbowlername} ${batter1scorepara.innerText} (${batter1bowlcount.innerText} ${batter1fourcount.innerText}x4 ${batter1sixcount.innerText}x6) SR: ${batter1strikeratecount.innerText} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+
+                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter1namepara.innerText+"/"), 
+                        {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : previousbowlername
+                                      });
+
+                                        strikerscore=0;
+                                        strikerballs=0;                   
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+
+                                        if (strikerstar.innerText=="*")
+                                        {   strikerstar.innerHTML="";
+                                            nonstrikerstar.innerHTML="*"; 
+                                        }
+
+                                        else
+                                        {
+                                            strikerstar.innerHTML="*";
+                                            nonstrikerstar.innerHTML=""; 
+                                        }
+
+                 }
+
+                 else if (whout=="nostrikerro")
+                {
+                                          
+                    document.getElementById("lastbat").innerHTML = 
+                                `${batter2namepara.innerText} run out ${previousbowlername} ${batter2scorepara.innerText} (${batter2bowlcount.innerText} ${batter2fourcount.innerText}x4 ${batter2sixcount.innerText}x6) SR: ${batter2strikeratecount.innerText} ) | </span> FOW: ${teamascore.innerText}/${teamawickets.innerText} (${teamaovers.innerText} ov)`
+
+                                        
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter2namepara.innerText+"/"), 
+                        {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : previousbowlername
+                                      });
+
+                                nonstrikerscore=0;
+                                nonstrikerballs=0;
+
+
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+
+                                            if (strikerstar.innerText=="*")
+                                        {   strikerstar.innerHTML="";
+                                            nonstrikerstar.innerHTML="*"; 
+                                        }
+
+                                        else
+                                        {
+                                            strikerstar.innerHTML="*";
+                                            nonstrikerstar.innerHTML=""; 
+                                        }
+
+
+                               
+                }
+            }
     }
-
-
-    // CHECK WICKET TYPE IF TEAM B IS BATTING
-    else
+ 
+    else if (battingfirst==teambselected)
     {   
             if (wicketselected=="b") 
             {
@@ -8186,6 +7802,8 @@ savenewbatteroverchange.addEventListener('click', () =>
                                                          </tr>
                                         `
 
+
+
                 }   
 
                 if (nonstrikerstar.innerText=="*")
@@ -8221,7 +7839,34 @@ savenewbatteroverchange.addEventListener('click', () =>
                                                          </tr>
                                         `
 
-                }       
+                } 
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }      
         } 
   
             if (wicketselected=="lbw")
@@ -8295,6 +7940,34 @@ savenewbatteroverchange.addEventListener('click', () =>
                                                          </tr>
                                         `
                 }  
+
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
             }
 
             if (wicketselected=="c")
@@ -8396,6 +8069,34 @@ savenewbatteroverchange.addEventListener('click', () =>
                         batter2strikeratecount.innerHTML="";
                 }
 
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
+
             }
 
             if (wicketselected=="c&b")
@@ -8492,6 +8193,125 @@ savenewbatteroverchange.addEventListener('click', () =>
                         batter2sixcount.innerHTML="";
                         batter2strikeratecount.innerHTML="";
                 }
+
+                 if (strikerstar.innerText=="*")
+     {
+
+                        batter1namepara.innerHTML=newbatterselected;
+                        batter1scorepara.innerHTML=0;
+                        batter1bowlcount.innerHTML=0;
+                        batter1fourcount.innerHTML=0;
+                        batter1sixcount.innerHTML=0;
+                        batter1strikeratecount.innerHTML=0;
+                        strikerstar.innerHTML="";
+                        nonstrikerstar.innerHTML="*";
+
+                        
+     }   
+
+      
+     {
+                        batter2namepara.innerHTML=newbatterselected;
+                        batter2scorepara.innerHTML=0;
+                        batter2bowlcount.innerHTML=0;
+                        batter2fourcount.innerHTML=0;
+                        batter2sixcount.innerHTML=0;
+                        batter2strikeratecount.innerHTML=0;
+                        
+                        strikerstar.innerHTML="*";
+                        nonstrikerstar.innerHTML="";                 
+     }
+            }
+
+           if (wicketselected=="runout")
+            {
+                if (whout=="strikerro")
+                 {
+                     document.getElementById("lastbat").innerHTML = 
+                                `${batter1namepara.innerText} run out ${previousbowlername} ${batter1scorepara.innerText} (${batter1bowlcount.innerText} ${batter1fourcount.innerText}x4 ${batter1sixcount.innerText}x6) SR: ${batter1strikeratecount.innerText} ) | </span> FOW: ${teambscore.innerText}/${teambwickets.innerText} (${teambovers.innerText} ov)`
+
+
+                     update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter1namepara.innerText+"/"), 
+                        {
+                                        Name : batter1namepara.innerText,
+                                        Runs : batter1scorepara.innerText,
+                                        Balls : batter1bowlcount.innerText,
+                                        StrikeRate : batter1strikeratecount.innerText,
+                                        Fours : batter1fourcount.innerText,
+                                        Six : batter1sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : previousbowlername
+                                      });
+
+                                        strikerscore=0;
+                                        strikerballs=0;                   
+
+                                        batter1namepara.innerHTML=newbatterselected;
+                                        batter1scorepara.innerHTML=0;
+                                        batter1bowlcount.innerHTML=0;
+                                        batter1fourcount.innerHTML=0;
+                                        batter1sixcount.innerHTML=0;
+                                        batter1strikeratecount.innerHTML=0;
+
+                                        if (strikerstar.innerText=="*")
+                                        {   strikerstar.innerHTML="";
+                                            nonstrikerstar.innerHTML="*"; 
+                                        }
+
+                                        else
+                                        {
+                                            strikerstar.innerHTML="*";
+                                            nonstrikerstar.innerHTML=""; 
+                                        }
+
+                                        console.log("striker runs have been set to"+strikerscore);
+                 }
+
+                 else if (whout=="nostrikerro")
+                {
+                                          
+                    document.getElementById("lastbat").innerHTML = 
+                                `${batter2namepara.innerText} run out ${previousbowlername} ${batter2scorepara.innerText} (${batter2bowlcount.innerText} ${batter2fourcount.innerText}x4 ${batter2sixcount.innerText}x6) SR: ${batter2strikeratecount.innerText} ) | </span> FOW: ${teambscore.innerText}/${teambwickets.innerText} (${teambovers.innerText} ov)`
+
+                                        
+                    update (ref(database,selectedmatch+"/"+"/Data"+"/"+"BatterData"+"/"+battingfirst+"/"+batter2namepara.innerText+"/"), 
+                        {
+                                        Name : batter2namepara.innerText,
+                                        Runs : batter2scorepara.innerText,
+                                        Balls : batter2bowlcount.innerText,
+                                        StrikeRate : batter2strikeratecount.innerText,
+                                        Fours : batter2fourcount.innerText,
+                                        Six : batter2sixcount.innerText,
+                                        WicketType : "run out",
+                                        BowlerName : previousbowlername
+                                      });
+
+                                nonstrikerscore=0;
+                                nonstrikerballs=0;
+
+
+                                            batter2namepara.innerHTML=newbatterselected;
+                                            batter2scorepara.innerHTML=0;
+                                            batter2bowlcount.innerHTML=0;
+                                            batter2fourcount.innerHTML=0;
+                                            batter2sixcount.innerHTML=0;
+                                            batter2strikeratecount.innerHTML=0;
+
+                                            if (strikerstar.innerText=="*")
+                                        {   strikerstar.innerHTML="";
+                                            nonstrikerstar.innerHTML="*"; 
+                                        }
+
+                                        else
+                                        {
+                                            strikerstar.innerHTML="*";
+                                            nonstrikerstar.innerHTML=""; 
+                                        }  
+
+                                        console.log("non striker are still"+nonstrikerscore);   
+                }
+
+
             }
    
     }  
@@ -8507,8 +8327,8 @@ savenewbatteroverchange.addEventListener('click', () =>
 
         $('#batterbowler').modal('hide');
          
-         // PUT THE NEW BATTER ON STRIKE AND SET ALL HIS PARAM TO 0
-     if (strikerstar.innerText=="*")
+        
+    /* if (strikerstar.innerText=="*")
      {
 
                         batter1namepara.innerHTML=newbatterselected;
@@ -8523,8 +8343,7 @@ savenewbatteroverchange.addEventListener('click', () =>
                         
      }   
 
-      // PUT THE NEW BATTER ON NON STRIKE AND SET ALL HIS PARAM TO 0
-     else
+      
      {
                         batter2namepara.innerHTML=newbatterselected;
                         batter2scorepara.innerHTML=0;
@@ -8532,9 +8351,10 @@ savenewbatteroverchange.addEventListener('click', () =>
                         batter2fourcount.innerHTML=0;
                         batter2sixcount.innerHTML=0;
                         batter2strikeratecount.innerHTML=0;
+                        
                         strikerstar.innerHTML="*";
                         nonstrikerstar.innerHTML="";                 
-     }     
+     }     */
 
      
 
