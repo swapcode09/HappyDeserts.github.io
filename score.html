@@ -520,7 +520,7 @@
 
 <!-- MODAL FOR WIDE BALL -->
 
-    <div class="modal fade" id="extramodal" role="dialog">
+    <!-- <div class="modal fade" id="extramodal" role="dialog">
   <div class="modal-dialog" class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
       <div class="modal-header">
@@ -549,7 +549,28 @@
         <button type="submit" id="extramodalsave" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <div class="modal fade" id="extramodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Demo Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form id="extraform">
+      
+              <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                  <textarea class="form-control" id="extraruns" rows="1"></textarea>
+              </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="extramodalsave">Save</button>
+       
+      </div>
 
 
 </div>
@@ -4676,29 +4697,31 @@ btnb.addEventListener('click', () =>
 
 });
 
-
-// NEED TO CHECK WIN CONDITIONS AND BOWLER SCORECARD UPDATE FOR THIS BUTTON
-
-btnex.addEventListener('click', () => 
+ 
+/* btnex.addEventListener('click', () => 
 {
-    $('#extramodal').modal({show:true});
+    toadd=0;
+    var currscorea=0;
+    var currscoreb=0;
+
+    score = score + 1;
 
     var donescore = currentbowlerrunsgiven.innerText;
 
-    extramodalsave.addEventListener('click', () => 
-    {
-        
-        toadd = document.getElementById("extraruns").value;
-        
-        $('#extramodal').modal('hide');
 
+        toadd = document.getElementById("extraruns").value;
+  
         if (toadd%2!==0)
-        {
-            
+        {      
+            console.log("To add are"+toadd);
+
             if (battingfirst==teamaselected)
             {
-                    score = parseInt(teamascore.innerText) + parseInt(toadd);
-                    teamascore.innerHTML = score; 
+                    currscorea = 0;
+                    currscorea = document.getElementById("teamascore").innerText;
+                    console.log("current runs are"+parseInt(currscorea));
+
+                    teamascore.innerHTML = parseInt(currscorea)+parseInt(toadd); 
 
                                         if (strikerstar.innerText=="*")
                                         {
@@ -4723,15 +4746,19 @@ btnex.addEventListener('click', () =>
 
 
 
-               ballerruncount = parseInt(donescore)+1;
+               ballerruncount = parseInt(donescore)+parseInt(toadd);
                currentbowlerrunsgiven.innerHTML = ballerruncount;
+
+               $('#extramodal').modal('hide');  
 
             }
 
             else 
             {
-                score = parseInt(teambscore.innerText) + parseInt(toadd);
-                teambscore.innerHTML = score; 
+                    currscoreb = 0;
+                    currscoreb = document.getElementById("teambscore").innerText;
+                    console.log("current runs are"+parseInt(currscoreb));
+                    teambscore.innerHTML = parseInt(currscoreb)+parseInt(toadd);
 
                                         if (strikerstar.innerText=="*")
                                         {
@@ -4753,11 +4780,13 @@ btnex.addEventListener('click', () =>
                                                         ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
                                                     </p>
                                                 </li>`
-                ballerruncount = parseInt(donescore)+1;
+                ballerruncount = parseInt(donescore)+toadd;
                currentbowlerrunsgiven.innerHTML = ballerruncount;
 
-            }                        
+               $('#extramodal').modal('hide');  
 
+            }   
+                           
         }
 
         else if (toadd%2==0)
@@ -4798,11 +4827,98 @@ btnex.addEventListener('click', () =>
                                                     </p>
                                                 </li>`
             }
+
+
+            $('#extramodal').modal('hide');
         }
 
 
-    });
+    });  */
+
+btnex.addEventListener('click', () => 
+{
+    score = score+1;
+
+      var donescore = currentbowlerrunsgiven.innerText;
+
+      if (battingfirst==teamaselected)
+      {
+        teamascore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teamaovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">EX</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+
+
+                if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teamascore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+              }
+
+      }
+
+      if (battingfirst==teambselected)
+      {
+        teambscore.innerHTML = score;
+        addcommentary.innerHTML += ` <li>
+                                                    <div>
+                                                        <h5>${teambovers.innerText}</h5>
+                                                        <span class="p-3 mb-2 bg-secondary text-white">EX</span>
+                                                    </div>
+                                                    <p>
+                                                        ${currentbowlernamepara.innerText} to ${batter1namepara.innerText}
+                                                    </p>
+                                                </li>`
+
+
+                if (innsover==2)
+              {
+                  rem_score = (target) - parseInt((document.getElementById("teambscore").innerText));
+                  console.log("rem score is"+rem_score);
+
+                  if (rem_score==0)
+                  {
+                    alert("team b won the match");
+                  }
+
+                  balls_rem = totalballs-balls;
+                  console.log("rem balls is"+balls_rem);
+
+                  if (balls_rem==0)
+                  {
+                    alert("team a won the match");
+                  }
+
+              }
+
+      }
+
+      ballerruncount = parseInt(donescore)+1;
+      currentbowlerrunsgiven.innerHTML = ballerruncount;
+      addtoscorecard();
+     
 });
+
 
 changestrike.addEventListener('click' , () =>
 {
